@@ -191,6 +191,41 @@
     white-space: nowrap;
   }
   .nav-cta:hover { background: var(--ocean-bright); }
+  .fb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-family: 'Plex Mono', monospace;
+    font-weight: 600;
+    font-size: 0.92rem;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .fb-btn:hover, .fb-btn:focus-visible { border-color: var(--ocean); color: var(--ocean); outline: none; }
+  .btn-fb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55em;
+  }
+  .btn-fb .fb-icon-inline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background: var(--ocean);
+    color: #EAFBF8;
+    font-family: 'Plex Mono', monospace;
+    font-weight: 700;
+    font-size: 0.72rem;
+  }
   .nav-mid { display: flex; align-items: center; gap: clamp(16px,3vw,32px); }
   .menu-btn { display: none; background: none; border: 1px solid var(--line); border-radius: 3px; width: 40px; height: 40px; color: var(--ink); font-size: 1.1rem; cursor: pointer; }
 
@@ -230,6 +265,14 @@
     flex-wrap: wrap;
     margin-top: 30px;
   }
+  .hero-goal {
+    margin-top: 18px;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .hero-goal strong { color: var(--ocean); font-weight: 600; }
   .btn {
     font-family: 'Archivo', sans-serif;
     font-weight: 700;
@@ -388,6 +431,43 @@
     border-radius: 100px;
   }
 
+  /* ---------- Día de 1 hora ---------- */
+  .hora-panel {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(28px, 5vw, 48px);
+    align-items: center;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: clamp(32px, 6vw, 56px);
+  }
+  @media (max-width: 760px) { .hora-panel { grid-template-columns: 1fr; } }
+  .hora-copy h2 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); margin-top: 14px; }
+  .hora-copy p { margin-top: 16px; }
+  .hora-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+  .hora-figure {
+    text-align: center;
+    border-left: 1px solid var(--line);
+    padding-left: clamp(24px, 5vw, 48px);
+  }
+  @media (max-width: 760px) { .hora-figure { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 28px; } }
+  .hora-num {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.4rem, 9vw, 5.4rem);
+    line-height: 0.9;
+    color: var(--ocean);
+  }
+  .hora-num-label {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin-top: 10px;
+    max-width: 20ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* ---------- Participar ---------- */
   .participar-grid {
     display: grid;
@@ -502,9 +582,10 @@
       <nav class="links">
         <a href="#problema">El problema</a>
         <a href="#plan">El plan</a>
-        <a href="#metas">Metas</a>
+        <a href="#unahora">El Día de 1 Hora</a>
         <a href="#participar">Participa</a>
       </nav>
+      <a href="https://www.facebook.com/profile.php?id=61591820469625" target="_blank" rel="noopener noreferrer" class="fb-btn" aria-label="Síguenos en Facebook">f</a>
       <a href="#participar" class="nav-cta">Súmate</a>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">≡</button>
     </div>
@@ -522,6 +603,7 @@
           <a href="#participar" class="btn btn-primary">Súmate a una brigada</a>
           <a href="#plan" class="btn btn-ghost">Ver el plan completo</a>
         </div>
+        <p class="hero-goal">Meta: <strong>1,000</strong> personas registradas para fijar la fecha del primer <strong>Día de 1 Hora</strong>.</p>
       </div>
       <figure class="hero-art">
         <canvas id="skyline" width="640" height="520" role="img" aria-label="Ilustración de las colinas y cañones de Tijuana descendiendo hacia el mar"></canvas>
@@ -613,6 +695,26 @@
     </div>
   </section>
 
+  <section id="unahora">
+    <div class="wrap">
+      <div class="hora-panel reveal">
+        <div class="hora-copy">
+          <span class="eyebrow">La meta</span>
+          <h2>1,000 registros. Un día. Una hora cada quien.</h2>
+          <p>Así de simple: en cuanto lleguemos a 1,000 personas registradas, fijamos una fecha entre todos y cada quien dona una hora ese mismo día — en su colonia, su cañón o su playa más cercana. Un solo movimiento, coordinado por toda la ciudad.</p>
+          <div class="hora-actions">
+            <a href="#participar" class="btn btn-primary">Regístrate ahora</a>
+            <a href="https://www.facebook.com/profile.php?id=61591820469625" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-fb"><span class="fb-icon-inline" aria-hidden="true">f</span>Síguenos en Facebook</a>
+          </div>
+        </div>
+        <div class="hora-figure">
+          <div class="hora-num tnum">1,000</div>
+          <div class="hora-num-label">personas para activar el Día de 1 Hora</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="metas">
     <div class="wrap metas-wrap reveal">
       <span class="metas-tag">Metas de la campaña · 2026–2028</span>
@@ -661,9 +763,18 @@
             <h3>Lleva el programa a tu escuela</h3>
             <p>Coordinamos talleres de educación ambiental para primarias y secundarias en cualquier delegación de la ciudad.</p>
           </div>
+          <div class="accion">
+            <h3>Síguenos en Facebook</h3>
+            <p>Ahí anunciamos cuántos llevamos registrados, la fecha del Día de 1 Hora en cuanto se fije, y las brigadas activas cada semana.</p>
+            <p style="margin-top:10px"><a href="https://www.facebook.com/profile.php?id=61591820469625" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-fb"><span class="fb-icon-inline" aria-hidden="true">f</span>Ir a la página</a></p>
+          </div>
         </div>
 
-        <form class="join" id="joinForm">
+        <form class="join" id="joinForm" action="https://formsubmit.co/uniontijuanaev@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nuevo registro — Tijuana Limpia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
             <label for="nombre">Nombre</label>
             <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
@@ -688,8 +799,9 @@
               <option>Educación ambiental</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Quiero sumarme</button>
-          <p class="form-msg" id="formMsg">Gracias — te vamos a contactar con la brigada más cercana a tu colonia.</p>
+          <button type="submit" class="btn btn-primary" id="joinSubmit">Quiero sumarme</button>
+          <p class="form-msg" id="formMsg">Gracias — quedaste registrado. Te avisamos por correo en cuanto se fije la fecha del Día de 1 Hora.</p>
+          <p class="form-msg" id="formErr" style="color:var(--clay)">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
         </form>
       </div>
     </div>
@@ -712,9 +824,13 @@
         </div>
         <div class="foot-col">
           <h4>Participa</h4>
+          <a href="#unahora">El Día de 1 Hora</a>
           <a href="#participar">Únete a una brigada</a>
-          <a href="#participar">Reporta un tiradero</a>
           <a href="#participar">Reduce en tu negocio</a>
+        </div>
+        <div class="foot-col">
+          <h4>Comunidad</h4>
+          <a href="https://www.facebook.com/profile.php?id=61591820469625" target="_blank" rel="noopener noreferrer">Facebook</a>
         </div>
       </div>
     </div>
@@ -772,11 +888,32 @@
     counters.forEach(c => c.textContent = c.dataset.target);
   }
 
-  // Form (static, no backend)
-  document.getElementById('joinForm').addEventListener('submit', (e) => {
+  // Form: submits to FormSubmit.co via fetch so the page never leaves the site
+  document.getElementById('joinForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.getElementById('formMsg').classList.add('show');
-    e.target.reset();
+    const form = e.target;
+    const submitBtn = document.getElementById('joinSubmit');
+    const msg = document.getElementById('formMsg');
+    const err = document.getElementById('formErr');
+    msg.classList.remove('show');
+    err.classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error('request failed');
+      msg.classList.add('show');
+      form.reset();
+    } catch (err2) {
+      err.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Quiero sumarme';
+    }
   });
 
   // Hero canvas: hillside-to-coast skyline illustration
