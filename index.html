@@ -245,6 +245,27 @@
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .fb-btn:hover, .fb-btn:focus-visible { border-color: var(--ocean); color: var(--ocean); outline: none; }
+  .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 3px;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: none;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .lang-btn span {
+    padding: 4px 9px;
+    border-radius: 100px;
+    color: var(--stone);
+  }
+  .lang-btn span.active { background: var(--ocean); color: #EAFBF8; }
+  .lang-btn:focus-visible { outline: 2px solid var(--ocean); outline-offset: 2px; }
   .btn-fb {
     display: inline-flex;
     align-items: center;
@@ -1167,15 +1188,16 @@
     <a href="#top" class="brand">Tijuana<span class="dot">·</span>Limpia</a>
     <div class="nav-mid">
       <nav class="links" id="navLinks">
-        <a href="#problema">El problema</a>
-        <a href="#plan">El plan</a>
-        <a href="#equipo">Equipo</a>
-        <a href="#unahora">Una Hora al Mes</a>
-        <a href="#participar">Participa</a>
+        <a href="#problema" data-i18n="navProblema">El problema</a>
+        <a href="#plan" data-i18n="navPlan">El plan</a>
+        <a href="#equipo" data-i18n="navEquipo">Equipo</a>
+        <a href="#unahora" data-i18n="navUnaHora">Una Hora al Mes</a>
+        <a href="#participar" data-i18n="navParticipa">Participa</a>
       </nav>
       <a href="https://www.facebook.com/profile.php?id=61588748211049" target="_blank" rel="noopener noreferrer" class="fb-btn" aria-label="Síguenos en Facebook">f</a>
       <a href="https://www.youtube.com/@TijuanaLimpia2049" target="_blank" rel="noopener noreferrer" class="fb-btn" aria-label="Síguenos en YouTube">▶</a>
-      <a href="#participar" class="nav-cta">Súmate</a>
+      <button type="button" class="lang-btn" id="langBtn" aria-label="Cambiar idioma / Switch language"><span data-lang-opt="es">ES</span><span data-lang-opt="en">EN</span></button>
+      <a href="#participar" class="nav-cta" data-i18n="navCta">Súmate</a>
       <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">≡</button>
     </div>
   </div>
@@ -1185,110 +1207,110 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">De la colonia al mar</span>
-        <h1>Tijuana va a ser <em>la ciudad más limpia</em> de México.</h1>
-        <p class="lead">No es un eslogan de campaña: es una ruta de trabajo, colonia por colonia, cañón por cañón, hasta la costa. Empieza en las brigadas de barrio y termina en una playa donde nadie tiene que esquivar basura para meterse al mar.</p>
+        <span class="eyebrow" data-i18n="heroEyebrow">De la colonia al mar</span>
+        <h1 data-i18n="heroH1">Tijuana va a ser <em>la ciudad más limpia</em> de México.</h1>
+        <p class="lead" data-i18n="heroLead">No es un eslogan de campaña: es una ruta de trabajo, colonia por colonia, cañón por cañón, hasta la costa. Empieza en las brigadas de barrio y termina en una playa donde nadie tiene que esquivar basura para meterse al mar.</p>
         <div class="hero-actions">
-          <a href="#participar" class="btn btn-primary">Súmate a una brigada</a>
-          <a href="#plan" class="btn btn-ghost">Ver el plan completo</a>
+          <a href="#participar" class="btn btn-primary" data-i18n="heroBtnJoin">Súmate a una brigada</a>
+          <a href="#plan" class="btn btn-ghost" data-i18n="heroBtnPlan">Ver el plan completo</a>
         </div>
-        <p class="hero-goal">Meta: <strong>5,000</strong> personas registradas para empezar a donar <strong>una hora al mes</strong>, todos a la vez.</p>
+        <p class="hero-goal" data-i18n="heroGoal">Meta: <strong>5,000</strong> personas registradas para empezar a donar <strong>una hora al mes</strong>, todos a la vez.</p>
       </div>
       <figure class="hero-art">
-        <canvas id="skyline" width="640" height="520" role="img" aria-label="Ilustración de las colinas y cañones de Tijuana descendiendo hacia el mar"></canvas>
-        <figcaption>DE LA SIERRA A LA COSTA — EL RECORRIDO DE CADA BRIGADA</figcaption>
+        <canvas id="skyline" width="640" height="520" role="img" aria-label="Ilustración de las colinas y cañones de Tijuana descendiendo hacia el mar" data-i18n-aria="heroCanvasAria"></canvas>
+        <figcaption data-i18n="heroFigcaption">DE LA SIERRA A LA COSTA — EL RECORRIDO DE CADA BRIGADA</figcaption>
       </figure>
     </div>
   </section>
 
   <section class="problema" id="problema">
     <div class="wrap reveal">
-      <span class="eyebrow">Lo que vemos cada semana</span>
-      <h2 class="section-head" style="margin-bottom:0">El problema no está escondido</h2>
-      <p style="margin:14px 0 32px">Está en los cañones que bajan de las colonias, en el cauce del Río Tijuana y en la arena de Playas de Tijuana. No hace falta un estudio para verlo — hace falta un plan para resolverlo.</p>
+      <span class="eyebrow" data-i18n="probEyebrow">Lo que vemos cada semana</span>
+      <h2 class="section-head" style="margin-bottom:0" data-i18n="probH2">El problema no está escondido</h2>
+      <p style="margin:14px 0 32px" data-i18n="probLead">Está en los cañones que bajan de las colonias, en el cauce del Río Tijuana y en la arena de Playas de Tijuana. No hace falta un estudio para verlo — hace falta un plan para resolverlo.</p>
       <div class="problema-grid">
         <div class="problema-card">
-          <span class="tag">Cañones</span>
-          <h3>Tiraderos clandestinos</h3>
-          <p>Cañones como el del Sainz, Los Laureles y Matadero acumulan basura doméstica y de construcción que la lluvia empuja cuesta abajo cada temporada.</p>
+          <span class="tag" data-i18n="probTag1">Cañones</span>
+          <h3 data-i18n="probH3_1">Tiraderos clandestinos</h3>
+          <p data-i18n="probP1">Cañones como el del Sainz, Los Laureles y Matadero acumulan basura doméstica y de construcción que la lluvia empuja cuesta abajo cada temporada.</p>
         </div>
         <div class="problema-card">
-          <span class="tag">Costa</span>
-          <h3>Plástico en la arena</h3>
-          <p>Playas de Tijuana y la zona del Río recogen buena parte de lo que se acumula arriba: bolsas, unicel y llantas que llegan arrastradas por el agua.</p>
+          <span class="tag" data-i18n="probTag2">Costa</span>
+          <h3 data-i18n="probH3_2">Plástico en la arena</h3>
+          <p data-i18n="probP2">Playas de Tijuana y la zona del Río recogen buena parte de lo que se acumula arriba: bolsas, unicel y llantas que llegan arrastradas por el agua.</p>
         </div>
         <div class="problema-card">
-          <span class="tag">Colonias</span>
-          <h3>Falta de contenedores</h3>
-          <p>En tramos de Otay Centenario, Sánchez Taboada y la periferia, la recolección no alcanza y la quema de basura a cielo abierto se vuelve costumbre.</p>
+          <span class="tag" data-i18n="probTag3">Colonias</span>
+          <h3 data-i18n="probH3_3">Falta de contenedores</h3>
+          <p data-i18n="probP3">En tramos de Otay Centenario, Sánchez Taboada y la periferia, la recolección no alcanza y la quema de basura a cielo abierto se vuelve costumbre.</p>
         </div>
         <div class="problema-card">
-          <span class="tag">Comercio</span>
-          <h3>Cero separación</h3>
-          <p>Mercados y tianguis del Centro y la Zona Río mezclan orgánico, reciclable y desecho en la misma bolsa, todos los días del año.</p>
+          <span class="tag" data-i18n="probTag4">Comercio</span>
+          <h3 data-i18n="probH3_4">Cero separación</h3>
+          <p data-i18n="probP4">Mercados y tianguis del Centro y la Zona Río mezclan orgánico, reciclable y desecho en la misma bolsa, todos los días del año.</p>
         </div>
       </div>
-      <p class="problema-note">* Descripción basada en problemáticas ambientales ampliamente reportadas por vecinos y medios locales, no en un censo oficial.</p>
+      <p class="problema-note" data-i18n="probNote">* Descripción basada en problemáticas ambientales ampliamente reportadas por vecinos y medios locales, no en un censo oficial.</p>
     </div>
   </section>
 
   <section id="beneficios">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Por qué importa</span>
-        <h2>Una Tijuana limpia nos beneficia a todos</h2>
-        <p style="margin-top:14px">No es solo estética. Cada cañón despejado, cada calle barrida, cambia la vida de alguien — hoy.</p>
+        <span class="eyebrow" data-i18n="benEyebrow">Por qué importa</span>
+        <h2 data-i18n="benH2">Una Tijuana limpia nos beneficia a todos</h2>
+        <p style="margin-top:14px" data-i18n="benLead">No es solo estética. Cada cañón despejado, cada calle barrida, cambia la vida de alguien — hoy.</p>
       </div>
       <div class="beneficios-grid reveal">
         <div class="beneficio-card">
-          <span class="tag">Niños</span>
-          <h3>Espacios seguros para crecer</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag1">Niños</span>
+          <h3 data-i18n="benH3_1">Espacios seguros para crecer</h3>
+          <ul data-i18n="benList1">
             <li>Parques y calles seguras, sin vidrio roto ni escombro</li>
             <li>Menos criaderos de mosquitos y roedores — menos dengue</li>
             <li>Aire más limpio cerca de las escuelas</li>
           </ul>
         </div>
         <div class="beneficio-card">
-          <span class="tag">Adultos mayores</span>
-          <h3>Calles que se pueden caminar</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag2">Adultos mayores</span>
+          <h3 data-i18n="benH3_2">Calles que se pueden caminar</h3>
+          <ul data-i18n="benList2">
             <li>Banquetas despejadas, sin tropiezos ni obstáculos</li>
             <li>Menos enfermedades respiratorias por humo de basura quemada</li>
             <li>Cañones despejados — menos riesgo de inundación en la sierra</li>
           </ul>
         </div>
         <div class="beneficio-card">
-          <span class="tag">Turismo</span>
-          <h3>La primera impresión decide</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag3">Turismo</span>
+          <h3 data-i18n="benH3_3">La primera impresión decide</h3>
+          <ul data-i18n="benList3">
             <li>Define si un visitante regresa o lo recomienda</li>
             <li>Mejores reseñas en línea atraen más visitantes</li>
             <li>Protege la economía de Playas, Revolución y la Zona Río</li>
           </ul>
         </div>
         <div class="beneficio-card">
-          <span class="tag">Negocios</span>
-          <h3>Un entorno que atrae</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag4">Negocios</span>
+          <h3 data-i18n="benH3_4">Un entorno que atrae</h3>
+          <ul data-i18n="benList4">
             <li>Más tráfico peatonal en corredores comerciales limpios</li>
             <li>Menos gasto en plagas y daños por tiraderos junto al negocio</li>
             <li>Una ciudad ordenada atrae inversión, incluyendo al sector maquilador</li>
           </ul>
         </div>
         <div class="beneficio-card">
-          <span class="tag">Salud y calidad de vida</span>
-          <h3>Se respira, se vive mejor</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag5">Salud y calidad de vida</span>
+          <h3 data-i18n="benH3_5">Se respira, se vive mejor</h3>
+          <ul data-i18n="benList5">
             <li>Menos vectores de enfermedad, agua más limpia en el Río Tijuana</li>
             <li>Menos incendios de basura — mejor calidad del aire</li>
             <li>Vivir en un entorno cuidado mejora el ánimo y reduce el estrés</li>
           </ul>
         </div>
         <div class="beneficio-card">
-          <span class="tag">La ciudad</span>
-          <h3>Prevenir cuesta menos que reparar</h3>
-          <ul>
+          <span class="tag" data-i18n="benTag6">La ciudad</span>
+          <h3 data-i18n="benH3_6">Prevenir cuesta menos que reparar</h3>
+          <ul data-i18n="benList6">
             <li>Mejora la imagen de Tijuana a nivel nacional e internacional</li>
             <li>Despejar un cañón es más barato que reparar los daños de una inundación</li>
             <li>Protege la vida marina en la costa</li>
@@ -1301,48 +1323,48 @@
   <section id="plan">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">El plan</span>
-        <h2>Cinco rutas, un mismo recorrido</h2>
-        <p style="margin-top:14px">Cada ruta ataca un tramo distinto del camino que sigue la basura: de la colonia, al cañón, al mar. Ninguna funciona sola.</p>
+        <span class="eyebrow" data-i18n="planEyebrow">El plan</span>
+        <h2 data-i18n="planH2">Cinco rutas, un mismo recorrido</h2>
+        <p style="margin-top:14px" data-i18n="planLead">Cada ruta ataca un tramo distinto del camino que sigue la basura: de la colonia, al cañón, al mar. Ninguna funciona sola.</p>
       </div>
       <div class="rutas-list reveal">
         <div class="ruta">
           <span class="num tnum">01</span>
           <div>
-            <h3>Brigadas de barrio</h3>
-            <p>Jornadas semanales de limpieza vecinal organizadas por colonia, con herramienta y contenedores temporales puestos por el ayuntamiento.</p>
-            <div class="places"><span>Cada colonia</span><span>Sábados</span><span>Con delegación</span></div>
+            <h3 data-i18n="ruta1H3">Brigadas de barrio</h3>
+            <p data-i18n="ruta1P">Jornadas semanales de limpieza vecinal organizadas por colonia, con herramienta y contenedores temporales puestos por el ayuntamiento.</p>
+            <div class="places"><span data-i18n="ruta1Tag1">Cada colonia</span><span data-i18n="ruta1Tag2">Sábados</span><span data-i18n="ruta1Tag3">Con delegación</span></div>
           </div>
         </div>
         <div class="ruta">
           <span class="num tnum">02</span>
           <div>
-            <h3>Cañones y arroyos</h3>
-            <p>Rehabilitación por etapas de los cañones más afectados y monitoreo permanente del cauce del Río Tijuana para frenar tiraderos nuevos.</p>
+            <h3 data-i18n="ruta2H3">Cañones y arroyos</h3>
+            <p data-i18n="ruta2P">Rehabilitación por etapas de los cañones más afectados y monitoreo permanente del cauce del Río Tijuana para frenar tiraderos nuevos.</p>
             <div class="places"><span>Cañón del Sainz</span><span>Los Laureles</span><span>Matadero</span><span>Río Tijuana</span></div>
           </div>
         </div>
         <div class="ruta">
           <span class="num tnum">03</span>
           <div>
-            <h3>Costa sin plástico</h3>
-            <p>Jornadas de playa, retiro de plástico de un solo uso en negocios costeros y estaciones de retorno de envases en accesos principales.</p>
+            <h3 data-i18n="ruta3H3">Costa sin plástico</h3>
+            <p data-i18n="ruta3P">Jornadas de playa, retiro de plástico de un solo uso en negocios costeros y estaciones de retorno de envases en accesos principales.</p>
             <div class="places"><span>Playas de Tijuana</span><span>El Faro</span><span>Zona Río</span></div>
           </div>
         </div>
         <div class="ruta">
           <span class="num tnum">04</span>
           <div>
-            <h3>Comercio y separación</h3>
-            <p>Contenedores de separación en mercados y tianguis, y un distintivo público para negocios que reducen su basura de forma verificable.</p>
-            <div class="places"><span>Mercado Hidalgo</span><span>Av. Revolución</span><span>Tianguis locales</span></div>
+            <h3 data-i18n="ruta4H3">Comercio y separación</h3>
+            <p data-i18n="ruta4P">Contenedores de separación en mercados y tianguis, y un distintivo público para negocios que reducen su basura de forma verificable.</p>
+            <div class="places"><span>Mercado Hidalgo</span><span>Av. Revolución</span><span data-i18n="ruta4Tag3">Tianguis locales</span></div>
           </div>
         </div>
         <div class="ruta">
           <span class="num tnum">05</span>
           <div>
-            <h3>Educación ambiental</h3>
-            <p>Talleres en escuelas y centros comunitarios de cada delegación, formando a la próxima generación de brigadistas desde el salón de clases.</p>
+            <h3 data-i18n="ruta5H3">Educación ambiental</h3>
+            <p data-i18n="ruta5P">Talleres en escuelas y centros comunitarios de cada delegación, formando a la próxima generación de brigadistas desde el salón de clases.</p>
             <div class="places"><span>La Mesa</span><span>San Antonio de los Buenos</span><span>Centro</span><span>Otay Centenario</span></div>
           </div>
         </div>
@@ -1353,21 +1375,21 @@
   <section id="equipo">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Equipo y logística</span>
-        <h2>Lo que necesita cada brigada</h2>
-        <p>Desde escobas de mano hasta barredoras industriales — este es el inventario que sostiene las cinco rutas. Es una lista viva: la seguimos actualizando conforme sumamos equipo, donaciones y aliados nuevos.</p>
-        <span class="equipo-updated"><span class="dot"></span>Última actualización: julio 2026</span>
+        <span class="eyebrow" data-i18n="eqEyebrow">Equipo y logística</span>
+        <h2 data-i18n="eqH2">Lo que necesita cada brigada</h2>
+        <p data-i18n="eqLead">Desde escobas de mano hasta barredoras industriales — este es el inventario que sostiene las cinco rutas. Es una lista viva: la seguimos actualizando conforme sumamos equipo, donaciones y aliados nuevos.</p>
+        <span class="equipo-updated"><span class="dot"></span><span data-i18n="eqUpdated">Última actualización: julio 2026</span></span>
       </div>
 
       <div class="equipo-list reveal">
         <details class="equipo-cat" open>
           <summary>
             <span class="equipo-num tnum">01</span>
-            <span class="equipo-title">Barredoras y equipo mecánico industrial</span>
-            <span class="equipo-tag-new">Nuevo</span>
+            <span class="equipo-title" data-i18n="eqTitle1">Barredoras y equipo mecánico industrial</span>
+            <span class="equipo-tag-new" data-i18n="eqNew">Nuevo</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList1">
             <li><strong>Barredoras manuales de empuje</strong> (41" de ancho, tolva de 55L): recogen basura, arena, grava, hojas y tapas en banquetas, plazas, canchas y calles pavimentadas — sin gasolina ni electricidad.</li>
             <li><strong>Barredoras aspiradoras a batería</strong>: filtración y succión activa para capturar polvo fino y limo en guarniciones pavimentadas sin levantar nubes de polvo.</li>
             <li><strong>Barredoras magnéticas</strong>: barras magnéticas con ruedas, empujadas o remolcadas, para recoger clavos, alambre y fragmentos de metal en terracería, estacionamientos y tiraderos clandestinos.</li>
@@ -1378,11 +1400,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">02</span>
-            <span class="equipo-title">Equipo motorizado y maquinaria</span>
+            <span class="equipo-title" data-i18n="eqTitle2">Equipo motorizado y maquinaria</span>
             <span class="equipo-count tnum">4</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList2">
             <li>Sopladoras de hojas y desbrozadoras a batería (inalámbricas)</li>
             <li>Cargadores rápidos multi-bahía y paquetes de baterías de repuesto</li>
             <li>Hidrolavadoras portátiles y tanques de suministro de agua</li>
@@ -1393,11 +1415,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">03</span>
-            <span class="equipo-title">Vehículos y transporte pesado</span>
+            <span class="equipo-title" data-i18n="eqTitle3">Vehículos y transporte pesado</span>
             <span class="equipo-count tnum">5</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList3">
             <li>Camionetas 4x4 de trabajo pesado</li>
             <li>Remolques tipo dump de paredes altas (para basura pesada)</li>
             <li>Vans de carga / camiones tipo caja</li>
@@ -1409,11 +1431,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">04</span>
-            <span class="equipo-title">Bolsas codificadas por color y clasificación</span>
+            <span class="equipo-title" data-i18n="eqTitle4">Bolsas codificadas por color y clasificación</span>
             <span class="equipo-count tnum">7</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList4">
             <li><strong>Verde:</strong> plásticos reciclables (PET/HDPE) y latas</li>
             <li><strong>Azul:</strong> papel y cartón</li>
             <li><strong>Negro/Gris:</strong> basura general de relleno sanitario y desecho pesado</li>
@@ -1427,11 +1449,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">05</span>
-            <span class="equipo-title">Herramientas manuales y equipo de limpieza</span>
+            <span class="equipo-title" data-i18n="eqTitle5">Herramientas manuales y equipo de limpieza</span>
             <span class="equipo-count tnum">5</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList5">
             <li>Pinzas / recogedores de mango largo</li>
             <li>Escobas de exterior y escobas rígidas</li>
             <li>Palas de punta y de pala plana (para lodo y limo)</li>
@@ -1443,11 +1465,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">06</span>
-            <span class="equipo-title">Equipo de protección personal (EPP)</span>
+            <span class="equipo-title" data-i18n="eqTitle6">Equipo de protección personal (EPP)</span>
             <span class="equipo-count tnum">5</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList6">
             <li>Guantes de trabajo resistentes a corte y punción</li>
             <li>Guantes internos de nitrilo</li>
             <li>Chalecos reflejantes de alta visibilidad (ANSI Clase 2/3)</li>
@@ -1459,11 +1481,11 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">07</span>
-            <span class="equipo-title">Campamento base móvil y logística</span>
+            <span class="equipo-title" data-i18n="eqTitle7">Campamento base móvil y logística</span>
             <span class="equipo-count tnum">4</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList7">
             <li>Toldos plegables de 3x3 m, mesas y sillas plegables</li>
             <li>Garrafones de agua de 19L y estaciones de hidratación</li>
             <li>Estaciones de lavado de manos y gel antibacterial</li>
@@ -1474,34 +1496,34 @@
         <details class="equipo-cat">
           <summary>
             <span class="equipo-num tnum">08</span>
-            <span class="equipo-title">Disposición final y alianzas de gobierno</span>
+            <span class="equipo-title" data-i18n="eqTitle8">Disposición final y alianzas de gobierno</span>
             <span class="equipo-count tnum">3</span>
             <span class="equipo-chevron" aria-hidden="true">+</span>
           </summary>
-          <ul>
+          <ul data-i18n="eqList8">
             <li>Permisos y convenios municipales de disposición con delegaciones locales, como la iniciativa <a href="https://www.tijuana.gob.mx/noticia.aspx?idComunicado=35745" target="_blank" rel="noopener noreferrer">Tijuana: Ciudad Limpia</a></li>
             <li>Contenedores roll-off en puntos comunitarios centrales</li>
             <li>Alianzas directas de separación con centros de reciclaje locales</li>
           </ul>
         </details>
       </div>
-      <p class="equipo-note">¿Tienes equipo, herramienta o transporte para donar o prestar? Cuéntanoslo en el formulario de registro más abajo.</p>
+      <p class="equipo-note" data-i18n="eqNote">¿Tienes equipo, herramienta o transporte para donar o prestar? Cuéntanoslo en el formulario de registro más abajo.</p>
     </div>
   </section>
 
   <section id="fondo">
     <div class="wrap">
       <div class="fund-card reveal">
-        <span class="eyebrow">Fondo de equipo</span>
-        <h2>Fondo de Equipo — Tijuana Limpia</h2>
-        <p>Cada peso recaudado se va directo al inventario de arriba: barredoras, bolsas de separación, EPP y transporte para las brigadas. Sin límite — mientras más juntemos, más equipo sale a la calle.</p>
+        <span class="eyebrow" data-i18n="fondoEyebrow">Fondo de equipo</span>
+        <h2 data-i18n="fondoH2">Fondo de Equipo — Tijuana Limpia</h2>
+        <p data-i18n="fondoLead">Cada peso recaudado se va directo al inventario de arriba: barredoras, bolsas de separación, EPP y transporte para las brigadas. Sin límite — mientras más juntemos, más equipo sale a la calle.</p>
         <div class="fund-amounts">
           <span class="fund-raised tnum">$0</span>
-          <span class="fund-of">recaudados hasta ahora</span>
+          <span class="fund-of" data-i18n="fondoOf">recaudados hasta ahora</span>
         </div>
         <div class="fund-cta">
-          <span class="fund-soon-badge">Próximamente</span>
-          <p>Estamos afinando cómo recibir donaciones de forma segura. En cuanto esté listo, el enlace para donar se publica aquí y en Facebook.</p>
+          <span class="fund-soon-badge" data-i18n="fondoSoon">Próximamente</span>
+          <p data-i18n="fondoCtaP">Estamos afinando cómo recibir donaciones de forma segura. En cuanto esté listo, el enlace para donar se publica aquí y en Facebook.</p>
         </div>
       </div>
     </div>
@@ -1511,11 +1533,11 @@
     <div class="wrap">
       <div class="hora-panel reveal">
         <div class="hora-copy">
-          <span class="eyebrow">La meta</span>
-          <h2>5,000 registros. Una hora al mes, todos a la vez.</h2>
-          <p>Así de simple: en cuanto lleguemos a 5,000 personas registradas, arrancamos — cada quien dona una hora al mes, el mismo fin de semana, en su colonia, su cañón o su playa más cercana. No es un evento único, es un hábito de ciudad.</p>
+          <span class="eyebrow" data-i18n="uhEyebrow">La meta</span>
+          <h2 data-i18n="uhH2">5,000 registros. Una hora al mes, todos a la vez.</h2>
+          <p data-i18n="uhLead">Así de simple: en cuanto lleguemos a 5,000 personas registradas, arrancamos — cada quien dona una hora al mes, el mismo fin de semana, en su colonia, su cañón o su playa más cercana. No es un evento único, es un hábito de ciudad.</p>
           <div class="hora-actions">
-            <a href="#participar" class="btn btn-primary">Regístrate ahora</a>
+            <a href="#participar" class="btn btn-primary" data-i18n="uhBtn">Regístrate ahora</a>
           </div>
         </div>
         <div class="hora-figure">
@@ -1525,8 +1547,8 @@
             <span class="hora-goal-num tnum">5,000</span>
           </div>
           <div class="hora-bar"><div class="hora-bar-fill" id="horaBarFill"></div></div>
-          <div class="hora-num-label">personas registradas ahora mismo</div>
-          <p class="hora-privacy">Tu nombre y correo son privados — aquí solo se muestra el total. Súmate por el sitio o desde nuestra página de Facebook.</p>
+          <div class="hora-num-label" data-i18n="uhLabel">personas registradas ahora mismo</div>
+          <p class="hora-privacy" data-i18n="uhPrivacy">Tu nombre y correo son privados — aquí solo se muestra el total. Súmate por el sitio o desde nuestra página de Facebook.</p>
         </div>
       </div>
     </div>
@@ -1535,27 +1557,27 @@
   <section class="sueno" id="sueno">
     <div class="wrap">
       <div class="sueno-head reveal">
-        <span class="eyebrow">El sueño</span>
-        <h2>¿Y si 9 de cada 10 tijuanenses se suman?</h2>
-        <p>Tijuana tiene alrededor de 1,935,000 habitantes según las proyecciones de <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a>. Si 9 de cada 10 donaran solo 1 hora al mes y $10 pesos a la semana, esto es lo que pasaría — cada mes.</p>
+        <span class="eyebrow" data-i18n="sueEyebrow">El sueño</span>
+        <h2 data-i18n="sueH2">¿Y si 9 de cada 10 tijuanenses se suman?</h2>
+        <p data-i18n="sueLead">Tijuana tiene alrededor de 1,935,000 habitantes según las proyecciones de <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a>. Si 9 de cada 10 donaran solo 1 hora al mes y $10 pesos a la semana, esto es lo que pasaría — cada mes.</p>
       </div>
 
       <div class="sueno-grid reveal">
         <div class="sueno-card">
-          <span class="tag">Fuerza humana</span>
+          <span class="tag" data-i18n="sueTag1">Fuerza humana</span>
           <div class="stat tnum">1,935,000</div>
-          <div class="stat-sub">horas de voluntariado cada mes — equivalen a ~12,000 trabajadores municipales de tiempo completo, limpiando la ciudad todos los días.</div>
-          <ul>
+          <div class="stat-sub" data-i18n="sueSub1">horas de voluntariado cada mes — equivalen a ~12,000 trabajadores municipales de tiempo completo, limpiando la ciudad todos los días.</div>
+          <ul data-i18n="sueList1">
             <li>Barrer y limpiar cada calle, callejón y banqueta — pavimentada o de terracería — en las 9 delegaciones, al menos dos veces al mes.</li>
             <li>Despejar por completo escombro, lodo y tiraderos clandestinos en las más de 120 zonas de riesgo por cañadas y pluviales, antes de cada temporada de lluvias.</li>
             <li>Pintar guarniciones, reparar bancas de parques, plantar miles de árboles nativos y borrar grafiti en espacios públicos de toda la ciudad.</li>
           </ul>
         </div>
         <div class="sueno-card">
-          <span class="tag">Fuerza económica</span>
+          <span class="tag" data-i18n="sueTag2">Fuerza económica</span>
           <div class="stat tnum">$83.8M</div>
-          <div class="stat-sub">pesos cada mes (~$4.65 millones USD) — $19.35M MXN por semana, ~$1,005M MXN al año (~$55.8 millones USD).</div>
-          <ul>
+          <div class="stat-sub" data-i18n="sueSub2">pesos cada mes (~$4.65 millones USD) — $19.35M MXN por semana, ~$1,005M MXN al año (~$55.8 millones USD).</div>
+          <ul data-i18n="sueList2">
             <li>Flota y equipo nuevo cada mes: 20+ camionetas 4x4 y remolques tipo dump, cientos de barredoras manuales, sopladoras y hidrolavadoras comerciales.</li>
             <li>Bolsas codificadas por color, equipo de seguridad y herramienta sin límite para cada equipo de barrio.</li>
             <li>9 Centros de Herramientas de Sector — uno por delegación — totalmente equipados y operando todo el año.</li>
@@ -1564,44 +1586,44 @@
       </div>
 
       <div class="sueno-funds reveal">
-        <h3>Con $83.8M MXN al mes, así de lejos llega</h3>
+        <h3 data-i18n="sueFundsH3">Con $83.8M MXN al mes, así de lejos llega</h3>
         <div class="sueno-funds-grid">
           <div class="sueno-fund-item">
-            <h4>Infraestructura permanente de barrio</h4>
-            <p>9 Centros de Herramientas de Sector (Otay Centenario, Playas, Sánchez Taboada, La Presa Este, La Mesa, Centro, entre otras) más estaciones públicas de reciclaje por color y compactadoras solares en zonas de alto tráfico.</p>
+            <h4 data-i18n="sueFund1H4">Infraestructura permanente de barrio</h4>
+            <p data-i18n="sueFund1P">9 Centros de Herramientas de Sector (Otay Centenario, Playas, Sánchez Taboada, La Presa Este, La Mesa, Centro, entre otras) más estaciones públicas de reciclaje por color y compactadoras solares en zonas de alto tráfico.</p>
           </div>
           <div class="sueno-fund-item">
-            <h4>Plantas comunitarias de reciclaje</h4>
-            <p>Centros propios de la comunidad para separar y procesar residuos, convirtiendo el plástico PET recolectado en bancas, juegos infantiles y botes de basura para espacios públicos.</p>
+            <h4 data-i18n="sueFund2H4">Plantas comunitarias de reciclaje</h4>
+            <p data-i18n="sueFund2P">Centros propios de la comunidad para separar y procesar residuos, convirtiendo el plástico PET recolectado en bancas, juegos infantiles y botes de basura para espacios públicos.</p>
           </div>
           <div class="sueno-fund-item">
-            <h4>Fondos para colonias</h4>
-            <p>Apoyos económicos mensuales a las colonias con mayor participación de voluntarios, para reparar calles, mejorar el alumbrado público y mantener parques comunitarios.</p>
+            <h4 data-i18n="sueFund3H4">Fondos para colonias</h4>
+            <p data-i18n="sueFund3P">Apoyos económicos mensuales a las colonias con mayor participación de voluntarios, para reparar calles, mejorar el alumbrado público y mantener parques comunitarios.</p>
           </div>
           <div class="sueno-fund-item">
-            <h4>Flota y equipo sin parar</h4>
-            <p>Reposición constante de vehículos, barredoras y herramienta — sin depender de donativos puntuales para mantener a las brigadas trabajando.</p>
+            <h4 data-i18n="sueFund4H4">Flota y equipo sin parar</h4>
+            <p data-i18n="sueFund4P">Reposición constante de vehículos, barredoras y herramienta — sin depender de donativos puntuales para mantener a las brigadas trabajando.</p>
           </div>
         </div>
       </div>
 
       <div class="sueno-back reveal">
-        <p>Hoy no estamos ahí todavía — por eso empezamos con una meta de 5,000 personas. Cada quien que se registra nos acerca un poco más.</p>
-        <a href="#participar" class="btn btn-primary">Súmate ahora</a>
+        <p data-i18n="sueBackP">Hoy no estamos ahí todavía — por eso empezamos con una meta de 5,000 personas. Cada quien que se registra nos acerca un poco más.</p>
+        <a href="#participar" class="btn btn-primary" data-i18n="sueBackBtn">Súmate ahora</a>
       </div>
-      <p class="sueno-source">* Estimación propia con base en la población proyectada por CONAPO / Consejo Estatal de Población de Baja California. No representa fondos recaudados ni un compromiso de la ciudad — es el techo de lo posible si toda Tijuana participa.</p>
+      <p class="sueno-source" data-i18n="sueSource">* Estimación propia con base en la población proyectada por CONAPO / Consejo Estatal de Población de Baja California. No representa fondos recaudados ni un compromiso de la ciudad — es el techo de lo posible si toda Tijuana participa.</p>
 
       <div class="share-box reveal">
         <div class="share-qr">
-          <img src="assets/qr-el-sueno.png" alt="Código QR hacia El Sueño en tijuanalimpia" width="118" height="118">
+          <img src="assets/qr-el-sueno.png" alt="Código QR hacia El Sueño en tijuanalimpia" width="118" height="118" data-i18n-aria="qrAlt">
         </div>
         <div class="share-copy-text">
-          <h3>Compártelo</h3>
-          <p>Escanea el código o mándaselo a alguien que también quiera ver a Tijuana así.</p>
+          <h3 data-i18n="shareH3">Compártelo</h3>
+          <p data-i18n="shareP">Escanea el código o mándaselo a alguien que también quiera ver a Tijuana así.</p>
           <div class="share-buttons">
-            <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" data-share-text="Así se ve Tijuana si 9 de cada 10 nos sumamos. Échale un ojo:" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" target="_blank" rel="noopener noreferrer">Facebook</a>
-            <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno">Copiar enlace<span class="share-copied">¡Copiado!</span></button>
+            <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" data-share-text="Así se ve Tijuana si 9 de cada 10 nos sumamos. Échale un ojo:" target="_blank" rel="noopener noreferrer" data-i18n="shareWa">WhatsApp</a>
+            <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" target="_blank" rel="noopener noreferrer" data-i18n="shareFb">Facebook</a>
+            <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno"><span data-i18n="shareCopy">Copiar enlace</span><span class="share-copied" data-i18n="shareCopied">¡Copiado!</span></button>
           </div>
         </div>
       </div>
@@ -1610,23 +1632,23 @@
 
   <section id="metas">
     <div class="wrap metas-wrap reveal">
-      <span class="metas-tag">Metas de la campaña · 2026–2028</span>
+      <span class="metas-tag" data-i18n="metasTag">Metas de la campaña · 2026–2028</span>
       <div class="metas">
         <div class="meta-item">
           <div class="num"><span class="counter" data-target="120">0</span></div>
-          <div class="label">cañones intervenidos o en rehabilitación activa</div>
+          <div class="label" data-i18n="metasLabel1">cañones intervenidos o en rehabilitación activa</div>
         </div>
         <div class="meta-item">
           <div class="num"><span class="counter" data-target="500">0</span>+</div>
-          <div class="label">brigadas vecinales activas en todas las delegaciones</div>
+          <div class="label" data-i18n="metasLabel2">brigadas vecinales activas en todas las delegaciones</div>
         </div>
         <div class="meta-item">
           <div class="num"><span class="counter" data-target="8">0</span></div>
-          <div class="label">playas con monitoreo continuo de residuos</div>
+          <div class="label" data-i18n="metasLabel3">playas con monitoreo continuo de residuos</div>
         </div>
         <div class="meta-item">
           <div class="num"><span class="counter" data-target="100">0</span>%</div>
-          <div class="label">de mercados públicos con separación de residuos</div>
+          <div class="label" data-i18n="metasLabel4">de mercados públicos con separación de residuos</div>
         </div>
       </div>
     </div>
@@ -1635,30 +1657,30 @@
   <section id="participar">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Cómo participar</span>
-        <h2>Tijuana la limpia una persona a la vez</h2>
+        <span class="eyebrow" data-i18n="partEyebrow">Cómo participar</span>
+        <h2 data-i18n="partH2">Tijuana la limpia una persona a la vez</h2>
       </div>
       <div class="participar-grid reveal">
         <div>
           <div class="accion">
-            <h3>Únete a una brigada</h3>
-            <p>Regístrate abajo y te contactamos con la brigada más cercana a tu colonia. No necesitas experiencia, solo un sábado en la mañana.</p>
+            <h3 data-i18n="accion1H3">Únete a una brigada</h3>
+            <p data-i18n="accion1P">Regístrate abajo y te contactamos con la brigada más cercana a tu colonia. No necesitas experiencia, solo un sábado en la mañana.</p>
           </div>
           <div class="accion">
-            <h3>Reporta un tiradero</h3>
-            <p>Si ves un cañón o lote usado como basurero, avisa a tu delegación municipal o a la línea de atención ciudadana. Cada reporte ayuda a priorizar las rutas de limpieza.</p>
+            <h3 data-i18n="accion2H3">Reporta un tiradero</h3>
+            <p data-i18n="accion2P">Si ves un cañón o lote usado como basurero, avisa a tu delegación municipal o a la línea de atención ciudadana. Cada reporte ayuda a priorizar las rutas de limpieza.</p>
           </div>
           <div class="accion">
-            <h3>Reduce en tu negocio</h3>
-            <p>Si tienes un comercio, súmate al distintivo de reducción de plástico y separación. Te compartimos la guía para calificar.</p>
+            <h3 data-i18n="accion3H3">Reduce en tu negocio</h3>
+            <p data-i18n="accion3P">Si tienes un comercio, súmate al distintivo de reducción de plástico y separación. Te compartimos la guía para calificar.</p>
           </div>
           <div class="accion">
-            <h3>¿Tu empresa ya limpia?</h3>
-            <p>Si tu negocio ya organiza jornadas con su personal, hay un <a href="#empresas" style="color:var(--ocean)">registro aparte para empresas</a> — así coordinamos en vez de duplicar esfuerzos.</p>
+            <h3 data-i18n="accion4H3">¿Tu empresa ya limpia?</h3>
+            <p data-i18n="accion4P">Si tu negocio ya organiza jornadas con su personal, hay un <a href="#empresas" style="color:var(--ocean)">registro aparte para empresas</a> — así coordinamos en vez de duplicar esfuerzos.</p>
           </div>
           <div class="accion">
-            <h3>Lleva el programa a tu escuela</h3>
-            <p>Coordinamos talleres de educación ambiental para primarias y secundarias en cualquier delegación de la ciudad.</p>
+            <h3 data-i18n="accion5H3">Lleva el programa a tu escuela</h3>
+            <p data-i18n="accion5P">Coordinamos talleres de educación ambiental para primarias y secundarias en cualquier delegación de la ciudad.</p>
           </div>
         </div>
 
@@ -1668,27 +1690,27 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="form-section">
-            <div class="form-section-head">Información básica</div>
-            <p class="form-section-sub">Cómo te encontramos y a quién buscamos en tu colonia.</p>
+            <div class="form-section-head" data-i18n="jfSec1Head">Información básica</div>
+            <p class="form-section-sub" data-i18n="jfSec1Sub">Cómo te encontramos y a quién buscamos en tu colonia.</p>
             <div class="field">
-              <label for="nombre">Nombre completo</label>
-              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+              <label for="nombre" data-i18n="jfNombreLabel">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" data-i18n-ph="jfNombrePh" required />
             </div>
             <div class="row2">
               <div class="field">
-                <label for="whatsapp">WhatsApp / Teléfono</label>
+                <label for="whatsapp" data-i18n="jfWaLabel">WhatsApp / Teléfono</label>
                 <input id="whatsapp" name="whatsapp" type="tel" placeholder="664 000 0000" required />
               </div>
               <div class="field">
-                <label for="correo">Correo (opcional)</label>
+                <label for="correo" data-i18n="jfCorreoLabel">Correo (opcional)</label>
                 <input id="correo" name="correo" type="email" placeholder="tu@correo.com" />
               </div>
             </div>
             <div class="row2">
               <div class="field">
-                <label for="delegacion">Delegación</label>
+                <label for="delegacion" data-i18n="jfDelegacionLabel">Delegación</label>
                 <select id="delegacion" name="delegacion" required>
-                  <option value="" selected disabled>Elige tu delegación</option>
+                  <option value="" selected disabled data-i18n-opt="jfDelegacionPh">Elige tu delegación</option>
                   <option>Centro</option>
                   <option>Cerro Colorado</option>
                   <option>La Mesa</option>
@@ -1701,127 +1723,127 @@
                 </select>
               </div>
               <div class="field">
-                <label for="colonia">Colonia</label>
-                <input id="colonia" name="colonia" type="text" placeholder="Ej. Las Torres" required />
+                <label for="colonia" data-i18n="jfColoniaLabel">Colonia</label>
+                <input id="colonia" name="colonia" type="text" placeholder="Ej. Las Torres" data-i18n-ph="jfColoniaPh" required />
               </div>
             </div>
             <div class="field">
-              <label>Medio de contacto preferido</label>
+              <label data-i18n="jfMedioLabel">Medio de contacto preferido</label>
               <div class="radio-row">
                 <label class="radio-item"><input type="radio" name="medio_contacto" value="WhatsApp" checked>WhatsApp</label>
                 <label class="radio-item"><input type="radio" name="medio_contacto" value="SMS">SMS</label>
-                <label class="radio-item"><input type="radio" name="medio_contacto" value="Llamada">Llamada</label>
+                <label class="radio-item"><input type="radio" name="medio_contacto" value="Llamada"><span data-i18n="jfLlamada">Llamada</span></label>
               </div>
             </div>
           </div>
 
           <div class="form-section">
-            <div class="form-section-head">Compromiso comunitario</div>
+            <div class="form-section-head" data-i18n="jfSec2Head">Compromiso comunitario</div>
             <div class="field">
-              <label for="interes">¿Qué ruta te interesa más?</label>
+              <label for="interes" data-i18n="jfInteresLabel">¿Qué ruta te interesa más?</label>
               <select id="interes" name="interes">
-                <option>Brigadas de barrio</option>
-                <option>Cañones y arroyos</option>
-                <option>Costa sin plástico</option>
-                <option>Comercio y separación</option>
-                <option>Educación ambiental</option>
+                <option data-i18n-opt="jfInteres1">Brigadas de barrio</option>
+                <option data-i18n-opt="jfInteres2">Cañones y arroyos</option>
+                <option data-i18n-opt="jfInteres3">Costa sin plástico</option>
+                <option data-i18n-opt="jfInteres4">Comercio y separación</option>
+                <option data-i18n-opt="jfInteres5">Educación ambiental</option>
               </select>
             </div>
             <label class="check-item commit">
               <input type="checkbox" name="compromiso_tiempo" value="Sí">
-              Dono 1 hora de limpieza al mes.
+              <span data-i18n="jfCommit1">Dono 1 hora de limpieza al mes.</span>
             </label>
             <label class="check-item commit">
               <input type="checkbox" name="compromiso_fondo" value="Sí">
-              Dono $10 MXN a la semana ($40/mes) al fondo de equipo.
+              <span data-i18n="jfCommit2">Dono $10 MXN a la semana ($40/mes) al fondo de equipo.</span>
             </label>
           </div>
 
           <div class="form-section">
-            <div class="form-section-head">Donación de equipo</div>
-            <p class="form-section-sub">Marca lo que puedas donar de forma permanente o prestar para fines de semana de limpieza.</p>
+            <div class="form-section-head" data-i18n="jfSec3Head">Donación de equipo</div>
+            <p class="form-section-sub" data-i18n="jfSec3Sub">Marca lo que puedas donar de forma permanente o prestar para fines de semana de limpieza.</p>
 
-            <div class="check-subhead">Vehículos y transporte</div>
+            <div class="check-subhead" data-i18n="jfSub1">Vehículos y transporte</div>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="equipo_pickup" value="Sí">Camioneta pickup</label>
-              <label class="check-item"><input type="checkbox" name="equipo_remolque" value="Sí">Remolque utilitario</label>
-              <label class="check-item"><input type="checkbox" name="equipo_van" value="Sí">Van / camión de carga</label>
+              <label class="check-item"><input type="checkbox" name="equipo_pickup" value="Sí"><span data-i18n="jfEq1">Camioneta pickup</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_remolque" value="Sí"><span data-i18n="jfEq2">Remolque utilitario</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_van" value="Sí"><span data-i18n="jfEq3">Van / camión de carga</span></label>
             </div>
 
-            <div class="check-subhead">Equipo motorizado</div>
+            <div class="check-subhead" data-i18n="jfSub2">Equipo motorizado</div>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="equipo_sopladora" value="Sí">Sopladora inalámbrica</label>
-              <label class="check-item"><input type="checkbox" name="equipo_hidrolavadora" value="Sí">Hidrolavadora a presión</label>
-              <label class="check-item"><input type="checkbox" name="equipo_desbrozadora" value="Sí">Desbrozadora</label>
-              <label class="check-item"><input type="checkbox" name="equipo_generador" value="Sí">Generador eléctrico</label>
+              <label class="check-item"><input type="checkbox" name="equipo_sopladora" value="Sí"><span data-i18n="jfEq4">Sopladora inalámbrica</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_hidrolavadora" value="Sí"><span data-i18n="jfEq5">Hidrolavadora a presión</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_desbrozadora" value="Sí"><span data-i18n="jfEq6">Desbrozadora</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_generador" value="Sí"><span data-i18n="jfEq7">Generador eléctrico</span></label>
             </div>
 
-            <div class="check-subhead">Herramientas manuales</div>
+            <div class="check-subhead" data-i18n="jfSub3">Herramientas manuales</div>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="equipo_palas" value="Sí">Palas</label>
-              <label class="check-item"><input type="checkbox" name="equipo_escobas" value="Sí">Escobas de exterior</label>
-              <label class="check-item"><input type="checkbox" name="equipo_rastrillos" value="Sí">Rastrillos</label>
-              <label class="check-item"><input type="checkbox" name="equipo_carretillas" value="Sí">Carretillas</label>
-              <label class="check-item"><input type="checkbox" name="equipo_pinzas" value="Sí">Pinzas recogedoras</label>
+              <label class="check-item"><input type="checkbox" name="equipo_palas" value="Sí"><span data-i18n="jfEq8">Palas</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_escobas" value="Sí"><span data-i18n="jfEq9">Escobas de exterior</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_rastrillos" value="Sí"><span data-i18n="jfEq10">Rastrillos</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_carretillas" value="Sí"><span data-i18n="jfEq11">Carretillas</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_pinzas" value="Sí"><span data-i18n="jfEq12">Pinzas recogedoras</span></label>
             </div>
 
-            <div class="check-subhead">Seguridad y suministros</div>
+            <div class="check-subhead" data-i18n="jfSub4">Seguridad y suministros</div>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="equipo_guantes" value="Sí">Guantes de trabajo</label>
-              <label class="check-item"><input type="checkbox" name="equipo_chalecos" value="Sí">Chalecos de alta visibilidad</label>
-              <label class="check-item"><input type="checkbox" name="equipo_bolsas" value="Sí">Bolsas de basura resistentes</label>
-              <label class="check-item"><input type="checkbox" name="equipo_pintura" value="Sí">Pintura y brochas</label>
-              <label class="check-item"><input type="checkbox" name="equipo_garrafones" value="Sí">Garrafones de agua</label>
+              <label class="check-item"><input type="checkbox" name="equipo_guantes" value="Sí"><span data-i18n="jfEq13">Guantes de trabajo</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_chalecos" value="Sí"><span data-i18n="jfEq14">Chalecos de alta visibilidad</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_bolsas" value="Sí"><span data-i18n="jfEq15">Bolsas de basura resistentes</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_pintura" value="Sí"><span data-i18n="jfEq16">Pintura y brochas</span></label>
+              <label class="check-item"><input type="checkbox" name="equipo_garrafones" value="Sí"><span data-i18n="jfEq17">Garrafones de agua</span></label>
             </div>
 
-            <div class="check-subhead">Espacio</div>
+            <div class="check-subhead" data-i18n="jfSub5">Espacio</div>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="equipo_almacenamiento" value="Sí">Tengo garage, lote o bodega segura en mi colonia para un kit de herramientas</label>
+              <label class="check-item"><input type="checkbox" name="equipo_almacenamiento" value="Sí"><span data-i18n="jfEq18">Tengo garage, lote o bodega segura en mi colonia para un kit de herramientas</span></label>
             </div>
 
             <div class="field" style="margin-top:16px">
-              <label for="otros_articulos">Otros artículos que puedas donar</label>
-              <textarea id="otros_articulos" name="otros_articulos" placeholder="Ej. Tengo 2 mesas plegables y 10 conos de seguridad"></textarea>
+              <label for="otros_articulos" data-i18n="jfOtrosArticulosLabel">Otros artículos que puedas donar</label>
+              <textarea id="otros_articulos" name="otros_articulos" placeholder="Ej. Tengo 2 mesas plegables y 10 conos de seguridad" data-i18n-ph="jfOtrosArticulosPh"></textarea>
             </div>
           </div>
 
           <div class="form-section">
-            <div class="form-section-head">Habilidades especializadas</div>
-            <p class="form-section-sub">Marca los roles donde te gustaría ayudar, además de barrer.</p>
+            <div class="form-section-head" data-i18n="jfSec4Head">Habilidades especializadas</div>
+            <p class="form-section-sub" data-i18n="jfSec4Sub">Marca los roles donde te gustaría ayudar, además de barrer.</p>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="skill_capitan" value="Sí">Capitán(a) de colonia — organizar y liderar limpiezas</label>
-              <label class="check-item"><input type="checkbox" name="skill_chofer" value="Sí">Chofer / logística</label>
-              <label class="check-item"><input type="checkbox" name="skill_mecanico" value="Sí">Herramientas y mecánica</label>
-              <label class="check-item"><input type="checkbox" name="skill_redes" value="Sí">Redes sociales y medios</label>
-              <label class="check-item"><input type="checkbox" name="skill_reciclaje" value="Sí">Coordinador(a) de reciclaje</label>
-              <label class="check-item"><input type="checkbox" name="skill_enlace" value="Sí">Enlace con negocios / maquiladoras</label>
-              <label class="check-item"><input type="checkbox" name="skill_primeros_auxilios" value="Sí">Primeros auxilios / seguridad</label>
+              <label class="check-item"><input type="checkbox" name="skill_capitan" value="Sí"><span data-i18n="jfSkill1">Capitán(a) de colonia — organizar y liderar limpiezas</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_chofer" value="Sí"><span data-i18n="jfSkill2">Chofer / logística</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_mecanico" value="Sí"><span data-i18n="jfSkill3">Herramientas y mecánica</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_redes" value="Sí"><span data-i18n="jfSkill4">Redes sociales y medios</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_reciclaje" value="Sí"><span data-i18n="jfSkill5">Coordinador(a) de reciclaje</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_enlace" value="Sí"><span data-i18n="jfSkill6">Enlace con negocios / maquiladoras</span></label>
+              <label class="check-item"><input type="checkbox" name="skill_primeros_auxilios" value="Sí"><span data-i18n="jfSkill7">Primeros auxilios / seguridad</span></label>
             </div>
             <div class="field" style="margin-top:16px">
-              <label for="otras_habilidades">Otras habilidades o ideas</label>
-              <textarea id="otras_habilidades" name="otras_habilidades" placeholder="Ej. Soy desarrollador(a) web y puedo ayudar con la app de registro"></textarea>
+              <label for="otras_habilidades" data-i18n="jfOtrasHabLabel">Otras habilidades o ideas</label>
+              <textarea id="otras_habilidades" name="otras_habilidades" placeholder="Ej. Soy desarrollador(a) web y puedo ayudar con la app de registro" data-i18n-ph="jfOtrasHabPh"></textarea>
             </div>
           </div>
 
           <div class="launch-notice">
-            <span class="tag">Aviso importante</span>
-            <p>Para tener listos los kits de equipo compartido desde el primer día, activamos las brigadas en cuanto lleguemos a <strong>5,000 personas registradas</strong> en toda la ciudad. No te asignamos fecha de evento antes de eso — mientras tanto, ayúdanos a llegar más rápido compartiendo esta página con tu familia y vecinos.</p>
+            <span class="tag" data-i18n="jfNoticeTag">Aviso importante</span>
+            <p data-i18n="jfNoticeP">Para tener listos los kits de equipo compartido desde el primer día, activamos las brigadas en cuanto lleguemos a <strong>5,000 personas registradas</strong> en toda la ciudad. No te asignamos fecha de evento antes de eso — mientras tanto, ayúdanos a llegar más rápido compartiendo esta página con tu familia y vecinos.</p>
           </div>
 
-          <p class="privacy-note">Usamos tus datos solo para coordinar brigadas y avisarte por el medio que elegiste — no se venden ni se comparten con terceros.</p>
-          <button type="submit" class="btn btn-primary" id="joinSubmit">Quiero sumarme</button>
-          <p class="form-msg" id="formMsg">Gracias — quedaste registrado.</p>
-          <p class="form-msg" id="formErr" style="color:var(--clay)">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
+          <p class="privacy-note" data-i18n="jfPrivacy">Usamos tus datos solo para coordinar brigadas y avisarte por el medio que elegiste — no se venden ni se comparten con terceros.</p>
+          <button type="submit" class="btn btn-primary" id="joinSubmit" data-i18n="jfSubmit">Quiero sumarme</button>
+          <p class="form-msg" id="formMsg" data-i18n="jfMsgDefault">Gracias — quedaste registrado.</p>
+          <p class="form-msg" id="formErr" style="color:var(--clay)" data-i18n="jfErr">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
 
           <div class="share-box" id="postSignupShare">
             <div class="share-copy-text">
-              <p class="postsignup-status" id="postSignupStatus">Vamos en <span id="postSignupCount">—</span> / 5,000 registrados.</p>
-              <h3 style="color:var(--ink)">Ayúdanos a llegar más rápido</h3>
-              <p>Comparte tu enlace personal — entre más amigos se sumen, más rápido arranca Una Hora al Mes.</p>
+              <p class="postsignup-status" id="postSignupStatus" data-i18n="postStatus">Vamos en <span id="postSignupCount">—</span> / 5,000 registrados.</p>
+              <h3 style="color:var(--ink)" data-i18n="postH3">Ayúdanos a llegar más rápido</h3>
+              <p data-i18n="postP">Comparte tu enlace personal — entre más amigos se sumen, más rápido arranca Una Hora al Mes.</p>
               <div class="share-buttons">
                 <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" data-share-text="Me acabo de registrar para que Tijuana sea la ciudad más limpia de México. Súmate tú también:" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" target="_blank" rel="noopener noreferrer">Facebook</a>
-                <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora">Copiar enlace<span class="share-copied">¡Copiado!</span></button>
+                <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora"><span data-i18n="shareCopy">Copiar enlace</span><span class="share-copied" data-i18n="shareCopied">¡Copiado!</span></button>
               </div>
             </div>
           </div>
@@ -1833,31 +1855,31 @@
   <section id="empresas">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Para empresas y organizaciones</span>
-        <h2>Súmense a su manera — con tiempo o patrocinando una zona</h2>
-        <p style="margin-top:14px">Si tu negocio, maquiladora, fundación u oficina ya organiza jornadas de limpieza con su personal, súmate a la coalición. Y si prefieren no mandar gente sino patrocinar el mantenimiento de un cañón, calle, playa o parque específico, también hay un lugar para ustedes — con su nombre asociado a esa zona.</p>
+        <span class="eyebrow" data-i18n="empEyebrow">Para empresas y organizaciones</span>
+        <h2 data-i18n="empH2">Súmense a su manera — con tiempo o patrocinando una zona</h2>
+        <p style="margin-top:14px" data-i18n="empLead">Si tu negocio, maquiladora, fundación u oficina ya organiza jornadas de limpieza con su personal, súmate a la coalición. Y si prefieren no mandar gente sino patrocinar el mantenimiento de un cañón, calle, playa o parque específico, también hay un lugar para ustedes — con su nombre asociado a esa zona.</p>
       </div>
       <div class="participar-grid reveal">
         <div>
           <div class="accion">
-            <h3>Adopta una zona</h3>
-            <p>Patrocina el mantenimiento continuo de un cañón, calle, playa o parque específico — sin necesidad de mandar personal. Esa zona queda asociada a tu empresa.</p>
+            <h3 data-i18n="empAccion1H3">Adopta una zona</h3>
+            <p data-i18n="empAccion1P">Patrocina el mantenimiento continuo de un cañón, calle, playa o parque específico — sin necesidad de mandar personal. Esa zona queda asociada a tu empresa.</p>
           </div>
           <div class="accion">
-            <h3>Reconocimiento público</h3>
-            <p>Tu empresa aparece en la lista de aliados del sitio, con enlace a tu negocio.</p>
+            <h3 data-i18n="empAccion2H3">Reconocimiento público</h3>
+            <p data-i18n="empAccion2P">Tu empresa aparece en la lista de aliados del sitio, con enlace a tu negocio.</p>
           </div>
           <div class="accion">
-            <h3>Coordinación, no duplicación</h3>
-            <p>Te conectamos con la colonia o cañón que más necesita apoyo ese mes, en vez de limpiar donde ya alguien más lo hizo.</p>
+            <h3 data-i18n="empAccion3H3">Coordinación, no duplicación</h3>
+            <p data-i18n="empAccion3P">Te conectamos con la colonia o cañón que más necesita apoyo ese mes, en vez de limpiar donde ya alguien más lo hizo.</p>
           </div>
           <div class="accion">
-            <h3>Varias formas de sumar</h3>
-            <p>Voluntariado de empleados, equipo, transporte, espacio de almacenamiento o patrocinio del fondo — lo que ya tengan para dar.</p>
+            <h3 data-i18n="empAccion4H3">Varias formas de sumar</h3>
+            <p data-i18n="empAccion4P">Voluntariado de empleados, equipo, transporte, espacio de almacenamiento o patrocinio del fondo — lo que ya tengan para dar.</p>
           </div>
           <div class="accion">
-            <h3>Un solo punto de contacto</h3>
-            <p>Nada de coordinar por separado con cada delegación — hablamos una vez y armamos el plan con tu empresa.</p>
+            <h3 data-i18n="empAccion5H3">Un solo punto de contacto</h3>
+            <p data-i18n="empAccion5P">Nada de coordinar por separado con cada delegación — hablamos una vez y armamos el plan con tu empresa.</p>
           </div>
         </div>
 
@@ -1867,67 +1889,67 @@
           <input type="hidden" name="_captcha" value="false" />
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
-            <label for="empresa_nombre">Nombre de la empresa</label>
-            <input id="empresa_nombre" name="empresa_nombre" type="text" placeholder="Tu empresa o negocio" required />
+            <label for="empresa_nombre" data-i18n="cfNombreLabel">Nombre de la empresa</label>
+            <input id="empresa_nombre" name="empresa_nombre" type="text" placeholder="Tu empresa o negocio" data-i18n-ph="cfNombrePh" required />
           </div>
           <div class="row2">
             <div class="field">
-              <label for="empresa_contacto">Persona de contacto</label>
-              <input id="empresa_contacto" name="empresa_contacto" type="text" placeholder="Nombre" required />
+              <label for="empresa_contacto" data-i18n="cfContactoLabel">Persona de contacto</label>
+              <input id="empresa_contacto" name="empresa_contacto" type="text" placeholder="Nombre" data-i18n-ph="cfContactoPh" required />
             </div>
             <div class="field">
-              <label for="empresa_whatsapp">WhatsApp / Teléfono</label>
+              <label for="empresa_whatsapp" data-i18n="jfWaLabel">WhatsApp / Teléfono</label>
               <input id="empresa_whatsapp" name="empresa_whatsapp" type="tel" placeholder="664 000 0000" required />
             </div>
           </div>
           <div class="row2">
             <div class="field">
-              <label for="empresa_correo">Correo (opcional)</label>
+              <label for="empresa_correo" data-i18n="jfCorreoLabel">Correo (opcional)</label>
               <input id="empresa_correo" name="empresa_correo" type="email" placeholder="contacto@empresa.com" />
             </div>
             <div class="field">
-              <label for="empresa_sector">Giro</label>
+              <label for="empresa_sector" data-i18n="cfSectorLabel">Giro</label>
               <select id="empresa_sector" name="empresa_sector">
-                <option>Maquiladora / Manufactura</option>
-                <option>Comercio / Retail</option>
-                <option>Restaurante / Hospitalidad</option>
-                <option>Oficina / Servicios</option>
-                <option>Otro</option>
+                <option data-i18n-opt="cfSector1">Maquiladora / Manufactura</option>
+                <option data-i18n-opt="cfSector2">Comercio / Retail</option>
+                <option data-i18n-opt="cfSector3">Restaurante / Hospitalidad</option>
+                <option data-i18n-opt="cfSector4">Oficina / Servicios</option>
+                <option data-i18n-opt="cfSector5">Otro</option>
               </select>
             </div>
           </div>
           <div class="field">
-            <label>¿Ya organizan limpiezas?</label>
+            <label data-i18n="cfYaLimpiaLabel">¿Ya organizan limpiezas?</label>
             <div class="radio-row">
-              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, de forma regular" checked>Sí, regular</label>
-              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, ocasionalmente">Sí, a veces</label>
-              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No todavía, pero queremos empezar">No, pero queremos empezar</label>
-              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No — solo queremos patrocinar una zona">No — solo patrocinar</label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, de forma regular" checked><span data-i18n="cfYa1">Sí, regular</span></label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, ocasionalmente"><span data-i18n="cfYa2">Sí, a veces</span></label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No todavía, pero queremos empezar"><span data-i18n="cfYa3">No, pero queremos empezar</span></label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No — solo queremos patrocinar una zona"><span data-i18n="cfYa4">No — solo patrocinar</span></label>
             </div>
           </div>
           <div class="field">
-            <label>¿Cómo les gustaría ayudar?</label>
+            <label data-i18n="cfAyudaLabel">¿Cómo les gustaría ayudar?</label>
             <div class="check-grid">
-              <label class="check-item"><input type="checkbox" name="empresa_voluntariado" value="Sí">Voluntariado de empleados</label>
-              <label class="check-item"><input type="checkbox" name="empresa_equipo" value="Sí">Donar o prestar equipo</label>
-              <label class="check-item"><input type="checkbox" name="empresa_fondo" value="Sí">Patrocinar el fondo de equipo</label>
-              <label class="check-item"><input type="checkbox" name="empresa_zona" value="Sí">Patrocinar una zona (cañón, calle, playa o parque)</label>
-              <label class="check-item"><input type="checkbox" name="empresa_transporte" value="Sí">Prestar transporte</label>
-              <label class="check-item"><input type="checkbox" name="empresa_almacenamiento" value="Sí">Espacio de almacenamiento</label>
+              <label class="check-item"><input type="checkbox" name="empresa_voluntariado" value="Sí"><span data-i18n="cfAyuda1">Voluntariado de empleados</span></label>
+              <label class="check-item"><input type="checkbox" name="empresa_equipo" value="Sí"><span data-i18n="cfAyuda2">Donar o prestar equipo</span></label>
+              <label class="check-item"><input type="checkbox" name="empresa_fondo" value="Sí"><span data-i18n="cfAyuda3">Patrocinar el fondo de equipo</span></label>
+              <label class="check-item"><input type="checkbox" name="empresa_zona" value="Sí"><span data-i18n="cfAyuda4">Patrocinar una zona (cañón, calle, playa o parque)</span></label>
+              <label class="check-item"><input type="checkbox" name="empresa_transporte" value="Sí"><span data-i18n="cfAyuda5">Prestar transporte</span></label>
+              <label class="check-item"><input type="checkbox" name="empresa_almacenamiento" value="Sí"><span data-i18n="cfAyuda6">Espacio de almacenamiento</span></label>
             </div>
           </div>
           <div class="field">
-            <label for="empresa_zona_interes">Zona que le interesaría patrocinar (opcional)</label>
-            <input id="empresa_zona_interes" name="empresa_zona_interes" type="text" placeholder="Ej. Cañón del Sainz, Playas de Tijuana, o 'sin preferencia, ustedes me asignan una'" />
+            <label for="empresa_zona_interes" data-i18n="cfZonaLabel">Zona que le interesaría patrocinar (opcional)</label>
+            <input id="empresa_zona_interes" name="empresa_zona_interes" type="text" placeholder="Ej. Cañón del Sainz, Playas de Tijuana, o 'sin preferencia, ustedes me asignan una'" data-i18n-ph="cfZonaPh" />
           </div>
           <div class="field">
-            <label for="empresa_comentarios">Cuéntanos más (opcional)</label>
-            <textarea id="empresa_comentarios" name="empresa_comentarios" placeholder="Ej. Cada primer sábado del mes limpiamos con 15 empleados en Playas"></textarea>
+            <label for="empresa_comentarios" data-i18n="cfComentariosLabel">Cuéntanos más (opcional)</label>
+            <textarea id="empresa_comentarios" name="empresa_comentarios" placeholder="Ej. Cada primer sábado del mes limpiamos con 15 empleados en Playas" data-i18n-ph="cfComentariosPh"></textarea>
           </div>
-          <p class="privacy-note">Usamos estos datos solo para coordinar la colaboración con tu empresa — no se venden ni se comparten con terceros.</p>
-          <button type="submit" class="btn btn-primary" id="companySubmit">Registrar mi empresa</button>
-          <p class="form-msg" id="companyMsg">Gracias — tu empresa quedó registrada. Nos vamos a poner en contacto para coordinar la colaboración.</p>
-          <p class="form-msg" id="companyErr" style="color:var(--clay)">Algo falló al enviar el registro. Intenta de nuevo o escríbenos por Facebook.</p>
+          <p class="privacy-note" data-i18n="cfPrivacy">Usamos estos datos solo para coordinar la colaboración con tu empresa — no se venden ni se comparten con terceros.</p>
+          <button type="submit" class="btn btn-primary" id="companySubmit" data-i18n="cfSubmit">Registrar mi empresa</button>
+          <p class="form-msg" id="companyMsg" data-i18n="cfMsgDefault">Gracias — tu empresa quedó registrada. Nos vamos a poner en contacto para coordinar la colaboración.</p>
+          <p class="form-msg" id="companyErr" style="color:var(--clay)" data-i18n="cfErr">Algo falló al enviar el registro. Intenta de nuevo o escríbenos por Facebook.</p>
         </form>
       </div>
     </div>
@@ -1939,35 +1961,260 @@
     <div class="foot-top">
       <div>
         <div class="foot-brand">Tijuana Limpia</div>
-        <p class="foot-tag">De la colonia al mar: una ruta ciudadana para hacer de Tijuana la ciudad más limpia de México.</p>
+        <p class="foot-tag" data-i18n="footTag">De la colonia al mar: una ruta ciudadana para hacer de Tijuana la ciudad más limpia de México.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h4>El plan</h4>
-          <a href="#problema">El problema</a>
-          <a href="#beneficios">Por qué importa</a>
-          <a href="#plan">Cinco rutas</a>
-          <a href="#equipo">Equipo y logística</a>
-          <a href="#fondo">Fondo de equipo</a>
-          <a href="#sueno">El sueño</a>
-          <a href="#metas">Metas</a>
+          <h4 data-i18n="footCol1H4">El plan</h4>
+          <a href="#problema" data-i18n="navProblema">El problema</a>
+          <a href="#beneficios" data-i18n="footWhyImports">Por qué importa</a>
+          <a href="#plan" data-i18n="footFiveRoutes">Cinco rutas</a>
+          <a href="#equipo" data-i18n="footEquipoLogistica">Equipo y logística</a>
+          <a href="#fondo" data-i18n="footFondoEquipo">Fondo de equipo</a>
+          <a href="#sueno" data-i18n="sueEyebrow">El sueño</a>
+          <a href="#metas" data-i18n="footMetas">Metas</a>
         </div>
         <div class="foot-col">
-          <h4>Participa</h4>
-          <a href="#unahora">Una Hora al Mes</a>
-          <a href="#participar">Únete a una brigada</a>
-          <a href="#empresas">Empresas aliadas</a>
+          <h4 data-i18n="footCol2H4">Participa</h4>
+          <a href="#unahora" data-i18n="navUnaHora">Una Hora al Mes</a>
+          <a href="#participar" data-i18n="accion1H3">Únete a una brigada</a>
+          <a href="#empresas" data-i18n="footEmpresasAliadas">Empresas aliadas</a>
         </div>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>TIJUANA LIMPIA — INICIATIVA CIUDADANA</span>
+      <span data-i18n="footBottomTag">TIJUANA LIMPIA — INICIATIVA CIUDADANA</span>
       <span>© 2026</span>
     </div>
   </div>
 </footer>
 
 <script>
+  // i18n: captures Spanish text/attributes on load, swaps to English translations on toggle.
+  // Spanish is the source of truth (lives in the HTML); only English needs to be maintained here.
+  const I18N = { en: {
+    navProblema: `The problem`, navPlan: `The plan`, navEquipo: `Equipment`, navUnaHora: `One Hour a Month`, navParticipa: `Get involved`, navCta: `Join`,
+    heroEyebrow: `From the neighborhood to the sea`,
+    heroH1: `Tijuana is going to be <em>the cleanest city</em> in Mexico.`,
+    heroLead: `It's not a campaign slogan: it's a work plan, colonia by colonia, canyon by canyon, all the way to the coast. It starts with neighborhood brigades and ends at a beach where nobody has to dodge trash to get in the water.`,
+    heroBtnJoin: `Join a brigade`, heroBtnPlan: `See the full plan`,
+    heroGoal: `Goal: <strong>5,000</strong> people registered to start donating <strong>one hour a month</strong>, all at once.`,
+    heroCanvasAria: `Illustration of Tijuana's hills and canyons descending toward the sea`,
+    heroFigcaption: `FROM THE HILLS TO THE COAST — EVERY BRIGADE'S ROUTE`,
+    probEyebrow: `What we see every week`,
+    probH2: `The problem isn't hidden`,
+    probLead: `It's in the canyons that run down from the neighborhoods, in the Tijuana River channel, and in the sand at Playas de Tijuana. You don't need a study to see it — you need a plan to fix it.`,
+    probTag1: `Canyons`, probH3_1: `Illegal dumping`,
+    probP1: `Canyons like Cañón del Sainz, Los Laureles, and Matadero pile up household and construction waste that the rain pushes downhill every season.`,
+    probTag2: `Coast`, probH3_2: `Plastic in the sand`,
+    probP2: `Playas de Tijuana and the river area collect a lot of what piles up above: bags, styrofoam, and tires dragged in by the water.`,
+    probTag3: `Neighborhoods`, probH3_3: `Not enough bins`,
+    probP3: `In parts of Otay Centenario, Sánchez Taboada, and the outskirts, collection doesn't keep up, and open-air trash burning becomes routine.`,
+    probTag4: `Commerce`, probH3_4: `Zero separation`,
+    probP4: `Markets and street stalls in Centro and Zona Río mix organic, recyclable, and general waste in the same bag, every day of the year.`,
+    probNote: `* Description based on environmental issues widely reported by residents and local media, not an official census.`,
+    benEyebrow: `Why it matters`, benH2: `A clean Tijuana benefits all of us`,
+    benLead: `It's not just about looks. Every cleared canyon, every swept street, changes someone's life — today.`,
+    benTag1: `Kids`, benH3_1: `Safe spaces to grow up in`,
+    benList1: `<li>Safe parks and streets, no broken glass or debris</li><li>Fewer mosquito and rodent breeding grounds — less dengue</li><li>Cleaner air near schools</li>`,
+    benTag2: `Older adults`, benH3_2: `Streets you can actually walk`,
+    benList2: `<li>Clear sidewalks, no tripping hazards or obstacles</li><li>Fewer respiratory illnesses from burning trash</li><li>Cleared canyons — less flood risk in the hillside neighborhoods</li>`,
+    benTag3: `Tourism`, benH3_3: `First impressions decide`,
+    benList3: `<li>Determines whether a visitor comes back or recommends the city</li><li>Better online reviews bring more visitors</li><li>Protects the economy of Playas, Revolución, and Zona Río</li>`,
+    benTag4: `Businesses`, benH3_4: `An environment that attracts`,
+    benList4: `<li>More foot traffic on clean commercial corridors</li><li>Less spent on pest control and damage from dumping next door</li><li>An orderly city attracts investment, including the maquiladora sector</li>`,
+    benTag5: `Health & quality of life`, benH3_5: `You breathe easier, you live better`,
+    benList5: `<li>Fewer disease vectors, cleaner water in the Tijuana River</li><li>Fewer trash fires — better air quality</li><li>Living in a cared-for environment improves mood and reduces stress</li>`,
+    benTag6: `The city`, benH3_6: `Prevention costs less than repair`,
+    benList6: `<li>Improves Tijuana's image nationally and internationally</li><li>Clearing a canyon is cheaper than repairing flood damage</li><li>Protects marine life along the coast</li>`,
+    planEyebrow: `The plan`, planH2: `Five routes, one shared path`,
+    planLead: `Each route tackles a different stretch of the road trash follows: from the neighborhood, to the canyon, to the sea. None of them work alone.`,
+    ruta1H3: `Neighborhood brigades`,
+    ruta1P: `Weekly neighborhood cleanup days organized by colonia, with tools and temporary containers provided by the city.`,
+    ruta1Tag1: `Every colonia`, ruta1Tag2: `Saturdays`, ruta1Tag3: `With the delegación`,
+    ruta2H3: `Canyons and streams`,
+    ruta2P: `Phased rehabilitation of the most affected canyons and ongoing monitoring of the Tijuana River channel to stop new dumping.`,
+    ruta3H3: `Plastic-free coast`,
+    ruta3P: `Beach cleanup days, removal of single-use plastic at coastal businesses, and container return stations at main access points.`,
+    ruta4H3: `Commerce and sorting`,
+    ruta4P: `Sorting containers in markets and street stalls, and a public seal for businesses that verifiably reduce their waste.`,
+    ruta4Tag3: `Local street markets`,
+    ruta5H3: `Environmental education`,
+    ruta5P: `Workshops in schools and community centers in every delegación, training the next generation of brigade members starting in the classroom.`,
+    eqEyebrow: `Equipment & logistics`, eqH2: `What every brigade needs`,
+    eqLead: `From hand brooms to industrial sweepers — this is the inventory that powers the five routes. It's a living list: we keep updating it as we add equipment, donations, and new partners.`,
+    eqUpdated: `Last updated: July 2026`, eqNew: `New`,
+    eqTitle1: `Industrial & mechanical sweepers`,
+    eqList1: `<li><strong>Manual walk-behind sweepers</strong> (41" wide, 55L hopper): pick up trash, sand, gravel, leaves, and bottle caps on sidewalks, plazas, courts, and paved streets — no gas or electricity needed.</li><li><strong>Battery vacuum sweepers</strong>: active filtration and suction to capture fine dust and silt along paved curbs without kicking up clouds of dust.</li><li><strong>Magnetic sweepers</strong>: wheeled magnetic bars, pushed or towed, to pick up nails, wire, and metal fragments on dirt roads, parking lots, and illegal dump sites.</li><li><strong>Walk-behind pressure washers with rotary head</strong>: high-efficiency washing for concrete plazas, bus stops, and public markets.</li>`,
+    eqTitle2: `Motorized equipment & machinery`,
+    eqList2: `<li>Cordless leaf blowers and string trimmers (battery-powered)</li><li>Fast multi-bay chargers and spare battery packs</li><li>Portable pressure washers and water supply tanks</li><li>Portable generators (gas or battery)</li>`,
+    eqTitle3: `Vehicles & heavy transport`,
+    eqList3: `<li>Heavy-duty 4x4 pickup trucks</li><li>High-wall dump-style trailers (for heavy debris)</li><li>Cargo vans / box trucks</li><li>Electric utility carts and cargo trikes</li><li>Heavy-duty wheelbarrows with solid, puncture-proof tires</li>`,
+    eqTitle4: `Color-coded sorting bags`,
+    eqList4: `<li><strong>Green:</strong> recyclable plastics (PET/HDPE) and cans</li><li><strong>Blue:</strong> paper and cardboard</li><li><strong>Black/Gray:</strong> general landfill waste and heavy refuse</li><li><strong>Yellow/Red:</strong> hazardous waste, sharp glass, or scrap metal</li><li><strong>Clear:</strong> organic / yard waste</li><li>Collapsible bag hoops and stands</li><li>Puncture-resistant containers for sharp objects</li>`,
+    eqTitle5: `Manual tools & cleanup gear`,
+    eqList5: `<li>Long-handled grabbers / pickers</li><li>Outdoor brooms and stiff-bristle brooms</li><li>Pointed and flat shovels (for mud and silt)</li><li>Bow rakes, scrapers, and wire brushes</li><li>Long-handled dustpans and utility knives</li>`,
+    eqTitle6: `Personal protective equipment (PPE)`,
+    eqList6: `<li>Cut- and puncture-resistant work gloves</li><li>Inner nitrile gloves</li><li>High-visibility reflective vests (ANSI Class 2/3)</li><li>Safety goggles, N95 masks, and sun protection</li><li>Steel-toe boots or heavy-duty rubber boots</li>`,
+    eqTitle7: `Mobile base camp & logistics`,
+    eqList7: `<li>3x3 m pop-up canopies, folding tables and chairs</li><li>19L water jugs and hydration stations</li><li>Handwashing stations and hand sanitizer</li><li>Two-way radios (walkie-talkies) and portable hanging scales</li>`,
+    eqTitle8: `Final disposal & government partnerships`,
+    eqList8: `<li>Municipal disposal permits and agreements with local delegaciones, like the <a href="https://www.tijuana.gob.mx/noticia.aspx?idComunicado=35745" target="_blank" rel="noopener noreferrer">Tijuana: Ciudad Limpia</a> initiative</li><li>Roll-off containers at central community hubs</li><li>Direct sorting partnerships with local recycling centers</li>`,
+    eqNote: `Have equipment, tools, or transport to donate or lend? Tell us in the sign-up form below.`,
+    fondoEyebrow: `Equipment fund`, fondoH2: `Equipment Fund — Tijuana Limpia`,
+    fondoLead: `Every peso raised goes straight to the inventory above: sweepers, sorting bags, PPE, and transport for the brigades. No cap — the more we raise, the more equipment hits the streets.`,
+    fondoOf: `raised so far`, fondoSoon: `Coming soon`,
+    fondoCtaP: `We're working out how to receive donations securely. Once it's ready, the donation link goes up here and on Facebook.`,
+    uhEyebrow: `The goal`, uhH2: `5,000 sign-ups. One hour a month, all at once.`,
+    uhLead: `It's that simple: once we reach 5,000 registered people, we start — everyone donates one hour a month, the same weekend, in their own colonia, canyon, or nearest beach. It's not a one-time event, it's a city habit.`,
+    uhBtn: `Sign up now`, uhLabel: `people registered right now`,
+    uhPrivacy: `Your name and email stay private — only the total is shown here. Join through the site or from our Facebook page.`,
+    sueEyebrow: `The dream`, sueH2: `What if 9 out of 10 tijuanenses joined in?`,
+    sueLead: `Tijuana has around 1,935,000 residents according to <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a> projections. If 9 out of 10 gave just 1 hour a month and $10 pesos a week, here's what would happen — every month.`,
+    sueTag1: `Human power`,
+    sueSub1: `volunteer hours every month — equal to ~12,000 full-time municipal workers cleaning the city every day.`,
+    sueList1: `<li>Sweep and clean every street, alley, and sidewalk — paved or dirt — in all 9 delegaciones, at least twice a month.</li><li>Fully clear debris, mud, and illegal dump sites in the 120+ high-risk canyon and storm-drain zones, before every rainy season.</li><li>Paint curbs, repair park benches, plant thousands of native trees, and remove graffiti in public spaces across the city.</li>`,
+    sueTag2: `Economic power`,
+    sueSub2: `pesos every month (~$4.65 million USD) — $19.35M MXN a week, ~$1,005M MXN a year (~$55.8 million USD).`,
+    sueList2: `<li>New fleet and equipment every month: 20+ 4x4 pickup trucks and dump trailers, hundreds of manual sweepers, commercial blowers and pressure washers.</li><li>Color-coded bags, safety gear, and unlimited tools for every neighborhood team.</li><li>9 Sector Tool Hubs — one per delegación — fully equipped and running year-round.</li>`,
+    sueFundsH3: `With $83.8M MXN a month, here's how far it goes`,
+    sueFund1H4: `Permanent neighborhood infrastructure`,
+    sueFund1P: `9 Sector Tool Hubs (Otay Centenario, Playas, Sánchez Taboada, La Presa Este, La Mesa, Centro, among others) plus public color-coded recycling stations and solar compactors in high-traffic areas.`,
+    sueFund2H4: `Community recycling plants`,
+    sueFund2P: `Community-owned centers to sort and process waste, turning collected PET plastic into benches, playground equipment, and trash cans for public spaces.`,
+    sueFund3H4: `Colonia grants`,
+    sueFund3P: `Monthly funding for the colonias with the highest volunteer turnout, to repair streets, improve public lighting, and maintain community parks.`,
+    sueFund4H4: `Fleet and equipment that never stops`,
+    sueFund4P: `Constant replacement of vehicles, sweepers, and tools — without relying on one-off donations to keep the brigades working.`,
+    sueBackP: `We're not there yet — that's why we're starting with a goal of 5,000 people. Every person who signs up gets us a little closer.`,
+    sueBackBtn: `Join now`,
+    sueSource: `* Our own estimate based on population projected by CONAPO / Baja California State Population Council. It does not represent funds raised or a commitment from the city — it's the ceiling of what's possible if all of Tijuana takes part.`,
+    qrAlt: `QR code to El Sueño on tijuanalimpia`,
+    shareH3: `Share it`,
+    shareP: `Scan the code or send it to someone who'd also like to see Tijuana like this.`,
+    shareWa: `WhatsApp`, shareFb: `Facebook`, shareCopy: `Copy link`, shareCopied: `Copied!`,
+    metasTag: `Campaign goals · 2026–2028`,
+    metasLabel1: `canyons treated or under active rehabilitation`,
+    metasLabel2: `active neighborhood brigades across every delegación`,
+    metasLabel3: `beaches with continuous waste monitoring`,
+    metasLabel4: `of public markets with waste separation`,
+    partEyebrow: `How to get involved`, partH2: `Tijuana gets clean one person at a time`,
+    accion1H3: `Join a brigade`,
+    accion1P: `Sign up below and we'll connect you with the brigade closest to your colonia. No experience needed, just a Saturday morning.`,
+    accion2H3: `Report a dump site`,
+    accion2P: `If you see a canyon or lot being used as a dump, let your delegación or the citizen hotline know. Every report helps prioritize cleanup routes.`,
+    accion3H3: `Cut back at your business`,
+    accion3P: `If you run a business, join the plastic-reduction and sorting seal program. We'll share the guide to qualify.`,
+    accion4H3: `Does your company already clean up?`,
+    accion4P: `If your business already runs cleanup days with its staff, there's a <a href="#empresas" style="color:var(--ocean)">separate sign-up for companies</a> — that way we coordinate instead of duplicating effort.`,
+    accion5H3: `Bring the program to your school`,
+    accion5P: `We coordinate environmental education workshops for elementary and middle schools in any delegación in the city.`,
+    jfSec1Head: `Basic information`, jfSec1Sub: `How we find you, and who we're looking for in your colonia.`,
+    jfNombreLabel: `Full name`, jfNombrePh: `Your name`,
+    jfWaLabel: `WhatsApp / Phone`, jfCorreoLabel: `Email (optional)`,
+    jfDelegacionLabel: `Delegación`, jfDelegacionPh: `Choose your delegación`,
+    jfColoniaLabel: `Colonia`, jfColoniaPh: `E.g. Las Torres`,
+    jfMedioLabel: `Preferred contact method`, jfLlamada: `Call`,
+    jfSec2Head: `Community commitment`,
+    jfInteresLabel: `Which route interests you most?`,
+    jfInteres1: `Neighborhood brigades`, jfInteres2: `Canyons & streams`, jfInteres3: `Plastic-free coast`, jfInteres4: `Commerce & sorting`, jfInteres5: `Environmental education`,
+    jfCommit1: `I'll donate 1 hour of cleanup time a month.`,
+    jfCommit2: `I'll donate $10 MXN a week ($40/month) to the equipment fund.`,
+    jfSec3Head: `Equipment donation`,
+    jfSec3Sub: `Check anything you can donate permanently or lend for weekend cleanups.`,
+    jfSub1: `Vehicles & transport`, jfEq1: `Pickup truck`, jfEq2: `Utility trailer`, jfEq3: `Van / box truck`,
+    jfSub2: `Motorized equipment`, jfEq4: `Cordless blower`, jfEq5: `Pressure washer`, jfEq6: `String trimmer`, jfEq7: `Electric generator`,
+    jfSub3: `Manual tools`, jfEq8: `Shovels`, jfEq9: `Outdoor brooms`, jfEq10: `Rakes`, jfEq11: `Wheelbarrows`, jfEq12: `Trash grabbers`,
+    jfSub4: `Safety & supplies`, jfEq13: `Work gloves`, jfEq14: `High-vis vests`, jfEq15: `Heavy-duty trash bags`, jfEq16: `Paint & brushes`, jfEq17: `Water coolers`,
+    jfSub5: `Storage space`, jfEq18: `I have a secure garage, lot, or warehouse in my colonia for a tool kit`,
+    jfOtrosArticulosLabel: `Other items you can donate`, jfOtrosArticulosPh: `E.g. I have 2 folding tables and 10 safety cones`,
+    jfSec4Head: `Specialized skills`, jfSec4Sub: `Check any roles where you'd like to help, besides sweeping.`,
+    jfSkill1: `Neighborhood captain — organize and lead cleanups`, jfSkill2: `Driver / logistics`, jfSkill3: `Tools & mechanics`, jfSkill4: `Social media & content`, jfSkill5: `Recycling coordinator`, jfSkill6: `Business / maquiladora liaison`, jfSkill7: `First aid / safety`,
+    jfOtrasHabLabel: `Other skills or ideas`, jfOtrasHabPh: `E.g. I'm a web developer and can help with the sign-up app`,
+    jfNoticeTag: `Important notice`,
+    jfNoticeP: `To have shared equipment kits ready from day one, we activate the brigades once we reach <strong>5,000 registered people</strong> citywide. We won't assign an event date before that — in the meantime, help us launch sooner by sharing this page with your family and neighbors.`,
+    jfPrivacy: `We only use your info to coordinate brigades and reach you through the method you chose — never sold or shared with third parties.`,
+    jfSubmit: `I want to join`, jfMsgDefault: `Thanks — you're registered.`,
+    jfErr: `Something went wrong sending your registration. Try again or message us on Facebook.`,
+    postStatus: `We're at <span id="postSignupCount">—</span> / 5,000 registered.`,
+    postH3: `Help us get there faster`,
+    postP: `Share your personal link — the more friends join, the sooner Una Hora al Mes kicks off.`,
+    empEyebrow: `For companies & organizations`,
+    empH2: `Join in your own way — with time, or by sponsoring a zone`,
+    empLead: `If your business, maquiladora, foundation, or office already runs cleanup days with its staff, join the coalition. And if you'd rather not send people but instead sponsor the upkeep of a specific canyon, street, beach, or park, there's a place for you too — with your name tied to that zone.`,
+    empAccion1H3: `Adopt a zone`,
+    empAccion1P: `Sponsor the ongoing upkeep of a specific canyon, street, beach, or park — no need to send staff. That zone gets tied to your company.`,
+    empAccion2H3: `Public recognition`,
+    empAccion2P: `Your company appears on the site's list of partners, linked to your business.`,
+    empAccion3H3: `Coordination, not duplication`,
+    empAccion3P: `We connect you with the colonia or canyon that needs the most support that month, instead of cleaning somewhere someone else already covered.`,
+    empAccion4H3: `Several ways to contribute`,
+    empAccion4P: `Employee volunteering, equipment, transport, storage space, or fund sponsorship — whatever you already have to give.`,
+    empAccion5H3: `One point of contact`,
+    empAccion5P: `No coordinating separately with every delegación — we talk once and build the plan with your company.`,
+    cfNombreLabel: `Company name`, cfNombrePh: `Your company or business`,
+    cfContactoLabel: `Contact person`, cfContactoPh: `Name`,
+    cfSectorLabel: `Industry`,
+    cfSector1: `Maquiladora / Manufacturing`, cfSector2: `Retail / Commerce`, cfSector3: `Restaurant / Hospitality`, cfSector4: `Office / Services`, cfSector5: `Other`,
+    cfYaLimpiaLabel: `Do you already run cleanups?`,
+    cfYa1: `Yes, regularly`, cfYa2: `Yes, sometimes`, cfYa3: `No, but we want to start`, cfYa4: `No — just want to sponsor`,
+    cfAyudaLabel: `How would you like to help?`,
+    cfAyuda1: `Employee volunteering`, cfAyuda2: `Donate or lend equipment`, cfAyuda3: `Sponsor the equipment fund`, cfAyuda4: `Sponsor a zone (canyon, street, beach, or park)`, cfAyuda5: `Lend transport`, cfAyuda6: `Storage space`,
+    cfZonaLabel: `Zone you'd be interested in sponsoring (optional)`,
+    cfZonaPh: `E.g. Cañón del Sainz, Playas de Tijuana, or "no preference, you assign one"`,
+    cfComentariosLabel: `Tell us more (optional)`,
+    cfComentariosPh: `E.g. Every first Saturday of the month we clean up with 15 employees at Playas`,
+    cfPrivacy: `We only use this info to coordinate the collaboration with your company — never sold or shared with third parties.`,
+    cfSubmit: `Register my company`,
+    cfMsgDefault: `Thanks — your company is registered. We'll be in touch to coordinate the collaboration.`,
+    cfErr: `Something went wrong sending your registration. Try again or message us on Facebook.`,
+    footTag: `From the neighborhood to the sea: a citizen-led route to make Tijuana the cleanest city in Mexico.`,
+    footCol1H4: `The plan`, footWhyImports: `Why it matters`, footFiveRoutes: `Five routes`, footEquipoLogistica: `Equipment & logistics`, footFondoEquipo: `Equipment fund`, footMetas: `Goals`,
+    footCol2H4: `Get involved`, footEmpresasAliadas: `Partner companies`,
+    footBottomTag: `TIJUANA LIMPIA — CITIZEN INITIATIVE`,
+  } };
+  let currentLang = localStorage.getItem('tl_lang') || 'es';
+
+  function captureOriginals() {
+    document.querySelectorAll('[data-i18n]').forEach((el) => { if (el.dataset.esText === undefined) el.dataset.esText = el.innerHTML; });
+    document.querySelectorAll('[data-i18n-ph]').forEach((el) => { if (el.dataset.esPh === undefined) el.dataset.esPh = el.getAttribute('placeholder') || ''; });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => { if (el.dataset.esAria === undefined) el.dataset.esAria = el.getAttribute('aria-label') || ''; });
+    document.querySelectorAll('[data-i18n-opt]').forEach((el) => { if (el.dataset.esOpt === undefined) el.dataset.esOpt = el.textContent; });
+  }
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.dataset.i18n;
+      if (lang === 'es') el.innerHTML = el.dataset.esText;
+      else if (I18N.en[key] !== undefined) el.innerHTML = I18N.en[key];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach((el) => {
+      const key = el.dataset.i18nPh;
+      if (lang === 'es') el.setAttribute('placeholder', el.dataset.esPh);
+      else if (I18N.en[key] !== undefined) el.setAttribute('placeholder', I18N.en[key]);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const key = el.dataset.i18nAria;
+      if (lang === 'es') el.setAttribute('aria-label', el.dataset.esAria);
+      else if (I18N.en[key] !== undefined) el.setAttribute('aria-label', I18N.en[key]);
+    });
+    document.querySelectorAll('[data-i18n-opt]').forEach((el) => {
+      const key = el.dataset.i18nOpt;
+      if (lang === 'es') el.textContent = el.dataset.esOpt;
+      else if (I18N.en[key] !== undefined) el.textContent = I18N.en[key];
+    });
+    document.querySelectorAll('[data-lang-opt]').forEach((el) => {
+      el.classList.toggle('active', el.dataset.langOpt === lang);
+    });
+    localStorage.setItem('tl_lang', lang);
+  }
+
+  captureOriginals();
+  applyLang(currentLang);
+  document.getElementById('langBtn').addEventListener('click', () => applyLang(currentLang === 'es' ? 'en' : 'es'));
+
   // Share buttons: build WhatsApp/Facebook links from data attributes, wire up copy-link
   function buildWaHref(a) {
     const url = a.dataset.shareUrl;
@@ -2097,9 +2344,10 @@
     msg.classList.remove('show');
     err.classList.remove('show');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando…';
+    submitBtn.textContent = currentLang === 'en' ? 'Sending…' : 'Enviando…';
     const nombreVal = form.nombre.value.trim();
-    const medioVal = form.querySelector('input[name="medio_contacto"]:checked')?.value || 'WhatsApp';
+    const medioRaw = form.querySelector('input[name="medio_contacto"]:checked')?.value || 'WhatsApp';
+    const medioVal = currentLang === 'en' && medioRaw === 'Llamada' ? 'phone call' : medioRaw;
     try {
       const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
         method: 'POST',
@@ -2107,7 +2355,9 @@
         body: new FormData(form),
       });
       if (!res.ok) throw new Error('request failed');
-      msg.textContent = `Gracias — quedaste registrado. Te contactamos por ${medioVal} en cuanto lleguemos a 5,000 y arranque Una Hora al Mes.`;
+      msg.textContent = currentLang === 'en'
+        ? `Thanks — you're registered. We'll reach out by ${medioVal} once we hit 5,000 and Una Hora al Mes kicks off.`
+        : `Gracias — quedaste registrado. Te contactamos por ${medioVal} en cuanto lleguemos a 5,000 y arranque Una Hora al Mes.`;
       msg.classList.add('show');
 
       // Personalize the post-signup share links with a ?ref= tag (cosmetic only —
@@ -2129,7 +2379,7 @@
       err.classList.add('show');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Quiero sumarme';
+      submitBtn.textContent = currentLang === 'en' ? (I18N.en.jfSubmit || 'I want to join') : 'Quiero sumarme';
     }
   });
 
@@ -2143,7 +2393,7 @@
     msg.classList.remove('show');
     err.classList.remove('show');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Enviando…';
+    submitBtn.textContent = currentLang === 'en' ? 'Sending…' : 'Enviando…';
     try {
       const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
         method: 'POST',
@@ -2157,7 +2407,7 @@
       err.classList.add('show');
     } finally {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Registrar mi empresa';
+      submitBtn.textContent = currentLang === 'en' ? (I18N.en.cfSubmit || 'Register my company') : 'Registrar mi empresa';
     }
   });
 
