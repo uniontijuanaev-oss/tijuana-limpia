@@ -96,6 +96,22 @@
     overflow-x: hidden;
   }
   img, svg, canvas { max-width: 100%; display: block; }
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 12px;
+    z-index: 100;
+    background: var(--ocean);
+    color: #EAFBF8;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: top 0.15s ease;
+  }
+  .skip-link:focus { top: 12px; }
   a { color: inherit; }
 
   .wrap {
@@ -1059,6 +1075,13 @@
     color: var(--clay);
   }
   .launch-notice p { font-size: 0.86rem; color: var(--ink-soft); margin: 6px 0 0; }
+  .privacy-note {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--stone);
+    margin: 14px 0;
+    max-width: 52ch;
+  }
 
   .form-msg {
     margin-top: 14px;
@@ -1122,11 +1145,12 @@
 
 </head>
 <body>
+<a href="#top" class="skip-link">Saltar al contenido</a>
 <header class="site">
   <div class="navbar">
     <a href="#top" class="brand">Tijuana<span class="dot">·</span>Limpia</a>
     <div class="nav-mid">
-      <nav class="links">
+      <nav class="links" id="navLinks">
         <a href="#problema">El problema</a>
         <a href="#plan">El plan</a>
         <a href="#equipo">Equipo</a>
@@ -1135,7 +1159,7 @@
       </nav>
       <a href="https://www.facebook.com/profile.php?id=61588748211049" target="_blank" rel="noopener noreferrer" class="fb-btn" aria-label="Síguenos en Facebook">f</a>
       <a href="#participar" class="nav-cta">Súmate</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">≡</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">≡</button>
     </div>
   </div>
 </header>
@@ -1179,7 +1203,7 @@
         <div class="problema-card">
           <span class="tag">Colonias</span>
           <h3>Falta de contenedores</h3>
-          <p>En tramos de Otay, Sánchez Taboada y la periferia, la recolección no alcanza y la quema de basura a cielo abierto se vuelve costumbre.</p>
+          <p>En tramos de Otay Centenario, Sánchez Taboada y la periferia, la recolección no alcanza y la quema de basura a cielo abierto se vuelve costumbre.</p>
         </div>
         <div class="problema-card">
           <span class="tag">Comercio</span>
@@ -1302,7 +1326,7 @@
           <div>
             <h3>Educación ambiental</h3>
             <p>Talleres en escuelas y centros comunitarios de cada delegación, formando a la próxima generación de brigadistas desde el salón de clases.</p>
-            <div class="places"><span>La Mesa</span><span>San Antonio de los Buenos</span><span>Centro</span><span>Otay</span></div>
+            <div class="places"><span>La Mesa</span><span>San Antonio de los Buenos</span><span>Centro</span><span>Otay Centenario</span></div>
           </div>
         </div>
       </div>
@@ -1527,7 +1551,7 @@
         <div class="sueno-funds-grid">
           <div class="sueno-fund-item">
             <h4>Infraestructura permanente de barrio</h4>
-            <p>9 Centros de Herramientas de Sector (Otay, Playas, Sánchez Taboada, La Presa, La Mesa, Centro, entre otras) más estaciones públicas de reciclaje por color y compactadoras solares en zonas de alto tráfico.</p>
+            <p>9 Centros de Herramientas de Sector (Otay Centenario, Playas, Sánchez Taboada, La Presa Este, La Mesa, Centro, entre otras) más estaciones públicas de reciclaje por color y compactadoras solares en zonas de alto tráfico.</p>
           </div>
           <div class="sueno-fund-item">
             <h4>Plantas comunitarias de reciclaje</h4>
@@ -1767,6 +1791,7 @@
             <p>Para tener listos los kits de equipo compartido desde el primer día, activamos las brigadas en cuanto lleguemos a <strong>5,000 personas registradas</strong> en toda la ciudad. No te asignamos fecha de evento antes de eso — mientras tanto, ayúdanos a llegar más rápido compartiendo esta página con tu familia y vecinos.</p>
           </div>
 
+          <p class="privacy-note">Usamos tus datos solo para coordinar brigadas y avisarte por el medio que elegiste — no se venden ni se comparten con terceros.</p>
           <button type="submit" class="btn btn-primary" id="joinSubmit">Quiero sumarme</button>
           <p class="form-msg" id="formMsg">Gracias — quedaste registrado.</p>
           <p class="form-msg" id="formErr" style="color:var(--clay)">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
@@ -1882,6 +1907,7 @@
             <label for="empresa_comentarios">Cuéntanos más (opcional)</label>
             <textarea id="empresa_comentarios" name="empresa_comentarios" placeholder="Ej. Cada primer sábado del mes limpiamos con 15 empleados en Playas"></textarea>
           </div>
+          <p class="privacy-note">Usamos estos datos solo para coordinar la colaboración con tu empresa — no se venden ni se comparten con terceros.</p>
           <button type="submit" class="btn btn-primary" id="companySubmit">Registrar mi empresa</button>
           <p class="form-msg" id="companyMsg">Gracias — tu empresa quedó registrada. Nos vamos a poner en contacto para coordinar la colaboración.</p>
           <p class="form-msg" id="companyErr" style="color:var(--clay)">Algo falló al enviar el registro. Intenta de nuevo o escríbenos por Facebook.</p>
@@ -1962,11 +1988,13 @@
   // Mobile menu toggle
   const menuBtn = document.getElementById('menuBtn');
   const links = document.querySelector('nav.links');
-  menuBtn.addEventListener('click', () => {
-    const open = links.style.display === 'flex';
-    links.style.display = open ? 'none' : 'flex';
-    links.style.cssText += open ? '' : 'position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--paper);padding:20px clamp(20px,5vw,48px);border-bottom:1px solid var(--line);gap:16px;';
-  });
+  function setMenu(open) {
+    links.style.display = open ? 'flex' : 'none';
+    links.style.cssText += open ? 'position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--paper);padding:20px clamp(20px,5vw,48px);border-bottom:1px solid var(--line);gap:16px;' : '';
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  menuBtn.addEventListener('click', () => setMenu(links.style.display !== 'flex'));
+  links.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
 
   // Reveal on scroll
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
