@@ -1612,6 +1612,10 @@
             <p>Si tienes un comercio, súmate al distintivo de reducción de plástico y separación. Te compartimos la guía para calificar.</p>
           </div>
           <div class="accion">
+            <h3>¿Tu empresa ya limpia?</h3>
+            <p>Si tu negocio ya organiza jornadas con su personal, hay un <a href="#empresas" style="color:var(--ocean)">registro aparte para empresas</a> — así coordinamos en vez de duplicar esfuerzos.</p>
+          </div>
+          <div class="accion">
             <h3>Lleva el programa a tu escuela</h3>
             <p>Coordinamos talleres de educación ambiental para primarias y secundarias en cualquier delegación de la ciudad.</p>
           </div>
@@ -1783,6 +1787,98 @@
       </div>
     </div>
   </section>
+
+  <section id="empresas">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Para empresas</span>
+        <h2>¿Tu empresa ya dona tiempo para limpiar la ciudad?</h2>
+        <p style="margin-top:14px">Si tu negocio, maquiladora u oficina ya organiza jornadas de limpieza con su personal, súmate a la coalición. Coordinamos esfuerzos para que dos empresas no limpien la misma colonia mientras otra se queda sin nadie — y tu empresa aparece como aliada de la iniciativa.</p>
+      </div>
+      <div class="participar-grid reveal">
+        <div>
+          <div class="accion">
+            <h3>Reconocimiento público</h3>
+            <p>Tu empresa aparece en la lista de aliados del sitio, con enlace a tu negocio.</p>
+          </div>
+          <div class="accion">
+            <h3>Coordinación, no duplicación</h3>
+            <p>Te conectamos con la colonia o cañón que más necesita apoyo ese mes, en vez de limpiar donde ya alguien más lo hizo.</p>
+          </div>
+          <div class="accion">
+            <h3>Varias formas de sumar</h3>
+            <p>Voluntariado de empleados, equipo, transporte, espacio de almacenamiento o patrocinio del fondo — lo que ya tengan para dar.</p>
+          </div>
+          <div class="accion">
+            <h3>Un solo punto de contacto</h3>
+            <p>Nada de coordinar por separado con cada delegación — hablamos una vez y armamos el plan con tu empresa.</p>
+          </div>
+        </div>
+
+        <form class="join" id="companyForm" action="https://formsubmit.co/uniontijuanaev@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nueva empresa aliada — Tijuana Limpia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <div class="field">
+            <label for="empresa_nombre">Nombre de la empresa</label>
+            <input id="empresa_nombre" name="empresa_nombre" type="text" placeholder="Tu empresa o negocio" required />
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="empresa_contacto">Persona de contacto</label>
+              <input id="empresa_contacto" name="empresa_contacto" type="text" placeholder="Nombre" required />
+            </div>
+            <div class="field">
+              <label for="empresa_whatsapp">WhatsApp / Teléfono</label>
+              <input id="empresa_whatsapp" name="empresa_whatsapp" type="tel" placeholder="664 000 0000" required />
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="empresa_correo">Correo (opcional)</label>
+              <input id="empresa_correo" name="empresa_correo" type="email" placeholder="contacto@empresa.com" />
+            </div>
+            <div class="field">
+              <label for="empresa_sector">Giro</label>
+              <select id="empresa_sector" name="empresa_sector">
+                <option>Maquiladora / Manufactura</option>
+                <option>Comercio / Retail</option>
+                <option>Restaurante / Hospitalidad</option>
+                <option>Oficina / Servicios</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Ya organizan limpiezas?</label>
+            <div class="radio-row">
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, de forma regular" checked>Sí, regular</label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, ocasionalmente">Sí, a veces</label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No todavía, pero queremos empezar">No, pero queremos empezar</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>¿Cómo les gustaría ayudar?</label>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="empresa_voluntariado" value="Sí">Voluntariado de empleados</label>
+              <label class="check-item"><input type="checkbox" name="empresa_equipo" value="Sí">Donar o prestar equipo</label>
+              <label class="check-item"><input type="checkbox" name="empresa_fondo" value="Sí">Patrocinar el fondo de equipo</label>
+              <label class="check-item"><input type="checkbox" name="empresa_transporte" value="Sí">Prestar transporte</label>
+              <label class="check-item"><input type="checkbox" name="empresa_almacenamiento" value="Sí">Espacio de almacenamiento</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="empresa_comentarios">Cuéntanos más (opcional)</label>
+            <textarea id="empresa_comentarios" name="empresa_comentarios" placeholder="Ej. Cada primer sábado del mes limpiamos con 15 empleados en Playas"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="companySubmit">Registrar mi empresa</button>
+          <p class="form-msg" id="companyMsg">Gracias — tu empresa quedó registrada. Nos vamos a poner en contacto para coordinar la colaboración.</p>
+          <p class="form-msg" id="companyErr" style="color:var(--clay)">Algo falló al enviar el registro. Intenta de nuevo o escríbenos por Facebook.</p>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="site">
@@ -1807,7 +1903,7 @@
           <h4>Participa</h4>
           <a href="#unahora">Una Hora al Mes</a>
           <a href="#participar">Únete a una brigada</a>
-          <a href="#participar">Reduce en tu negocio</a>
+          <a href="#empresas">Empresas aliadas</a>
         </div>
       </div>
     </div>
@@ -1979,6 +2075,34 @@
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Quiero sumarme';
+    }
+  });
+
+  // Company form: same FormSubmit pattern, separate subject line, no counter/share
+  document.getElementById('companyForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = document.getElementById('companySubmit');
+    const msg = document.getElementById('companyMsg');
+    const err = document.getElementById('companyErr');
+    msg.classList.remove('show');
+    err.classList.remove('show');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form),
+      });
+      if (!res.ok) throw new Error('request failed');
+      msg.classList.add('show');
+      form.reset();
+    } catch (err2) {
+      err.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Registrar mi empresa';
     }
   });
 
