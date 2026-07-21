@@ -245,7 +245,7 @@
     transition: border-color 0.15s ease, color 0.15s ease;
   }
   .fb-btn:hover, .fb-btn:focus-visible { border-color: var(--ocean); color: var(--ocean); outline: none; }
-  .yt-btn svg { display: block; }
+  .yt-btn svg, .face-btn svg { display: block; }
   .lang-btn {
     display: inline-flex;
     align-items: center;
@@ -1234,7 +1234,9 @@
         <a href="#equipo" data-i18n="navEquipo">Equipo</a>
         <a href="#participar" data-i18n="navParticipa">Participa</a>
       </nav>
-      <a href="https://www.facebook.com/profile.php?id=61588748211049" target="_blank" rel="noopener noreferrer" class="fb-btn" aria-label="Síguenos en Facebook">f</a>
+      <a href="https://www.facebook.com/profile.php?id=61588748211049" target="_blank" rel="noopener noreferrer" class="fb-btn face-btn" aria-label="Síguenos en Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#1877F2"/><path d="M15.4 12.35H13.2V19.5H10.4V12.35H8.8V9.95H10.4V8.35C10.4 6.6 11.15 5 13.75 5H15.9V7.3H14.5C13.95 7.3 13.85 7.55 13.85 7.95V9.95H15.85L15.4 12.35Z" fill="#fff"/></svg>
+      </a>
       <a href="https://www.youtube.com/@TijuanaLimpia2049" target="_blank" rel="noopener noreferrer" class="fb-btn yt-btn" aria-label="Síguenos en YouTube">
         <svg viewBox="0 0 28 20" width="20" height="15" aria-hidden="true"><rect x="0.5" y="0.5" width="27" height="19" rx="5.5" fill="#FF0000" stroke="#FF0000"/><path d="M11 5.5 L20 10 L11 14.5 Z" fill="#fff"/></svg>
       </a>
