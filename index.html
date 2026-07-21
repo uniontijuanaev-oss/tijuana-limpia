@@ -399,6 +399,131 @@
     padding: 4px 10px;
   }
 
+  /* ---------- El sueño ---------- */
+  .sueno {
+    background: var(--ocean-deep);
+    color: #EAFBF8;
+  }
+  .sueno .eyebrow { color: var(--ocean-bright); }
+  .sueno .eyebrow::before { background: var(--clay); }
+  .sueno-head { max-width: 68ch; }
+  .sueno-head h2 {
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    margin-top: 14px;
+    color: #EAFBF8;
+  }
+  .sueno-head p {
+    color: #BFE3DE;
+    margin-top: 16px;
+    max-width: 62ch;
+  }
+  .sueno-head p a { color: var(--ocean-bright); }
+  .sueno-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(234, 251, 248, 0.14);
+    border: 1px solid rgba(234, 251, 248, 0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 40px;
+  }
+  @media (max-width: 760px) { .sueno-grid { grid-template-columns: 1fr; } }
+  .sueno-card { background: var(--ocean-deep); padding: clamp(26px, 4vw, 40px); }
+  .sueno-card .tag {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+  }
+  .sueno-card .stat {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4.6vw, 2.9rem);
+    color: var(--ocean-bright);
+    margin-top: 10px;
+    line-height: 1.05;
+  }
+  .sueno-card .stat-sub {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: #BFE3DE;
+    margin-top: 6px;
+  }
+  .sueno-card ul {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .sueno-card li {
+    font-size: 0.92rem;
+    color: #D7EEE9;
+    padding-left: 18px;
+    position: relative;
+  }
+  .sueno-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 100px;
+    background: var(--clay);
+  }
+  .sueno-funds {
+    margin-top: 40px;
+  }
+  .sueno-funds h3 {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ocean-bright);
+    font-weight: 600;
+  }
+  .sueno-funds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    margin-top: 18px;
+  }
+  .sueno-fund-item {
+    background: rgba(234, 251, 248, 0.05);
+    border: 1px solid rgba(234, 251, 248, 0.14);
+    border-radius: 8px;
+    padding: 18px 20px;
+  }
+  .sueno-fund-item h4 {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #EAFBF8;
+    margin: 0 0 8px;
+  }
+  .sueno-fund-item p { font-size: 0.86rem; color: #BFE3DE; margin: 0; }
+  .sueno-back {
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(234, 251, 248, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .sueno-back p { color: #BFE3DE; margin: 0; max-width: 46ch; font-size: 0.94rem; }
+  .sueno-source {
+    margin-top: 16px;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: rgba(191, 227, 222, 0.7);
+  }
+  .sueno-source a { color: rgba(191, 227, 222, 0.9); }
+
   /* ---------- Metas ---------- */
   .metas {
     background: var(--ocean-deep);
@@ -1078,6 +1203,67 @@
     </div>
   </section>
 
+  <section class="sueno" id="sueno">
+    <div class="wrap">
+      <div class="sueno-head reveal">
+        <span class="eyebrow">El sueño</span>
+        <h2>¿Y si 9 de cada 10 tijuanenses se suman?</h2>
+        <p>Tijuana tiene alrededor de 1,935,000 habitantes según las proyecciones de <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a>. Si 9 de cada 10 donaran solo 1 hora al mes y $10 pesos a la semana, esto es lo que pasaría — cada mes.</p>
+      </div>
+
+      <div class="sueno-grid reveal">
+        <div class="sueno-card">
+          <span class="tag">Fuerza humana</span>
+          <div class="stat tnum">1,935,000</div>
+          <div class="stat-sub">horas de voluntariado cada mes — equivalen a ~12,000 trabajadores municipales de tiempo completo, limpiando la ciudad todos los días.</div>
+          <ul>
+            <li>Barrer y limpiar cada calle, callejón y banqueta — pavimentada o de terracería — en las 9 delegaciones, al menos dos veces al mes.</li>
+            <li>Despejar por completo escombro, lodo y tiraderos clandestinos en las más de 120 zonas de riesgo por cañadas y pluviales, antes de cada temporada de lluvias.</li>
+            <li>Pintar guarniciones, reparar bancas de parques, plantar miles de árboles nativos y borrar grafiti en espacios públicos de toda la ciudad.</li>
+          </ul>
+        </div>
+        <div class="sueno-card">
+          <span class="tag">Fuerza económica</span>
+          <div class="stat tnum">$83.8M</div>
+          <div class="stat-sub">pesos cada mes (~$4.65 millones USD) — $19.35M MXN por semana, ~$1,005M MXN al año (~$55.8 millones USD).</div>
+          <ul>
+            <li>Flota y equipo nuevo cada mes: 20+ camionetas 4x4 y remolques tipo dump, cientos de barredoras manuales, sopladoras y hidrolavadoras comerciales.</li>
+            <li>Bolsas codificadas por color, equipo de seguridad y herramienta sin límite para cada equipo de barrio.</li>
+            <li>9 Centros de Herramientas de Sector — uno por delegación — totalmente equipados y operando todo el año.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sueno-funds reveal">
+        <h3>Con $83.8M MXN al mes, así de lejos llega</h3>
+        <div class="sueno-funds-grid">
+          <div class="sueno-fund-item">
+            <h4>Infraestructura permanente de barrio</h4>
+            <p>9 Centros de Herramientas de Sector (Otay, Playas, Sánchez Taboada, La Presa, La Mesa, Centro, entre otras) más estaciones públicas de reciclaje por color y compactadoras solares en zonas de alto tráfico.</p>
+          </div>
+          <div class="sueno-fund-item">
+            <h4>Plantas comunitarias de reciclaje</h4>
+            <p>Centros propios de la comunidad para separar y procesar residuos, convirtiendo el plástico PET recolectado en bancas, juegos infantiles y botes de basura para espacios públicos.</p>
+          </div>
+          <div class="sueno-fund-item">
+            <h4>Fondos para colonias</h4>
+            <p>Apoyos económicos mensuales a las colonias con mayor participación de voluntarios, para reparar calles, mejorar el alumbrado público y mantener parques comunitarios.</p>
+          </div>
+          <div class="sueno-fund-item">
+            <h4>Flota y equipo sin parar</h4>
+            <p>Reposición constante de vehículos, barredoras y herramienta — sin depender de donativos puntuales para mantener a las brigadas trabajando.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sueno-back reveal">
+        <p>Hoy no estamos ahí todavía — por eso empezamos con una meta de 5,000 personas. Cada quien que se registra nos acerca un poco más.</p>
+        <a href="#participar" class="btn btn-primary">Súmate ahora</a>
+      </div>
+      <p class="sueno-source">* Estimación propia con base en la población proyectada por CONAPO / Consejo Estatal de Población de Baja California. No representa fondos recaudados ni un compromiso de la ciudad — es el techo de lo posible si toda Tijuana participa.</p>
+    </div>
+  </section>
+
   <section id="metas">
     <div class="wrap metas-wrap reveal">
       <span class="metas-tag">Metas de la campaña · 2026–2028</span>
@@ -1180,6 +1366,7 @@
           <a href="#plan">Cinco rutas</a>
           <a href="#equipo">Equipo y logística</a>
           <a href="#fondo">Fondo de equipo</a>
+          <a href="#sueno">El sueño</a>
           <a href="#metas">Metas</a>
         </div>
         <div class="foot-col">
