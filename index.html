@@ -431,6 +431,106 @@
     border-radius: 100px;
   }
 
+  /* ---------- Equipo ---------- */
+  .equipo-updated {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--stone);
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    padding: 6px 14px;
+    margin-top: 16px;
+  }
+  .equipo-updated .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 100px;
+    background: var(--ocean);
+    flex-shrink: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .equipo-updated .dot { animation: equipo-pulse 2.2s ease-in-out infinite; }
+  }
+  @keyframes equipo-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+  .equipo-list { display: flex; flex-direction: column; gap: 10px; }
+  .equipo-cat {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--paper-raised);
+  }
+  .equipo-cat summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+  }
+  .equipo-cat summary::-webkit-details-marker { display: none; }
+  .equipo-cat summary:focus-visible { outline: 2px solid var(--ocean); outline-offset: -2px; }
+  .equipo-num {
+    font-family: 'Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--ocean);
+    font-size: 0.9rem;
+  }
+  .equipo-title { font-weight: 700; flex: 1; min-width: 0; }
+  .equipo-tag-new {
+    background: var(--clay);
+    color: #FCEEE7;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 100px;
+    flex-shrink: 0;
+  }
+  .equipo-count {
+    font-family: 'Plex Mono', monospace;
+    color: var(--stone);
+    font-size: 0.78rem;
+    flex-shrink: 0;
+  }
+  .equipo-chevron {
+    color: var(--stone);
+    font-family: 'Plex Mono', monospace;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .equipo-cat[open] .equipo-chevron { transform: rotate(45deg); }
+  .equipo-cat ul {
+    margin: 0;
+    padding: 0 22px 20px 66px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    list-style: none;
+  }
+  @media (max-width: 560px) { .equipo-cat ul { padding-left: 22px; } }
+  .equipo-cat li {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    position: relative;
+  }
+  .equipo-cat li strong { color: var(--ink); font-weight: 700; }
+  .equipo-cat li a { color: var(--ocean); text-decoration: underline; text-underline-offset: 2px; }
+  .equipo-note {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--stone);
+    margin-top: 22px;
+  }
+
   /* ---------- Día de 1 hora ---------- */
   .hora-panel {
     display: grid;
@@ -624,6 +724,7 @@
       <nav class="links">
         <a href="#problema">El problema</a>
         <a href="#plan">El plan</a>
+        <a href="#equipo">Equipo</a>
         <a href="#unahora">Una Hora al Mes</a>
         <a href="#participar">Participa</a>
       </nav>
@@ -734,6 +835,145 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="equipo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Equipo y logística</span>
+        <h2>Lo que necesita cada brigada</h2>
+        <p>Desde escobas de mano hasta barredoras industriales — este es el inventario que sostiene las cinco rutas. Es una lista viva: la seguimos actualizando conforme sumamos equipo, donaciones y aliados nuevos.</p>
+        <span class="equipo-updated"><span class="dot"></span>Última actualización: julio 2026</span>
+      </div>
+
+      <div class="equipo-list reveal">
+        <details class="equipo-cat" open>
+          <summary>
+            <span class="equipo-num tnum">01</span>
+            <span class="equipo-title">Barredoras y equipo mecánico industrial</span>
+            <span class="equipo-tag-new">Nuevo</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li><strong>Barredoras manuales de empuje</strong> (41" de ancho, tolva de 55L): recogen basura, arena, grava, hojas y tapas en banquetas, plazas, canchas y calles pavimentadas — sin gasolina ni electricidad.</li>
+            <li><strong>Barredoras aspiradoras a batería</strong>: filtración y succión activa para capturar polvo fino y limo en guarniciones pavimentadas sin levantar nubes de polvo.</li>
+            <li><strong>Barredoras magnéticas</strong>: barras magnéticas con ruedas, empujadas o remolcadas, para recoger clavos, alambre y fragmentos de metal en terracería, estacionamientos y tiraderos clandestinos.</li>
+            <li><strong>Hidrolavadoras de empuje con cabezal rotativo</strong>: lavado de alta eficiencia para plazas de concreto, paradas de camión y mercados públicos.</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">02</span>
+            <span class="equipo-title">Equipo motorizado y maquinaria</span>
+            <span class="equipo-count tnum">4</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Sopladoras de hojas y desbrozadoras a batería (inalámbricas)</li>
+            <li>Cargadores rápidos multi-bahía y paquetes de baterías de repuesto</li>
+            <li>Hidrolavadoras portátiles y tanques de suministro de agua</li>
+            <li>Generadores portátiles (gasolina o batería)</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">03</span>
+            <span class="equipo-title">Vehículos y transporte pesado</span>
+            <span class="equipo-count tnum">5</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Camionetas 4x4 de trabajo pesado</li>
+            <li>Remolques tipo dump de paredes altas (para basura pesada)</li>
+            <li>Vans de carga / camiones tipo caja</li>
+            <li>Carritos utilitarios eléctricos y triciclos de carga</li>
+            <li>Carretillas de trabajo pesado con llantas sólidas antiponchaduras</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">04</span>
+            <span class="equipo-title">Bolsas codificadas por color y clasificación</span>
+            <span class="equipo-count tnum">7</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li><strong>Verde:</strong> plásticos reciclables (PET/HDPE) y latas</li>
+            <li><strong>Azul:</strong> papel y cartón</li>
+            <li><strong>Negro/Gris:</strong> basura general de relleno sanitario y desecho pesado</li>
+            <li><strong>Amarillo/Rojo:</strong> residuos peligrosos, vidrio cortante o chatarra</li>
+            <li><strong>Transparente:</strong> orgánico / residuos de jardín</li>
+            <li>Aros y soportes plegables para bolsas</li>
+            <li>Contenedores resistentes a punción para objetos punzocortantes</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">05</span>
+            <span class="equipo-title">Herramientas manuales y equipo de limpieza</span>
+            <span class="equipo-count tnum">5</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Pinzas / recogedores de mango largo</li>
+            <li>Escobas de exterior y escobas rígidas</li>
+            <li>Palas de punta y de pala plana (para lodo y limo)</li>
+            <li>Rastrillos tipo bow, raspadores y cepillos de alambre</li>
+            <li>Recogedores de basura de mango largo y navajas utilitarias</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">06</span>
+            <span class="equipo-title">Equipo de protección personal (EPP)</span>
+            <span class="equipo-count tnum">5</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Guantes de trabajo resistentes a corte y punción</li>
+            <li>Guantes internos de nitrilo</li>
+            <li>Chalecos reflejantes de alta visibilidad (ANSI Clase 2/3)</li>
+            <li>Goggles de seguridad, cubrebocas N95 y protección solar</li>
+            <li>Botas de punta de acero o hule resistente</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">07</span>
+            <span class="equipo-title">Campamento base móvil y logística</span>
+            <span class="equipo-count tnum">4</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Toldos plegables de 3x3 m, mesas y sillas plegables</li>
+            <li>Garrafones de agua de 19L y estaciones de hidratación</li>
+            <li>Estaciones de lavado de manos y gel antibacterial</li>
+            <li>Radios de dos vías (walkie-talkies) y básculas colgantes portátiles</li>
+          </ul>
+        </details>
+
+        <details class="equipo-cat">
+          <summary>
+            <span class="equipo-num tnum">08</span>
+            <span class="equipo-title">Disposición final y alianzas de gobierno</span>
+            <span class="equipo-count tnum">3</span>
+            <span class="equipo-chevron" aria-hidden="true">+</span>
+          </summary>
+          <ul>
+            <li>Permisos y convenios municipales de disposición con delegaciones locales, como la iniciativa <a href="https://www.tijuana.gob.mx/noticia.aspx?idComunicado=35745" target="_blank" rel="noopener noreferrer">Tijuana: Ciudad Limpia</a></li>
+            <li>Contenedores roll-off en puntos comunitarios centrales</li>
+            <li>Alianzas directas de separación con centros de reciclaje locales</li>
+          </ul>
+        </details>
+      </div>
+      <p class="equipo-note">¿Tienes equipo, herramienta o transporte para donar o prestar? Cuéntanoslo en el formulario de registro más abajo.</p>
     </div>
   </section>
 
@@ -862,6 +1102,7 @@
           <h4>El plan</h4>
           <a href="#problema">El problema</a>
           <a href="#plan">Cinco rutas</a>
+          <a href="#equipo">Equipo y logística</a>
           <a href="#metas">Metas</a>
         </div>
         <div class="foot-col">
