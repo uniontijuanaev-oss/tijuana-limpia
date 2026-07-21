@@ -524,6 +524,80 @@
   }
   .sueno-source a { color: rgba(191, 227, 222, 0.9); }
 
+  /* ---------- Compartir (reusable) ---------- */
+  .share-box {
+    margin-top: 44px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(234, 251, 248, 0.14);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: clamp(24px, 4vw, 40px);
+    align-items: center;
+  }
+  @media (max-width: 640px) { .share-box { grid-template-columns: 1fr; justify-items: start; } }
+  .share-qr {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 118px;
+    height: 118px;
+    flex-shrink: 0;
+  }
+  .share-qr img { width: 100%; height: 100%; display: block; }
+  .share-copy-text h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
+    color: #EAFBF8;
+    text-transform: uppercase;
+  }
+  .share-copy-text p { color: #BFE3DE; margin-top: 8px; font-size: 0.92rem; max-width: 48ch; }
+  .share-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .share-btn {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 0.86rem;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 100px;
+    border: 1px solid rgba(234, 251, 248, 0.3);
+    color: #EAFBF8;
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .share-btn:hover, .share-btn:focus-visible { border-color: var(--ocean-bright); background: rgba(234, 251, 248, 0.06); outline: none; }
+  .share-copied {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--ocean-bright);
+    margin-left: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .share-copied.show { opacity: 1; }
+
+  /* Light-context variant, used inside the sign-up form */
+  .join .share-box {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: none;
+  }
+  .join .share-box.show { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .join .share-buttons { margin-top: 4px; }
+  .join .share-btn {
+    border-color: var(--line);
+    color: var(--ink);
+  }
+  .join .share-btn:hover, .join .share-btn:focus-visible { border-color: var(--ocean); background: var(--paper); color: var(--ocean); }
+  .join .share-copy-text p { color: var(--ink-soft); }
+  .join .share-copied { color: var(--ocean); }
+
   /* ---------- Metas ---------- */
   .metas {
     background: var(--ocean-deep);
@@ -1261,6 +1335,21 @@
         <a href="#participar" class="btn btn-primary">Súmate ahora</a>
       </div>
       <p class="sueno-source">* Estimación propia con base en la población proyectada por CONAPO / Consejo Estatal de Población de Baja California. No representa fondos recaudados ni un compromiso de la ciudad — es el techo de lo posible si toda Tijuana participa.</p>
+
+      <div class="share-box reveal">
+        <div class="share-qr">
+          <img src="assets/qr-el-sueno.png" alt="Código QR hacia El Sueño en tijuanalimpia" loading="lazy" width="118" height="118">
+        </div>
+        <div class="share-copy-text">
+          <h3>Compártelo</h3>
+          <p>Escanea el código o mándaselo a alguien que también quiera ver a Tijuana así.</p>
+          <div class="share-buttons">
+            <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" data-share-text="Así se ve Tijuana si 9 de cada 10 nos sumamos. Échale un ojo:" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#sueno">Copiar enlace<span class="share-copied">¡Copiado!</span></button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1346,6 +1435,18 @@
           <button type="submit" class="btn btn-primary" id="joinSubmit">Quiero sumarme</button>
           <p class="form-msg" id="formMsg">Gracias — quedaste registrado. Te avisamos por correo en cuanto lleguemos a 5,000 y arranque Una Hora al Mes.</p>
           <p class="form-msg" id="formErr" style="color:var(--clay)">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
+
+          <div class="share-box" id="postSignupShare">
+            <div class="share-copy-text">
+              <h3 style="color:var(--ink)">Ayúdanos a llegar a 5,000</h3>
+              <p>Ya te registraste — entre más amigos se sumen, más rápido arranca Una Hora al Mes.</p>
+              <div class="share-buttons">
+                <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" data-share-text="Me acabo de registrar para que Tijuana sea la ciudad más limpia de México. Súmate tú también:" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" target="_blank" rel="noopener noreferrer">Facebook</a>
+                <button type="button" class="share-btn share-copy" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora">Copiar enlace<span class="share-copied">¡Copiado!</span></button>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -1385,6 +1486,38 @@
 </footer>
 
 <script>
+  // Share buttons: build WhatsApp/Facebook links from data attributes, wire up copy-link
+  document.querySelectorAll('.share-wa').forEach((a) => {
+    const url = a.dataset.shareUrl;
+    const text = a.dataset.shareText ? a.dataset.shareText + ' ' + url : url;
+    a.href = 'https://wa.me/?text=' + encodeURIComponent(text);
+  });
+  document.querySelectorAll('.share-fb').forEach((a) => {
+    a.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(a.dataset.shareUrl);
+  });
+  document.querySelectorAll('.share-copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.shareUrl;
+      const badge = btn.querySelector('.share-copied');
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (e) {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      if (badge) {
+        badge.classList.add('show');
+        setTimeout(() => badge.classList.remove('show'), 1800);
+      }
+    });
+  });
+
   // Mobile menu toggle
   const menuBtn = document.getElementById('menuBtn');
   const links = document.querySelector('nav.links');
@@ -1485,6 +1618,7 @@
       });
       if (!res.ok) throw new Error('request failed');
       msg.classList.add('show');
+      document.getElementById('postSignupShare').classList.add('show');
       form.reset();
       hitCount();
     } catch (err2) {
