@@ -632,6 +632,45 @@
   }
   .sueno-source a { color: rgba(191, 227, 222, 0.9); }
 
+  /* ---------- Galería de visión (imágenes conceptuales) ---------- */
+  .sueno-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 40px 0;
+  }
+  @media (max-width: 760px) { .sueno-gallery { grid-template-columns: 1fr; } }
+  .sueno-gallery figure {
+    margin: 0;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(234, 251, 248, 0.14);
+    background: rgba(234, 251, 248, 0.04);
+  }
+  .sueno-gallery img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
+  .sueno-gallery .concept-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--clay);
+    color: #FCEEE7;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .sueno-gallery figcaption {
+    padding: 12px 16px 16px;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    color: #BFE3DE;
+  }
+
   /* ---------- Compartir (reusable) ---------- */
   .share-box {
     margin-top: 44px;
@@ -1562,6 +1601,19 @@
         <p data-i18n="sueLead">Tijuana tiene alrededor de 1,935,000 habitantes según las proyecciones de <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a>. Si 9 de cada 10 donaran solo 1 hora al mes y $10 pesos a la semana, esto es lo que pasaría — cada mes.</p>
       </div>
 
+      <div class="sueno-gallery reveal">
+        <figure>
+          <span class="concept-tag" data-i18n="galConceptTag">Visión conceptual</span>
+          <img src="assets/vision-avenida-revolucion.jpg" alt="Imagen conceptual generada por IA: Avenida Revolución imaginada hacia el año 2049" loading="lazy">
+          <figcaption data-i18n="galCaption1">Avenida Revolución, circa 2049 — imagen generada por IA, no es una fotografía real. Así nos imaginamos la ciudad si el plan funciona.</figcaption>
+        </figure>
+        <figure>
+          <span class="concept-tag" data-i18n="galConceptTag">Visión conceptual</span>
+          <img src="assets/vision-brigada-playa.jpg" alt="Imagen conceptual generada por IA: una brigada imaginada en Playas de Tijuana" loading="lazy">
+          <figcaption data-i18n="galCaption2">Así imaginamos una brigada en Playas de Tijuana. La campaña apenas empieza — esta imagen no documenta un evento real ni una playera que ya exista.</figcaption>
+        </figure>
+      </div>
+
       <div class="sueno-grid reveal">
         <div class="sueno-card">
           <span class="tag" data-i18n="sueTag1">Fuerza humana</span>
@@ -2069,6 +2121,9 @@
     uhLead: `It's that simple: once we reach 5,000 registered people, we start — everyone donates one hour a month, the same weekend, in their own colonia, canyon, or nearest beach. It's not a one-time event, it's a city habit.`,
     uhBtn: `Sign up now`, uhLabel: `people registered right now`,
     uhPrivacy: `Your name and email stay private — only the total is shown here. Join through the site or from our Facebook page.`,
+    galConceptTag: `Concept vision`,
+    galCaption1: `Avenida Revolución, circa 2049 — AI-generated image, not a real photo. This is how we picture the city if the plan works.`,
+    galCaption2: `This is how we picture a brigade at Playas de Tijuana. The campaign is just getting started — this image doesn't document a real event or a shirt that actually exists yet.`,
     sueEyebrow: `The dream`, sueH2: `What if 9 out of 10 tijuanenses joined in?`,
     sueLead: `Tijuana has around 1,935,000 residents according to <a href="https://www.ceieg.bajacalifornia.gob.mx/wp-content/uploads/2024/07/FICHA-INFORMATIVA-PROYECCIONES-DE-POBLACION-MUNICIPALES.pdf" target="_blank" rel="noopener noreferrer">CONAPO</a> projections. If 9 out of 10 gave just 1 hour a month and $10 pesos a week, here's what would happen — every month.`,
     sueTag1: `Human power`,
