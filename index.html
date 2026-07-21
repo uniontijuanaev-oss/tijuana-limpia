@@ -360,6 +360,61 @@
     margin-top: 22px;
   }
 
+  /* ---------- Beneficios ---------- */
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .beneficio-card { background: var(--paper-raised); padding: 26px 24px; }
+  .beneficio-card .tag {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    background: color-mix(in srgb, var(--ocean) 12%, transparent);
+    padding: 3px 9px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .beneficio-card h3 {
+    font-family: 'Archivo', sans-serif;
+    text-transform: none;
+    font-weight: 700;
+    font-size: 1.05rem;
+    margin: 14px 0 10px;
+    letter-spacing: 0;
+  }
+  .beneficio-card ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .beneficio-card li {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    padding-left: 16px;
+    position: relative;
+  }
+  .beneficio-card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 100px;
+    background: var(--ocean);
+  }
+
   /* ---------- Rutas / plan ---------- */
   .rutas-list { display: flex; flex-direction: column; }
   .ruta {
@@ -1136,6 +1191,72 @@
     </div>
   </section>
 
+  <section id="beneficios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Por qué importa</span>
+        <h2>Una Tijuana limpia nos beneficia a todos</h2>
+        <p style="margin-top:14px">No es solo estética. Cada cañón despejado, cada calle barrida, cambia la vida de alguien — hoy.</p>
+      </div>
+      <div class="beneficios-grid reveal">
+        <div class="beneficio-card">
+          <span class="tag">Niños</span>
+          <h3>Espacios seguros para crecer</h3>
+          <ul>
+            <li>Parques y calles seguras, sin vidrio roto ni escombro</li>
+            <li>Menos criaderos de mosquitos y roedores — menos dengue</li>
+            <li>Aire más limpio cerca de las escuelas</li>
+          </ul>
+        </div>
+        <div class="beneficio-card">
+          <span class="tag">Adultos mayores</span>
+          <h3>Calles que se pueden caminar</h3>
+          <ul>
+            <li>Banquetas despejadas, sin tropiezos ni obstáculos</li>
+            <li>Menos enfermedades respiratorias por humo de basura quemada</li>
+            <li>Cañones despejados — menos riesgo de inundación en la sierra</li>
+          </ul>
+        </div>
+        <div class="beneficio-card">
+          <span class="tag">Turismo</span>
+          <h3>La primera impresión decide</h3>
+          <ul>
+            <li>Define si un visitante regresa o lo recomienda</li>
+            <li>Mejores reseñas en línea atraen más visitantes</li>
+            <li>Protege la economía de Playas, Revolución y la Zona Río</li>
+          </ul>
+        </div>
+        <div class="beneficio-card">
+          <span class="tag">Negocios</span>
+          <h3>Un entorno que atrae</h3>
+          <ul>
+            <li>Más tráfico peatonal en corredores comerciales limpios</li>
+            <li>Menos gasto en plagas y daños por tiraderos junto al negocio</li>
+            <li>Una ciudad ordenada atrae inversión, incluyendo al sector maquilador</li>
+          </ul>
+        </div>
+        <div class="beneficio-card">
+          <span class="tag">Salud y calidad de vida</span>
+          <h3>Se respira, se vive mejor</h3>
+          <ul>
+            <li>Menos vectores de enfermedad, agua más limpia en el Río Tijuana</li>
+            <li>Menos incendios de basura — mejor calidad del aire</li>
+            <li>Vivir en un entorno cuidado mejora el ánimo y reduce el estrés</li>
+          </ul>
+        </div>
+        <div class="beneficio-card">
+          <span class="tag">La ciudad</span>
+          <h3>Prevenir cuesta menos que reparar</h3>
+          <ul>
+            <li>Mejora la imagen de Tijuana a nivel nacional e internacional</li>
+            <li>Despejar un cañón es más barato que reparar los daños de una inundación</li>
+            <li>Protege la vida marina en la costa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="plan">
     <div class="wrap">
       <div class="section-head reveal">
@@ -1675,6 +1796,7 @@
         <div class="foot-col">
           <h4>El plan</h4>
           <a href="#problema">El problema</a>
+          <a href="#beneficios">Por qué importa</a>
           <a href="#plan">Cinco rutas</a>
           <a href="#equipo">Equipo y logística</a>
           <a href="#fondo">Fondo de equipo</a>
