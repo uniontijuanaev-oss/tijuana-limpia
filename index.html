@@ -1791,12 +1791,16 @@
   <section id="empresas">
     <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">Para empresas</span>
-        <h2>¿Tu empresa ya dona tiempo para limpiar la ciudad?</h2>
-        <p style="margin-top:14px">Si tu negocio, maquiladora u oficina ya organiza jornadas de limpieza con su personal, súmate a la coalición. Coordinamos esfuerzos para que dos empresas no limpien la misma colonia mientras otra se queda sin nadie — y tu empresa aparece como aliada de la iniciativa.</p>
+        <span class="eyebrow">Para empresas y organizaciones</span>
+        <h2>Súmense a su manera — con tiempo o patrocinando una zona</h2>
+        <p style="margin-top:14px">Si tu negocio, maquiladora, fundación u oficina ya organiza jornadas de limpieza con su personal, súmate a la coalición. Y si prefieren no mandar gente sino patrocinar el mantenimiento de un cañón, calle, playa o parque específico, también hay un lugar para ustedes — con su nombre asociado a esa zona.</p>
       </div>
       <div class="participar-grid reveal">
         <div>
+          <div class="accion">
+            <h3>Adopta una zona</h3>
+            <p>Patrocina el mantenimiento continuo de un cañón, calle, playa o parque específico — sin necesidad de mandar personal. Esa zona queda asociada a tu empresa.</p>
+          </div>
           <div class="accion">
             <h3>Reconocimiento público</h3>
             <p>Tu empresa aparece en la lista de aliados del sitio, con enlace a tu negocio.</p>
@@ -1856,6 +1860,7 @@
               <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, de forma regular" checked>Sí, regular</label>
               <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="Sí, ocasionalmente">Sí, a veces</label>
               <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No todavía, pero queremos empezar">No, pero queremos empezar</label>
+              <label class="radio-item"><input type="radio" name="empresa_ya_limpia" value="No — solo queremos patrocinar una zona">No — solo patrocinar</label>
             </div>
           </div>
           <div class="field">
@@ -1864,9 +1869,14 @@
               <label class="check-item"><input type="checkbox" name="empresa_voluntariado" value="Sí">Voluntariado de empleados</label>
               <label class="check-item"><input type="checkbox" name="empresa_equipo" value="Sí">Donar o prestar equipo</label>
               <label class="check-item"><input type="checkbox" name="empresa_fondo" value="Sí">Patrocinar el fondo de equipo</label>
+              <label class="check-item"><input type="checkbox" name="empresa_zona" value="Sí">Patrocinar una zona (cañón, calle, playa o parque)</label>
               <label class="check-item"><input type="checkbox" name="empresa_transporte" value="Sí">Prestar transporte</label>
               <label class="check-item"><input type="checkbox" name="empresa_almacenamiento" value="Sí">Espacio de almacenamiento</label>
             </div>
+          </div>
+          <div class="field">
+            <label for="empresa_zona_interes">Zona que le interesaría patrocinar (opcional)</label>
+            <input id="empresa_zona_interes" name="empresa_zona_interes" type="text" placeholder="Ej. Cañón del Sainz, Playas de Tijuana, o 'sin preferencia, ustedes me asignan una'" />
           </div>
           <div class="field">
             <label for="empresa_comentarios">Cuéntanos más (opcional)</label>
