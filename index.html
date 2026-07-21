@@ -334,6 +334,19 @@
     font-style: normal;
     color: var(--ocean);
   }
+  .hero h1 .year-badge {
+    display: inline-block;
+    font-family: 'Plex Mono', monospace;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    font-weight: 700;
+    color: var(--ocean);
+    background: color-mix(in srgb, var(--ocean) 14%, transparent);
+    padding: 3px 11px;
+    border-radius: 100px;
+    vertical-align: middle;
+    margin-left: 10px;
+    letter-spacing: 0.03em;
+  }
   .hero p.lead {
     font-size: 1.08rem;
     max-width: 46ch;
@@ -1282,7 +1295,7 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow" data-i18n="heroEyebrow">De la colonia al mar</span>
-        <h1 data-i18n="heroH1">Tijuana va a ser <em>la ciudad más limpia</em> de México.</h1>
+        <h1 data-i18n="heroH1">Tijuana va a ser <em>la ciudad más limpia</em> de México. <span class="year-badge">2049</span></h1>
         <p class="lead" data-i18n="heroLead">No es un eslogan de campaña: es una ruta de trabajo, colonia por colonia, cañón por cañón, hasta la costa. Empieza en las brigadas de barrio y termina en una playa donde nadie tiene que esquivar basura para meterse al mar.</p>
         <div class="hero-actions">
           <a href="#participar" class="btn btn-primary" data-i18n="heroBtnJoin">Súmate a una brigada</a>
@@ -2082,7 +2095,7 @@
   const I18N = { en: {
     navProblema: `The problem`, navPlan: `The plan`, navEquipo: `Equipment`, navUnaHora: `One Hour a Month`, navParticipa: `Get involved`, navCta: `Join`,
     heroEyebrow: `From the neighborhood to the sea`,
-    heroH1: `Tijuana is going to be <em>the cleanest city</em> in Mexico.`,
+    heroH1: `Tijuana is going to be <em>the cleanest city</em> in Mexico. <span class="year-badge">2049</span>`,
     heroLead: `It's not a campaign slogan: it's a work plan, colonia by colonia, canyon by canyon, all the way to the coast. It starts with neighborhood brigades and ends at a beach where nobody has to dodge trash to get in the water.`,
     heroBtnJoin: `Join a brigade`, heroBtnPlan: `See the full plan`,
     heroGoal: `Goal: <strong>5,000</strong> people registered to start donating <strong>one hour a month</strong>, all at once.`,
