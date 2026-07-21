@@ -897,7 +897,7 @@
     color: var(--stone);
     margin-bottom: 6px;
   }
-  form.join input, form.join select {
+  form.join input, form.join select, form.join textarea {
     width: 100%;
     font-family: 'Archivo', sans-serif;
     font-size: 0.98rem;
@@ -907,7 +907,8 @@
     background: var(--paper);
     color: var(--ink);
   }
-  form.join input:focus, form.join select:focus, .btn:focus-visible, nav.links a:focus-visible, .menu-btn:focus-visible {
+  form.join textarea { resize: vertical; min-height: 64px; }
+  form.join input:focus, form.join select:focus, form.join textarea:focus, .btn:focus-visible, nav.links a:focus-visible, .menu-btn:focus-visible {
     outline: 2px solid var(--ocean);
     outline-offset: 2px;
   }
@@ -918,6 +919,92 @@
     border: none;
     margin-top: 4px;
   }
+
+  /* Section grouping inside the long form */
+  form.join .form-section {
+    padding-top: 22px;
+    margin-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  form.join .form-section:first-child { padding-top: 0; margin-top: 0; border-top: none; }
+  form.join .form-section-head {
+    font-family: 'Anton', sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+  }
+  form.join .form-section-sub {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+    max-width: 46ch;
+  }
+  form.join .check-subhead {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin: 16px 0 8px;
+  }
+  form.join .check-subhead:first-child { margin-top: 0; }
+
+  /* Checkbox / radio grids */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 8px 16px;
+  }
+  .check-item, .radio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    cursor: pointer;
+  }
+  .check-item input, .radio-item input {
+    width: auto;
+    accent-color: var(--ocean);
+    margin-top: 3px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .radio-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .check-item.commit {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+  .check-item.commit + .check-item.commit { margin-top: 8px; }
+
+  /* Launch notice above submit */
+  .launch-notice {
+    background: var(--clay-bg);
+    border: 1px solid var(--clay-soft);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 24px 0 16px;
+  }
+  .launch-notice .tag {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--clay);
+  }
+  .launch-notice p { font-size: 0.86rem; color: var(--ink-soft); margin: 6px 0 0; }
+
   .form-msg {
     margin-top: 14px;
     font-size: 0.86rem;
@@ -925,6 +1012,12 @@
     display: none;
   }
   .form-msg.show { display: block; }
+  .postsignup-status {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--ocean);
+    margin: 0 0 14px;
+  }
 
   /* ---------- Footer ---------- */
   footer.site {
@@ -1408,38 +1501,156 @@
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-          <div class="field">
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
-          </div>
-          <div class="row2">
+          <div class="form-section">
+            <div class="form-section-head">Información básica</div>
+            <p class="form-section-sub">Cómo te encontramos y a quién buscamos en tu colonia.</p>
             <div class="field">
-              <label for="colonia">Colonia</label>
-              <input id="colonia" name="colonia" type="text" placeholder="Ej. Otay, Centro, Playas" required />
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="whatsapp">WhatsApp / Teléfono</label>
+                <input id="whatsapp" name="whatsapp" type="tel" placeholder="664 000 0000" required />
+              </div>
+              <div class="field">
+                <label for="correo">Correo (opcional)</label>
+                <input id="correo" name="correo" type="email" placeholder="tu@correo.com" />
+              </div>
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="delegacion">Delegación</label>
+                <select id="delegacion" name="delegacion" required>
+                  <option value="" selected disabled>Elige tu delegación</option>
+                  <option>Centro</option>
+                  <option>Cerro Colorado</option>
+                  <option>La Mesa</option>
+                  <option>La Presa A.L.R.</option>
+                  <option>La Presa Este</option>
+                  <option>Otay Centenario</option>
+                  <option>Playas</option>
+                  <option>San Antonio de los Buenos</option>
+                  <option>Sánchez Taboada</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="colonia">Colonia</label>
+                <input id="colonia" name="colonia" type="text" placeholder="Ej. Las Torres" required />
+              </div>
             </div>
             <div class="field">
-              <label for="correo">Correo</label>
-              <input id="correo" name="correo" type="email" placeholder="tu@correo.com" required />
+              <label>Medio de contacto preferido</label>
+              <div class="radio-row">
+                <label class="radio-item"><input type="radio" name="medio_contacto" value="WhatsApp" checked>WhatsApp</label>
+                <label class="radio-item"><input type="radio" name="medio_contacto" value="SMS">SMS</label>
+                <label class="radio-item"><input type="radio" name="medio_contacto" value="Llamada">Llamada</label>
+              </div>
             </div>
           </div>
-          <div class="field">
-            <label for="interes">Me interesa</label>
-            <select id="interes" name="interes">
-              <option>Brigadas de barrio</option>
-              <option>Cañones y arroyos</option>
-              <option>Costa sin plástico</option>
-              <option>Comercio y separación</option>
-              <option>Educación ambiental</option>
-            </select>
+
+          <div class="form-section">
+            <div class="form-section-head">Compromiso comunitario</div>
+            <div class="field">
+              <label for="interes">¿Qué ruta te interesa más?</label>
+              <select id="interes" name="interes">
+                <option>Brigadas de barrio</option>
+                <option>Cañones y arroyos</option>
+                <option>Costa sin plástico</option>
+                <option>Comercio y separación</option>
+                <option>Educación ambiental</option>
+              </select>
+            </div>
+            <label class="check-item commit">
+              <input type="checkbox" name="compromiso_tiempo" value="Sí">
+              Dono 1 hora de limpieza al mes.
+            </label>
+            <label class="check-item commit">
+              <input type="checkbox" name="compromiso_fondo" value="Sí">
+              Dono $10 MXN a la semana ($40/mes) al fondo de equipo.
+            </label>
           </div>
+
+          <div class="form-section">
+            <div class="form-section-head">Donación de equipo</div>
+            <p class="form-section-sub">Marca lo que puedas donar de forma permanente o prestar para fines de semana de limpieza.</p>
+
+            <div class="check-subhead">Vehículos y transporte</div>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="equipo_pickup" value="Sí">Camioneta pickup</label>
+              <label class="check-item"><input type="checkbox" name="equipo_remolque" value="Sí">Remolque utilitario</label>
+              <label class="check-item"><input type="checkbox" name="equipo_van" value="Sí">Van / camión de carga</label>
+            </div>
+
+            <div class="check-subhead">Equipo motorizado</div>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="equipo_sopladora" value="Sí">Sopladora inalámbrica</label>
+              <label class="check-item"><input type="checkbox" name="equipo_hidrolavadora" value="Sí">Hidrolavadora a presión</label>
+              <label class="check-item"><input type="checkbox" name="equipo_desbrozadora" value="Sí">Desbrozadora</label>
+              <label class="check-item"><input type="checkbox" name="equipo_generador" value="Sí">Generador eléctrico</label>
+            </div>
+
+            <div class="check-subhead">Herramientas manuales</div>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="equipo_palas" value="Sí">Palas</label>
+              <label class="check-item"><input type="checkbox" name="equipo_escobas" value="Sí">Escobas de exterior</label>
+              <label class="check-item"><input type="checkbox" name="equipo_rastrillos" value="Sí">Rastrillos</label>
+              <label class="check-item"><input type="checkbox" name="equipo_carretillas" value="Sí">Carretillas</label>
+              <label class="check-item"><input type="checkbox" name="equipo_pinzas" value="Sí">Pinzas recogedoras</label>
+            </div>
+
+            <div class="check-subhead">Seguridad y suministros</div>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="equipo_guantes" value="Sí">Guantes de trabajo</label>
+              <label class="check-item"><input type="checkbox" name="equipo_chalecos" value="Sí">Chalecos de alta visibilidad</label>
+              <label class="check-item"><input type="checkbox" name="equipo_bolsas" value="Sí">Bolsas de basura resistentes</label>
+              <label class="check-item"><input type="checkbox" name="equipo_pintura" value="Sí">Pintura y brochas</label>
+              <label class="check-item"><input type="checkbox" name="equipo_garrafones" value="Sí">Garrafones de agua</label>
+            </div>
+
+            <div class="check-subhead">Espacio</div>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="equipo_almacenamiento" value="Sí">Tengo garage, lote o bodega segura en mi colonia para un kit de herramientas</label>
+            </div>
+
+            <div class="field" style="margin-top:16px">
+              <label for="otros_articulos">Otros artículos que puedas donar</label>
+              <textarea id="otros_articulos" name="otros_articulos" placeholder="Ej. Tengo 2 mesas plegables y 10 conos de seguridad"></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-head">Habilidades especializadas</div>
+            <p class="form-section-sub">Marca los roles donde te gustaría ayudar, además de barrer.</p>
+            <div class="check-grid">
+              <label class="check-item"><input type="checkbox" name="skill_capitan" value="Sí">Capitán(a) de colonia — organizar y liderar limpiezas</label>
+              <label class="check-item"><input type="checkbox" name="skill_chofer" value="Sí">Chofer / logística</label>
+              <label class="check-item"><input type="checkbox" name="skill_mecanico" value="Sí">Herramientas y mecánica</label>
+              <label class="check-item"><input type="checkbox" name="skill_redes" value="Sí">Redes sociales y medios</label>
+              <label class="check-item"><input type="checkbox" name="skill_reciclaje" value="Sí">Coordinador(a) de reciclaje</label>
+              <label class="check-item"><input type="checkbox" name="skill_enlace" value="Sí">Enlace con negocios / maquiladoras</label>
+              <label class="check-item"><input type="checkbox" name="skill_primeros_auxilios" value="Sí">Primeros auxilios / seguridad</label>
+            </div>
+            <div class="field" style="margin-top:16px">
+              <label for="otras_habilidades">Otras habilidades o ideas</label>
+              <textarea id="otras_habilidades" name="otras_habilidades" placeholder="Ej. Soy desarrollador(a) web y puedo ayudar con la app de registro"></textarea>
+            </div>
+          </div>
+
+          <div class="launch-notice">
+            <span class="tag">Aviso importante</span>
+            <p>Para tener listos los kits de equipo compartido desde el primer día, activamos las brigadas en cuanto lleguemos a <strong>5,000 personas registradas</strong> en toda la ciudad. No te asignamos fecha de evento antes de eso — mientras tanto, ayúdanos a llegar más rápido compartiendo esta página con tu familia y vecinos.</p>
+          </div>
+
           <button type="submit" class="btn btn-primary" id="joinSubmit">Quiero sumarme</button>
-          <p class="form-msg" id="formMsg">Gracias — quedaste registrado. Te avisamos por correo en cuanto lleguemos a 5,000 y arranque Una Hora al Mes.</p>
+          <p class="form-msg" id="formMsg">Gracias — quedaste registrado.</p>
           <p class="form-msg" id="formErr" style="color:var(--clay)">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
 
           <div class="share-box" id="postSignupShare">
             <div class="share-copy-text">
-              <h3 style="color:var(--ink)">Ayúdanos a llegar a 5,000</h3>
-              <p>Ya te registraste — entre más amigos se sumen, más rápido arranca Una Hora al Mes.</p>
+              <p class="postsignup-status" id="postSignupStatus">Vamos en <span id="postSignupCount">—</span> / 5,000 registrados.</p>
+              <h3 style="color:var(--ink)">Ayúdanos a llegar más rápido</h3>
+              <p>Comparte tu enlace personal — entre más amigos se sumen, más rápido arranca Una Hora al Mes.</p>
               <div class="share-buttons">
                 <a class="share-btn share-wa" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" data-share-text="Me acabo de registrar para que Tijuana sea la ciudad más limpia de México. Súmate tú también:" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 <a class="share-btn share-fb" data-share-url="https://uniontijuanaev-oss.github.io/tijuana-limpia/#unahora" target="_blank" rel="noopener noreferrer">Facebook</a>
@@ -1487,14 +1698,16 @@
 
 <script>
   // Share buttons: build WhatsApp/Facebook links from data attributes, wire up copy-link
-  document.querySelectorAll('.share-wa').forEach((a) => {
+  function buildWaHref(a) {
     const url = a.dataset.shareUrl;
     const text = a.dataset.shareText ? a.dataset.shareText + ' ' + url : url;
     a.href = 'https://wa.me/?text=' + encodeURIComponent(text);
-  });
-  document.querySelectorAll('.share-fb').forEach((a) => {
+  }
+  function buildFbHref(a) {
     a.href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(a.dataset.shareUrl);
-  });
+  }
+  document.querySelectorAll('.share-wa').forEach(buildWaHref);
+  document.querySelectorAll('.share-fb').forEach(buildFbHref);
   document.querySelectorAll('.share-copy').forEach((btn) => {
     btn.addEventListener('click', async () => {
       const url = btn.dataset.shareUrl;
@@ -1576,6 +1789,8 @@
     const bar = document.getElementById('horaBarFill');
     if (el) el.textContent = fmtNum(value);
     if (bar) bar.style.width = Math.min(100, (value / COUNTER_GOAL) * 100) + '%';
+    const postCount = document.getElementById('postSignupCount');
+    if (postCount) postCount.textContent = fmtNum(value);
   }
   async function fetchCount() {
     try {
@@ -1610,6 +1825,8 @@
     err.classList.remove('show');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando…';
+    const nombreVal = form.nombre.value.trim();
+    const medioVal = form.querySelector('input[name="medio_contacto"]:checked')?.value || 'WhatsApp';
     try {
       const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
         method: 'POST',
@@ -1617,7 +1834,21 @@
         body: new FormData(form),
       });
       if (!res.ok) throw new Error('request failed');
+      msg.textContent = `Gracias — quedaste registrado. Te contactamos por ${medioVal} en cuanto lleguemos a 5,000 y arranque Una Hora al Mes.`;
       msg.classList.add('show');
+
+      // Personalize the post-signup share links with a ?ref= tag (cosmetic only —
+      // there's no backend, so this doesn't track clicks, just labels the link as yours).
+      if (nombreVal) {
+        const refUrl = 'https://uniontijuanaev-oss.github.io/tijuana-limpia/?ref=' + encodeURIComponent(nombreVal) + '#unahora';
+        document.querySelectorAll('#postSignupShare .share-wa, #postSignupShare .share-fb, #postSignupShare .share-copy').forEach((el) => {
+          el.dataset.shareUrl = refUrl;
+        });
+        const postWa = document.querySelector('#postSignupShare .share-wa');
+        const postFb = document.querySelector('#postSignupShare .share-fb');
+        if (postWa) buildWaHref(postWa);
+        if (postFb) buildFbHref(postFb);
+      }
       document.getElementById('postSignupShare').classList.add('show');
       form.reset();
       hitCount();
