@@ -452,11 +452,53 @@
     padding-left: clamp(24px, 5vw, 48px);
   }
   @media (max-width: 760px) { .hora-figure { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 28px; } }
+  .hora-count {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.2em;
+  }
   .hora-num {
     font-family: 'Anton', sans-serif;
     font-size: clamp(3.4rem, 9vw, 5.4rem);
     line-height: 0.9;
     color: var(--ocean);
+    transition: color 0.2s ease;
+  }
+  .hora-num.is-live { color: var(--ocean-bright); }
+  .hora-count-sep {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--line);
+  }
+  .hora-goal-num {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--stone);
+  }
+  .hora-bar {
+    margin: 16px auto 0;
+    max-width: 260px;
+    height: 6px;
+    border-radius: 100px;
+    background: var(--line);
+    overflow: hidden;
+  }
+  .hora-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--ocean);
+    border-radius: 100px;
+    transition: width 0.6s ease;
+  }
+  .hora-privacy {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--stone);
+    margin-top: 14px;
+    max-width: 24ch;
+    margin-left: auto;
+    margin-right: auto;
   }
   .hora-num-label {
     font-family: 'Plex Mono', monospace;
@@ -707,8 +749,14 @@
           </div>
         </div>
         <div class="hora-figure">
-          <div class="hora-num tnum">5,000</div>
-          <div class="hora-num-label">personas para empezar a donar una hora al mes</div>
+          <div class="hora-count">
+            <span class="hora-num tnum" id="liveCount" aria-live="polite">—</span>
+            <span class="hora-count-sep">/</span>
+            <span class="hora-goal-num tnum">5,000</span>
+          </div>
+          <div class="hora-bar"><div class="hora-bar-fill" id="horaBarFill"></div></div>
+          <div class="hora-num-label">personas registradas ahora mismo</div>
+          <p class="hora-privacy">Tu nombre y correo son privados — aquí solo se muestra el total. Súmate por el sitio o desde nuestra página de Facebook.</p>
         </div>
       </div>
     </div>
@@ -878,6 +926,41 @@
     counters.forEach(c => c.textContent = c.dataset.target);
   }
 
+  // Live goal counter — Abacus (free, no login, increment-only public counter).
+  // It only ever stores a number, never names/emails, and refreshes on its own
+  // so anyone on the page sees new sign-ups without reloading.
+  const COUNTER_NS = 'tijualimpia';
+  const COUNTER_KEY = 'registros';
+  const COUNTER_GOAL = 5000;
+  const fmtNum = (n) => n.toLocaleString('es-MX');
+  function renderCount(value) {
+    const el = document.getElementById('liveCount');
+    const bar = document.getElementById('horaBarFill');
+    if (el) el.textContent = fmtNum(value);
+    if (bar) bar.style.width = Math.min(100, (value / COUNTER_GOAL) * 100) + '%';
+  }
+  async function fetchCount() {
+    try {
+      const res = await fetch(`https://abacus.jasoncameron.dev/get/${COUNTER_NS}/${COUNTER_KEY}`);
+      const data = await res.json();
+      renderCount(typeof data.value === 'number' ? data.value : 0);
+    } catch (e) { renderCount(0); }
+  }
+  async function hitCount() {
+    try {
+      const res = await fetch(`https://abacus.jasoncameron.dev/hit/${COUNTER_NS}/${COUNTER_KEY}`);
+      const data = await res.json();
+      if (typeof data.value === 'number') {
+        renderCount(data.value);
+        const el = document.getElementById('liveCount');
+        el.classList.add('is-live');
+        setTimeout(() => el.classList.remove('is-live'), 1200);
+      }
+    } catch (e) { /* registration still went through by email even if this fails */ }
+  }
+  fetchCount();
+  setInterval(() => { if (!document.hidden) fetchCount(); }, 25000);
+
   // Form: submits to FormSubmit.co via fetch so the page never leaves the site
   document.getElementById('joinForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -898,6 +981,7 @@
       if (!res.ok) throw new Error('request failed');
       msg.classList.add('show');
       form.reset();
+      hitCount();
     } catch (err2) {
       err.classList.add('show');
     } finally {
