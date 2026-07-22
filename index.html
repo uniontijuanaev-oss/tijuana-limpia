@@ -504,6 +504,40 @@
     background: var(--ocean);
   }
 
+  /* ---------- Orígenes / comunidad ---------- */
+  .origenes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .origen-card { background: var(--paper-raised); padding: 26px 24px; }
+  .origen-icon { display: block; font-size: 1.7rem; margin-bottom: 12px; }
+  .origen-card .tag {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ocean);
+    background: color-mix(in srgb, var(--ocean) 12%, transparent);
+    padding: 3px 9px;
+    border-radius: 100px;
+    display: inline-block;
+  }
+  .origen-card h3 {
+    font-family: 'Archivo', sans-serif;
+    text-transform: none;
+    font-weight: 700;
+    font-size: 1.02rem;
+    margin: 12px 0 10px;
+    letter-spacing: 0;
+    color: var(--stone);
+  }
+  .origen-card p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.55; }
+
   /* ---------- Rutas / plan ---------- */
   .rutas-list { display: flex; flex-direction: column; }
   .ruta {
@@ -1347,6 +1381,42 @@
     </div>
   </section>
 
+  <section id="origenes">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="oriEyebrow">Comunidad</span>
+        <h2 data-i18n="oriH2">Diferentes orígenes. Un solo destino.</h2>
+        <p style="margin-top:14px" data-i18n="oriLead">No importa de dónde vienes ni cuánto tiempo te quedes; si amas, respetas y cuidas esta ciudad, eres una parte positiva de Tijuana. ¿Desde dónde te sumas al 2049?</p>
+      </div>
+      <div class="origenes-grid reveal">
+        <div class="origen-card">
+          <span class="origen-icon" aria-hidden="true">📍</span>
+          <span class="tag" data-i18n="oriTag1">Raíces Tijuanenses</span>
+          <h3 data-i18n="oriH3_1">Nacidos aquí</h3>
+          <p data-i18n="oriP1">Llevas la resiliencia de esta frontera en la sangre. Eres el primer guardián de nuestra identidad y de nuestra historia. Liderar la transformación de tu hogar y enseñar con el ejemplo es tu derecho, y el legado que le dejarás a las próximas generaciones.</p>
+        </div>
+        <div class="origen-card">
+          <span class="origen-icon" aria-hidden="true">🌱</span>
+          <span class="tag" data-i18n="oriTag2">Forjadores de Sueños</span>
+          <h3 data-i18n="oriH3_2">Nuevos residentes</h3>
+          <p data-i18n="oriP2">Llegaste de otras tierras buscando oportunidades y Tijuana te abrió los brazos. Hoy, esta también es tu casa. Tu energía y tu trabajo duro son el motor fresco que necesitamos para limpiar y construir la ciudad que tu familia merece.</p>
+        </div>
+        <div class="origen-card">
+          <span class="origen-icon" aria-hidden="true">🌍</span>
+          <span class="tag" data-i18n="oriTag3">Ciudadanos Globales</span>
+          <h3 data-i18n="oriH3_3">Expats / residentes internacionales</h3>
+          <p data-i18n="oriP3">Pudiste elegir cualquier lugar, pero cruzaste la frontera para hacer de Tijuana tu hogar. No eres un espectador, eres un vecino clave. Demuestra que el amor por la comunidad no tiene nacionalidad y ayúdanos a cuidar y enriquecer este hogar compartido.</p>
+        </div>
+        <div class="origen-card">
+          <span class="origen-icon" aria-hidden="true">❤️</span>
+          <span class="tag" data-i18n="oriTag4">Aliados de Corazón</span>
+          <h3 data-i18n="oriH3_4">Turistas y visitantes</h3>
+          <p data-i18n="oriP4">Vienes una y otra vez por nuestra cultura, nuestra gastronomía y nuestra energía inigualable. No eres un simple turista, eres familia. Sé nuestro mejor embajador: disfruta todo lo que ofrecemos y deja una huella positiva, manteniendo limpios los lugares que tanto amas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="unahora">
     <div class="wrap">
       <div class="hora-panel reveal">
@@ -1838,6 +1908,15 @@
               <label for="nombre" data-i18n="jfNombreLabel">Nombre completo</label>
               <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" data-i18n-ph="jfNombrePh" required />
             </div>
+            <div class="field">
+              <label data-i18n="jfGrupoLabel">¿Desde dónde te sumas al 2049?</label>
+              <div class="check-grid">
+                <label class="radio-item"><input type="radio" name="grupo" value="Raíces Tijuanenses (nacidos aquí)"><span data-i18n="jfGrupo1">📍 Raíces Tijuanenses (nacidos aquí)</span></label>
+                <label class="radio-item"><input type="radio" name="grupo" value="Forjadores de Sueños (nuevos residentes)"><span data-i18n="jfGrupo2">🌱 Forjadores de Sueños (nuevos residentes)</span></label>
+                <label class="radio-item"><input type="radio" name="grupo" value="Ciudadanos Globales (expats)"><span data-i18n="jfGrupo3">🌍 Ciudadanos Globales (expats)</span></label>
+                <label class="radio-item"><input type="radio" name="grupo" value="Aliados de Corazón (turistas/visitantes)"><span data-i18n="jfGrupo4">❤️ Aliados de Corazón (turistas/visitantes)</span></label>
+              </div>
+            </div>
             <div class="row2">
               <div class="field">
                 <label for="whatsapp" data-i18n="jfWaLabel">WhatsApp / Teléfono</label>
@@ -2114,6 +2193,7 @@
           <a href="#equipo" data-i18n="footEquipoLogistica">Equipo y logística</a>
           <a href="#fondo" data-i18n="footFondoEquipo">Fondo de equipo</a>
           <a href="#sueno" data-i18n="sueEyebrow">El sueño</a>
+          <a href="#origenes" data-i18n="oriEyebrow">Comunidad</a>
           <a href="#metas" data-i18n="footMetas">Metas</a>
         </div>
         <div class="foot-col">
@@ -2146,6 +2226,17 @@
     heroGoal: `Goal: <strong>5,000</strong> people registered to start donating <strong>one hour a month</strong>, all at once.`,
     heroCanvasAria: `Illustration of Tijuana's hills and canyons descending toward the sea`,
     heroFigcaption: `FROM THE HILLS TO THE COAST — EVERY BRIGADE'S ROUTE`,
+    oriEyebrow: `Community`,
+    oriH2: `Different origins. One destination.`,
+    oriLead: `It doesn't matter where you're from or how long you're staying; if you love, respect, and take care of this city, you're a positive part of Tijuana. Where are you joining the 2049 mission from?`,
+    oriTag1: `Tijuana Roots`, oriH3_1: `Born here`,
+    oriP1: `You carry this border's resilience in your blood. You're the first guardian of our identity and our history. Leading the transformation of your home and teaching by example is your right — and the legacy you'll leave the next generations.`,
+    oriTag2: `Dream Builders`, oriH3_2: `New residents`,
+    oriP2: `You came from other lands looking for opportunity, and Tijuana opened its arms to you. Today, this is your home too. Your energy and hard work are the fresh engine we need to clean up and build the city your family deserves.`,
+    oriTag3: `Global Citizens`, oriH3_3: `Expats / international residents`,
+    oriP3: `You could have chosen anywhere, but you crossed the border to make Tijuana your home. You're not a spectator — you're a key neighbor. Show that love for community has no nationality, and help us care for and enrich this shared home.`,
+    oriTag4: `Allies at Heart`, oriH3_4: `Tourists and visitors`,
+    oriP4: `You keep coming back for our culture, our food, and our unmatched energy. You're not just a tourist — you're family. Be our best ambassador: enjoy everything we have to offer, and leave a positive mark by keeping the places you love clean.`,
     probEyebrow: `What we see every week`,
     probH2: `The problem isn't hidden`,
     probLead: `It's in the canyons that run down from the neighborhoods, in the Tijuana River channel, and in the sand at Playas de Tijuana. You don't need a study to see it — you need a plan to fix it.`,
@@ -2260,6 +2351,11 @@
     accion5P: `We coordinate environmental education workshops for elementary and middle schools in any delegación in the city.`,
     jfSec1Head: `Basic information`, jfSec1Sub: `How we find you, and who we're looking for in your colonia.`,
     jfNombreLabel: `Full name`, jfNombrePh: `Your name`,
+    jfGrupoLabel: `Where are you joining the 2049 mission from?`,
+    jfGrupo1: `📍 Tijuana Roots (born here)`,
+    jfGrupo2: `🌱 Dream Builders (new residents)`,
+    jfGrupo3: `🌍 Global Citizens (expats)`,
+    jfGrupo4: `❤️ Allies at Heart (tourists/visitors)`,
     jfWaLabel: `WhatsApp / Phone`, jfCorreoLabel: `Email (optional)`,
     jfDelegacionLabel: `Delegación`, jfDelegacionPh: `Choose your delegación`,
     jfColoniaLabel: `Colonia`, jfColoniaPh: `E.g. Las Torres`,
