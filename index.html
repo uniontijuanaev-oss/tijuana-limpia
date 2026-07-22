@@ -1259,6 +1259,81 @@
     margin: 0 0 14px;
   }
 
+  /* ---------- Rangos fundadores ---------- */
+  .rangos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .rango-card {
+    border-radius: 8px;
+    padding: 22px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rango-icon { display: block; font-size: 1.3rem; margin-bottom: 10px; }
+  .rango-range {
+    display: block;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .rango-card h3 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    margin: 8px 0 10px;
+  }
+  .rango-card p { margin: 0; font-size: 0.86rem; line-height: 1.5; opacity: 0.85; }
+  .rango-genesis {
+    background: linear-gradient(155deg, #0A0A0B, #1C1A12);
+    border: 1px solid #D4AF37;
+    color: #F5E9C8;
+  }
+  .rango-genesis h3 { color: #D4AF37; }
+  .rango-origin {
+    background: linear-gradient(155deg, #10171A, #16262A);
+    border: 1px solid #45E8DE;
+    color: #D8F7F4;
+  }
+  .rango-origin h3 { color: #45E8DE; }
+  .rango-foundation {
+    background: linear-gradient(155deg, #232326, #2F2C2E);
+    border: 1px solid #C23B4B;
+    color: #F3D9DC;
+  }
+  .rango-foundation h3 { color: #C23B4B; }
+  .rangos-note {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.74rem;
+    color: var(--stone);
+    max-width: 60ch;
+    margin: 16px 0 0;
+  }
+
+  .founder-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 0 0 18px;
+  }
+  .founder-badge .rango-icon { margin: 0; font-size: 1.6rem; }
+  .founder-badge-text { display: flex; flex-direction: column; gap: 2px; }
+  .founder-badge-num {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .founder-badge-name { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.15rem; }
+
   /* ---------- Footer ---------- */
   footer.site {
     background: var(--ink);
@@ -1872,6 +1947,34 @@
         <span class="eyebrow" data-i18n="partEyebrow">Cómo participar</span>
         <h2 data-i18n="partH2">Tijuana se limpia una persona a la vez</h2>
       </div>
+
+      <div class="rangos-head reveal">
+        <span class="eyebrow" data-i18n="rangosEyebrow">Rangos fundadores</span>
+        <h3 style="font-family:'Archivo',sans-serif;font-size:1.4rem;font-weight:700;margin:10px 0 0" data-i18n="rangosH3">Los primeros 5,000 no son early adopters — son fundadores</h3>
+        <p style="margin-top:10px;max-width:62ch" data-i18n="rangosLead">Tu lugar en la fila queda registrado para siempre. Entre antes te sumes, más alto es tu rango — y aparece en tu confirmación al registrarte.</p>
+      </div>
+      <div class="rangos-grid reveal">
+        <div class="rango-card rango-genesis">
+          <span class="rango-icon" aria-hidden="true">⬛</span>
+          <span class="rango-range" data-i18n="rangoRange1">Miembros #1–100</span>
+          <h3 data-i18n="rangoH3_1">Génesis</h3>
+          <p data-i18n="rangoP1">Los primeros cien. Sin ustedes, Tijuana Limpia no existiría.</p>
+        </div>
+        <div class="rango-card rango-origin">
+          <span class="rango-icon" aria-hidden="true">💠</span>
+          <span class="rango-range" data-i18n="rangoRange2">Miembros #101–500</span>
+          <h3 data-i18n="rangoH3_2">Origen</h3>
+          <p data-i18n="rangoP2">Los arquitectos — llegaron cuando el movimiento apenas tomaba forma.</p>
+        </div>
+        <div class="rango-card rango-foundation">
+          <span class="rango-icon" aria-hidden="true">🟥</span>
+          <span class="rango-range" data-i18n="rangoRange3">Miembros #501–5,000</span>
+          <h3 data-i18n="rangoH3_3">Fundación</h3>
+          <p data-i18n="rangoP3">Los primeros en creer — registrados antes de que arrancara Una Hora al Mes.</p>
+        </div>
+      </div>
+      <p class="rangos-note" data-i18n="rangosNote">Tu rango se asigna automáticamente por orden de registro real — no se compra ni se repite. Después de los primeros 5,000, arranca Una Hora al Mes para todos por igual.</p>
+
       <div class="participar-grid reveal">
         <div>
           <div class="accion">
@@ -2057,6 +2160,13 @@
           <p class="form-msg" id="formErr" style="color:var(--clay)" data-i18n="jfErr">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
 
           <div class="share-box" id="postSignupShare">
+            <div class="founder-badge" id="founderBadge" hidden>
+              <span class="rango-icon" id="founderBadgeIcon" aria-hidden="true"></span>
+              <div class="founder-badge-text">
+                <span class="founder-badge-num"><span data-i18n="founderBadgeLabel">Miembro fundador</span> #<span id="founderBadgeNum">—</span></span>
+                <span class="founder-badge-name" id="founderBadgeName"></span>
+              </div>
+            </div>
             <div class="share-copy-text">
               <p class="postsignup-status" id="postSignupStatus" data-i18n="postStatus">Vamos en <span id="postSignupCount">—</span> / 5,000 registrados.</p>
               <h3 style="color:var(--ink)" data-i18n="postH3">Ayúdanos a llegar más rápido</h3>
@@ -2339,6 +2449,14 @@
     metasLabel3: `beaches with continuous waste monitoring`,
     metasLabel4: `of public markets with waste separation`,
     partEyebrow: `How to get involved`, partH2: `Tijuana gets clean one person at a time`,
+    rangosEyebrow: `Founder ranks`,
+    rangosH3: `The first 5,000 aren't early adopters — they're founders`,
+    rangosLead: `Your place in line is recorded for good. The sooner you join, the higher your rank — and it shows up in your confirmation when you register.`,
+    rangoRange1: `Members #1–100`, rangoH3_1: `Genesis`, rangoP1: `The first hundred. Without them, Tijuana Limpia wouldn't exist.`,
+    rangoRange2: `Members #101–500`, rangoH3_2: `Origin`, rangoP2: `The architects — they arrived while the movement was still taking shape.`,
+    rangoRange3: `Members #501–5,000`, rangoH3_3: `Foundation`, rangoP3: `The first believers — registered before Una Hora al Mes even launched.`,
+    rangosNote: `Your rank is assigned automatically by real registration order — it can't be bought or repeated. After the first 5,000, Una Hora al Mes starts for everyone equally.`,
+    founderBadgeLabel: `Founding member`,
     accion1H3: `Join a brigade`,
     accion1P: `Sign up below and we'll connect you with the brigade closest to your colonia. No experience needed, just a Saturday morning.`,
     accion2H3: `Report a dump site`,
@@ -2453,6 +2571,11 @@
     document.querySelectorAll('[data-lang-opt]').forEach((el) => {
       el.classList.toggle('active', el.dataset.langOpt === lang);
     });
+    const fb = document.getElementById('founderBadge');
+    if (fb && !fb.hidden) {
+      const fbName = document.getElementById('founderBadgeName');
+      fbName.textContent = lang === 'en' ? I18N.en[fb.dataset.tierKey] : fb.dataset.tierEsName;
+    }
     localStorage.setItem('tl_lang', lang);
   }
 
@@ -2602,11 +2725,43 @@
         const el = document.getElementById('liveCount');
         el.classList.add('is-live');
         setTimeout(() => el.classList.remove('is-live'), 1200);
+        return data.value;
       }
     } catch (e) { /* registration still went through by email even if this fails */ }
+    return null;
   }
   fetchCount();
   setInterval(() => { if (!document.hidden) fetchCount(); }, 25000);
+
+  // Founder ranks — the value Abacus returns right after a real hit() IS that
+  // person's exact place in the sign-up order, so we reuse the same counter
+  // instead of inventing a second source of truth. Thresholds are scaled to
+  // our actual 5,000-person goal, not a hypothetical future user base.
+  const FOUNDER_TIERS = [
+    { max: 100, icon: '⬛', cls: 'rango-genesis', key: 'rangoH3_1' },
+    { max: 500, icon: '💠', cls: 'rango-origin', key: 'rangoH3_2' },
+    { max: 5000, icon: '🟥', cls: 'rango-foundation', key: 'rangoH3_3' },
+  ];
+  function showFounderBadge(n) {
+    const tier = FOUNDER_TIERS.find(t => n <= t.max);
+    if (!tier) return; // beyond the founding 5,000 — everyone joins as equals from here
+    const badge = document.getElementById('founderBadge');
+    const icon = document.getElementById('founderBadgeIcon');
+    const num = document.getElementById('founderBadgeNum');
+    const name = document.getElementById('founderBadgeName');
+    if (!badge) return;
+    badge.classList.remove('rango-genesis', 'rango-origin', 'rango-foundation');
+    badge.classList.add(tier.cls);
+    badge.dataset.tierKey = tier.key;
+    badge.dataset.tierEsName = tier.esName;
+    icon.textContent = tier.icon;
+    num.textContent = fmtNum(n);
+    name.textContent = currentLang === 'en' ? I18N.en[tier.key] : tier.esName;
+    badge.hidden = false;
+  }
+  FOUNDER_TIERS[0].esName = 'Génesis';
+  FOUNDER_TIERS[1].esName = 'Origen';
+  FOUNDER_TIERS[2].esName = 'Fundación';
 
   // Form: submits to FormSubmit.co via fetch so the page never leaves the site
   document.getElementById('joinForm').addEventListener('submit', async (e) => {
@@ -2648,7 +2803,8 @@
       }
       document.getElementById('postSignupShare').classList.add('show');
       form.reset();
-      hitCount();
+      const myNumber = await hitCount();
+      if (myNumber) showFounderBadge(myNumber);
     } catch (err2) {
       err.classList.add('show');
     } finally {
