@@ -2460,9 +2460,9 @@
     const soon = document.getElementById('fundCtaSoon');
     const amounts = document.getElementById('fundAmounts');
     const live = document.getElementById('fundDonateLive');
-    if (soon) soon.hidden = true;
-    if (amounts) amounts.hidden = true; // Donorbox's own widget shows the live raised/goal amount
-    if (live) live.hidden = false;
+    if (soon) soon.style.display = 'none';
+    if (amounts) amounts.style.display = 'none'; // Donorbox's own widget shows the live raised/goal amount
+    if (live) live.style.display = 'block';
     const btn = document.getElementById('fundDonorboxBtn');
     if (btn) btn.href = `https://donorbox.org/${DONORBOX_CAMPAIGN}`;
     const embed = document.getElementById('fundDonorboxEmbed');
