@@ -2071,7 +2071,7 @@
               <div class="radio-row">
                 <label class="radio-item"><input type="radio" name="medio_contacto" value="WhatsApp" checked>WhatsApp</label>
                 <label class="radio-item"><input type="radio" name="medio_contacto" value="SMS">SMS</label>
-                <label class="radio-item"><input type="radio" name="medio_contacto" value="Llamada"><span data-i18n="jfLlamada">Llamada</span></label>
+                <label class="radio-item"><input type="radio" name="medio_contacto" value="Correo"><span data-i18n="jfEmailOpt">Correo</span></label>
               </div>
             </div>
           </div>
@@ -2491,7 +2491,7 @@
     jfWaLabel: `WhatsApp / Phone`, jfCorreoLabel: `Email (optional)`,
     jfDelegacionLabel: `Delegación`, jfDelegacionPh: `Choose your delegación`,
     jfColoniaLabel: `Colonia`, jfColoniaPh: `E.g. Las Torres`,
-    jfMedioLabel: `Preferred contact method`, jfLlamada: `Call`,
+    jfMedioLabel: `Preferred contact method`, jfEmailOpt: `Email`,
     jfSec2Head: `Community commitment`,
     jfInteresLabel: `Which route interests you most?`,
     jfInteres1: `Neighborhood brigades`, jfInteres2: `Canyons & streams`, jfInteres3: `Plastic-free coast`, jfInteres4: `Commerce & sorting`, jfInteres5: `Environmental education`,
@@ -2790,7 +2790,7 @@
     submitBtn.textContent = currentLang === 'en' ? 'Sending…' : 'Enviando…';
     const nombreVal = form.nombre.value.trim();
     const medioRaw = form.querySelector('input[name="medio_contacto"]:checked')?.value || 'WhatsApp';
-    const medioVal = currentLang === 'en' && medioRaw === 'Llamada' ? 'phone call' : medioRaw;
+    const medioVal = currentLang === 'en' && medioRaw === 'Correo' ? 'email' : medioRaw;
     try {
       const res = await fetch('https://formsubmit.co/ajax/uniontijuanaev@gmail.com', {
         method: 'POST',
