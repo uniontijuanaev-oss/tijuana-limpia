@@ -347,23 +347,11 @@
     font-style: normal;
     color: var(--ocean);
   }
-  .hero h1 .year-badge {
-    display: inline-block;
-    font-family: 'Plex Mono', monospace;
-    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
-    font-weight: 700;
-    color: var(--ocean);
-    background: color-mix(in srgb, var(--ocean) 14%, transparent);
-    padding: 3px 11px;
-    border-radius: 100px;
-    vertical-align: middle;
-    margin-left: 10px;
-    letter-spacing: 0.03em;
-  }
   .hero p.lead {
     font-size: 1.08rem;
-    max-width: 46ch;
+    max-width: 58ch;
   }
+  .hero-manifesto p.lead + p.lead { margin-top: 16px; }
   .hero-actions {
     display: flex;
     gap: 14px;
@@ -1339,8 +1327,13 @@
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow" data-i18n="heroEyebrow">De la colonia al mar</span>
-        <h1 data-i18n="heroH1">Tijuana va a ser <em>la ciudad más limpia</em> de México. <span class="year-badge">2049</span></h1>
-        <p class="lead" data-i18n="heroLead">No es un eslogan de campaña: es una ruta de trabajo, colonia por colonia, cañón por cañón, hasta la costa. Empieza en las brigadas de barrio y termina en una playa donde nadie tiene que esquivar basura para meterse al mar.</p>
+        <h1 data-i18n="heroH1">Tijuana: de un sueño imposible al <em>legado del 2049</em></h1>
+        <div class="hero-manifesto">
+          <p class="lead" data-i18n="heroLead1">Parece un sueño casi imposible, pero Tijuana tiene todo el potencial para consolidarse como la mejor ciudad de México. Estratégicamente posicionados frente a la economía #1 del mundo y a la 4ta potencia global, somos el motor de la frontera más transitada del planeta. Nuestros ciudadanos no necesitan migrar para triunfar: tenemos el poder de crear nuestras propias oportunidades aquí mismo.</p>
+          <p class="lead" data-i18n="heroLead2">Y para demostrar de lo que somos capaces, nos hemos fijado un objetivo inquebrantable: Tijuana va a ser la ciudad más limpia de nuestro país para el año 2049.</p>
+          <p class="lead" data-i18n="heroLead3">Esto no es un eslogan de campaña: es una ruta de trabajo. Avanzaremos hombro a hombro, colonia por colonia, cañón por cañón, hasta la costa. Es un esfuerzo titánico que empieza hoy en las brigadas de barrio y termina en una playa donde nadie tenga que esquivar basura para meterse al mar.</p>
+          <p class="lead" data-i18n="heroLead4">Sumémonos a estos proyectos comunitarios. Lo que parece imposible para unos cuantos, es una realidad alcanzable cuando trabajamos juntos.</p>
+        </div>
         <div class="hero-actions">
           <a href="#participar" class="btn btn-primary btn-hero-cta" data-i18n="heroBtnJoin">Únete a la misión</a>
           <a href="#plan" class="btn btn-ghost" data-i18n="heroBtnPlan">Ver el plan completo</a>
@@ -2144,8 +2137,11 @@
   const I18N = { en: {
     navProblema: `The problem`, navPlan: `The plan`, navEquipo: `Equipment`, navUnaHora: `One Hour a Month`, navParticipa: `Get involved`, navCta: `Join`,
     heroEyebrow: `From the neighborhood to the sea`,
-    heroH1: `Tijuana is going to be <em>the cleanest city</em> in Mexico. <span class="year-badge">2049</span>`,
-    heroLead: `It's not a campaign slogan: it's a work plan, colonia by colonia, canyon by canyon, all the way to the coast. It starts with neighborhood brigades and ends at a beach where nobody has to dodge trash to get in the water.`,
+    heroH1: `Tijuana: from an impossible dream to the <em>legacy of 2049</em>`,
+    heroLead1: `It sounds like an almost impossible dream, but Tijuana has everything it takes to become the best city in Mexico. Strategically positioned across from the #1 economy in the world and the 4th global power, we're the engine of the busiest border crossing on the planet. Our people don't need to migrate to succeed — we have the power to create our own opportunities right here.`,
+    heroLead2: `And to prove what we're capable of, we've set an unshakeable goal: Tijuana is going to be the cleanest city in our country by the year 2049.`,
+    heroLead3: `This isn't a campaign slogan — it's a work plan. We'll move forward shoulder to shoulder, colonia by colonia, canyon by canyon, all the way to the coast. It's a massive effort that starts today in the neighborhood brigades and ends on a beach where nobody has to dodge trash to get in the water.`,
+    heroLead4: `Let's join these community projects. What looks impossible to a few becomes an achievable reality when we work together.`,
     heroBtnJoin: `Join the mission`, heroBtnPlan: `See the full plan`,
     heroGoal: `Goal: <strong>5,000</strong> people registered to start donating <strong>one hour a month</strong>, all at once.`,
     heroCanvasAria: `Illustration of Tijuana's hills and canyons descending toward the sea`,
