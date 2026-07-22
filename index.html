@@ -388,7 +388,21 @@
   .btn-ghost:hover { border-color: var(--ocean); color: var(--ocean); }
 
   .hero-art { position: relative; }
-  .hero-art canvas { width: 100%; height: auto; border-radius: 6px; }
+  .hero-art img { width: 100%; height: auto; border-radius: 6px; display: block; }
+  .hero-art .concept-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--clay);
+    color: #FCEEE7;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
   .hero-art figcaption {
     margin-top: 10px;
     font-family: 'Plex Mono', monospace;
@@ -1450,7 +1464,8 @@
         <p class="hero-goal" data-i18n="heroGoal">Meta: <strong>5,000</strong> personas registradas para empezar a donar <strong>una hora al mes</strong>, todos a la vez.</p>
       </div>
       <figure class="hero-art">
-        <canvas id="skyline" width="640" height="520" role="img" aria-label="Ilustración de las colinas y cañones de Tijuana descendiendo hacia el mar" data-i18n-aria="heroCanvasAria"></canvas>
+        <span class="concept-tag" data-i18n="galConceptTag">Visión conceptual</span>
+        <img src="assets/vision-tijuana-2049.jpg" alt="Imagen conceptual generada por IA: vista aérea de Tijuana imaginada hacia el año 2049, con arquitectura verde, tren ligero y el malecón renovado" loading="lazy">
         <figcaption data-i18n="heroFigcaption">DE LA SIERRA A LA COSTA — EL RECORRIDO DE CADA BRIGADA</figcaption>
       </figure>
     </div>
@@ -2334,7 +2349,6 @@
     heroLead4: `Let's join these community projects. What looks impossible to a few becomes an achievable reality when we work together.`,
     heroBtnJoin: `Join the mission`, heroBtnPlan: `See the full plan`,
     heroGoal: `Goal: <strong>5,000</strong> people registered to start donating <strong>one hour a month</strong>, all at once.`,
-    heroCanvasAria: `Illustration of Tijuana's hills and canyons descending toward the sea`,
     heroFigcaption: `FROM THE HILLS TO THE COAST — EVERY BRIGADE'S ROUTE`,
     oriEyebrow: `Community`,
     oriH2: `Different origins. One destination.`,
@@ -2841,110 +2855,6 @@
     }
   });
 
-  // Hero canvas: hillside-to-coast skyline illustration
-  (function () {
-    const canvas = document.getElementById('skyline');
-    const ctx = canvas.getContext('2d');
-    const W = canvas.width, H = canvas.height;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = W * dpr; canvas.height = H * dpr;
-    canvas.style.width = '100%'; canvas.style.height = 'auto';
-    ctx.scale(dpr, dpr);
-
-    const styles = getComputedStyle(document.documentElement);
-    const clay = styles.getPropertyValue('--clay').trim() || '#B84B2C';
-    const ocean = styles.getPropertyValue('--ocean').trim() || '#0F6E6B';
-    const oceanBright = styles.getPropertyValue('--ocean-bright').trim() || '#2FA39D';
-    const paperRaised = styles.getPropertyValue('--paper-raised').trim() || '#DDE9E2';
-    const ink = styles.getPropertyValue('--ink').trim() || '#14211C';
-    const line = styles.getPropertyValue('--line').trim() || 'rgba(20,33,28,0.14)';
-
-    function lerpColor(a, b, t) {
-      const pa = a.match(/\w\w/g).map(x => parseInt(x, 16));
-      const pb = b.match(/\w\w/g).map(x => parseInt(x, 16));
-      const r = pa.map((v, i) => Math.round(v + (pb[i] - v) * t));
-      return `rgb(${r[0]},${r[1]},${r[2]})`;
-    }
-
-    let t = 0;
-    function draw(time) {
-      ctx.clearRect(0, 0, W, H);
-
-      // background panel
-      ctx.fillStyle = paperRaised;
-      ctx.fillRect(0, 0, W, H);
-
-      const horizonY = H * 0.62;
-
-      // ridge layers, clay (top/dry hillside) fading toward ocean near horizon
-      const ridges = [
-        { y: H * 0.18, amp: 26, seed: 1.3, t: 0.05 },
-        { y: H * 0.30, amp: 34, seed: 2.1, t: 0.28 },
-        { y: H * 0.42, amp: 30, seed: 0.6, t: 0.55 },
-        { y: H * 0.52, amp: 22, seed: 3.4, t: 0.8 },
-      ];
-      ridges.forEach(r => {
-        ctx.beginPath();
-        ctx.moveTo(0, H);
-        ctx.lineTo(0, r.y);
-        for (let x = 0; x <= W; x += 8) {
-          const y = r.y + Math.sin(x * 0.012 + r.seed) * r.amp + Math.sin(x * 0.004 + r.seed * 2) * r.amp * 0.5;
-          ctx.lineTo(x, y);
-        }
-        ctx.lineTo(W, H);
-        ctx.closePath();
-        ctx.fillStyle = lerpColor(clay, ocean, r.t);
-        ctx.globalAlpha = 0.85;
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      });
-
-      // simple city block silhouette on mid ridge
-      ctx.fillStyle = lerpColor(clay, ocean, 0.62);
-      let bx = W * 0.08;
-      const buildSeed = [22, 40, 16, 55, 30, 18, 46, 24, 60, 20, 34, 15, 42];
-      buildSeed.forEach((h, i) => {
-        const bw = 14;
-        ctx.fillRect(bx, H * 0.52 - h, bw, h + 20);
-        bx += bw + 4;
-        if (bx > W * 0.78) return;
-      });
-
-      // sea band
-      const seaGrad = ctx.createLinearGradient(0, horizonY, 0, H);
-      seaGrad.addColorStop(0, ocean);
-      seaGrad.addColorStop(1, '#0A4B49');
-      ctx.fillStyle = seaGrad;
-      ctx.fillRect(0, horizonY, W, H - horizonY);
-
-      // animated wave lines
-      for (let i = 0; i < 4; i++) {
-        const wy = horizonY + 16 + i * 26;
-        ctx.beginPath();
-        for (let x = 0; x <= W; x += 6) {
-          const y = wy + Math.sin(x * 0.03 + t * 0.02 + i) * 3.2;
-          if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = oceanBright;
-        ctx.globalAlpha = 0.35 - i * 0.06;
-        ctx.lineWidth = 1.4;
-        ctx.stroke();
-        ctx.globalAlpha = 1;
-      }
-
-      // horizon hairline
-      ctx.strokeStyle = line;
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, horizonY);
-      ctx.lineTo(W, horizonY);
-      ctx.stroke();
-
-      t += 1;
-      if (!reduceMotion) requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-  })();
 </script>
 </body>
 </html>
