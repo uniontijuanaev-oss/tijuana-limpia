@@ -979,6 +979,22 @@
     flex-shrink: 0;
   }
   .fund-cta p { margin: 0; font-size: 0.88rem; }
+  .fund-donate {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .fund-donate-note {
+    margin: 10px 0 0;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--stone);
+  }
+  .fund-embed {
+    margin-top: 20px;
+    display: flex;
+  }
+  .fund-embed iframe { border-radius: 8px; }
 
   /* ---------- Día de 1 hora ---------- */
   .hora-panel {
@@ -1656,13 +1672,18 @@
         <span class="eyebrow" data-i18n="fondoEyebrow">Fondo de equipo</span>
         <h2 data-i18n="fondoH2">Fondo de Equipo — Tijuana Limpia</h2>
         <p data-i18n="fondoLead">Cada peso recaudado se va directo al inventario de arriba: barredoras, bolsas de separación, EPP y transporte para las brigadas. Sin límite — mientras más juntemos, más equipo sale a la calle.</p>
-        <div class="fund-amounts">
+        <div class="fund-amounts" id="fundAmounts">
           <span class="fund-raised tnum">$0</span>
           <span class="fund-of" data-i18n="fondoOf">recaudados hasta ahora</span>
         </div>
-        <div class="fund-cta">
+        <div class="fund-cta" id="fundCtaSoon">
           <span class="fund-soon-badge" data-i18n="fondoSoon">Próximamente</span>
           <p data-i18n="fondoCtaP">Estamos afinando cómo recibir donaciones de forma segura. En cuanto esté listo, el enlace para donar se publica aquí y en Facebook.</p>
+        </div>
+        <div class="fund-donate" id="fundDonateLive" hidden>
+          <a href="#" id="fundDonorboxBtn" class="btn btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="fondoDonarBtn">Donar ahora</a>
+          <p class="fund-donate-note" data-i18n="fondoDonarNote">Pago seguro procesado por Donorbox / Stripe. Tijuana Limpia nunca ve ni guarda tus datos de pago.</p>
+          <div id="fundDonorboxEmbed" class="fund-embed"></div>
         </div>
       </div>
     </div>
@@ -2192,6 +2213,7 @@
     fondoLead: `Every peso raised goes straight to the inventory above: sweepers, sorting bags, PPE, and transport for the brigades. No cap — the more we raise, the more equipment hits the streets.`,
     fondoOf: `raised so far`, fondoSoon: `Coming soon`,
     fondoCtaP: `We're working out how to receive donations securely. Once it's ready, the donation link goes up here and on Facebook.`,
+    fondoDonarBtn: `Donate now`, fondoDonarNote: `Secure payment processed by Donorbox / Stripe. Tijuana Limpia never sees or stores your payment details.`,
     uhEyebrow: `The goal`, uhH2: `5,000 sign-ups. One hour a month, all at once.`,
     uhLead: `It's that simple: once we reach 5,000 registered people, we start — everyone donates one hour a month, the same weekend, in their own colonia, canyon, or nearest beach. It's not a one-time event, it's a city habit.`,
     uhBtn: `Sign up now`, uhLabel: `people registered right now`,
@@ -2426,6 +2448,35 @@
   } else {
     counters.forEach(c => c.textContent = c.dataset.target);
   }
+
+  // Donations — Donorbox (Stripe Mexico under the hood, so payouts land in a
+  // Mexican bank account and donors can pay in MXN). Set your campaign
+  // short-name below once the Donorbox campaign is live; leave it blank and
+  // the site keeps showing the honest "Próximamente" state instead of a
+  // broken or fake donate button.
+  const DONORBOX_CAMPAIGN = ''; // e.g. 'tijuana-limpia-equipo' — from your Donorbox campaign URL
+  (function initDonations() {
+    if (!DONORBOX_CAMPAIGN) return;
+    const soon = document.getElementById('fundCtaSoon');
+    const amounts = document.getElementById('fundAmounts');
+    const live = document.getElementById('fundDonateLive');
+    if (soon) soon.hidden = true;
+    if (amounts) amounts.hidden = true; // Donorbox's own widget shows the live raised/goal amount
+    if (live) live.hidden = false;
+    const btn = document.getElementById('fundDonorboxBtn');
+    if (btn) btn.href = `https://donorbox.org/${DONORBOX_CAMPAIGN}`;
+    const embed = document.getElementById('fundDonorboxEmbed');
+    if (embed) {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://donorbox.org/embed/${DONORBOX_CAMPAIGN}`;
+      iframe.name = 'donorbox';
+      iframe.setAttribute('seamless', 'seamless');
+      iframe.setAttribute('allowpaymentrequest', 'allowpaymentrequest');
+      iframe.loading = 'lazy';
+      iframe.style.cssText = 'max-width:500px;min-width:250px;width:100%;height:900px;border:none;';
+      embed.appendChild(iframe);
+    }
+  })();
 
   // Live goal counter — Abacus (free, no login, increment-only public counter).
   // It only ever stores a number, never names/emails, and refreshes on its own
