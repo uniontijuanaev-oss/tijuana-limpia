@@ -1339,24 +1339,87 @@
     margin: 16px 0 0;
   }
 
-  .founder-badge {
+  .awakening { margin: 0 0 22px; }
+  .aw-terminal {
+    background: #05070A;
+    border: 1px solid var(--ocean-bright);
+    border-left: 3px solid #D4AF37;
+    border-radius: 6px;
+    padding: 18px 20px;
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.9;
+  }
+  .aw-line {
+    color: #7FE8DE;
+    opacity: 0;
+    text-shadow: 0 0 6px rgba(127, 232, 222, 0.5);
+    transition: opacity 0.4s ease;
+  }
+  .aw-line.aw-show { opacity: 1; }
+  .aw-line.aw-final { color: #FFD84D; text-shadow: 0 0 8px rgba(255, 216, 77, 0.6); font-weight: 600; }
+
+  .founder-card {
+    width: 260px;
+    max-width: 100%;
+    border-radius: 14px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .founder-card.fc-show { opacity: 1; transform: translateY(0) scale(1); }
+  .fc-head { display: flex; align-items: center; justify-content: space-between; }
+  .fc-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    background: rgba(255,255,255,0.12);
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+  .fc-range {
+    font-family: 'Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+  .fc-mid { margin: 34px 0; text-align: center; }
+  .fc-icon { display: block; font-size: 1.8rem; margin-bottom: 10px; }
+  .fc-mid h3 {
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .fc-foot {
     display: flex;
     align-items: center;
-    gap: 14px;
-    border-radius: 8px;
-    padding: 16px 18px;
-    margin: 0 0 18px;
-  }
-  .founder-badge .rango-icon { margin: 0; font-size: 1.6rem; }
-  .founder-badge-text { display: flex; flex-direction: column; gap: 2px; }
-  .founder-badge-num {
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.14);
     font-family: 'Plex Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.75;
   }
-  .founder-badge-name { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1.15rem; }
+  .fc-label { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+  .fc-id { font-size: 1.05rem; font-weight: 700; }
+  .aw-activated {
+    margin: 14px 0 0;
+    padding: 12px 16px;
+    background: var(--clay-bg);
+    border: 1px solid var(--clay-soft);
+    border-radius: 6px;
+  }
+  .aw-activated a {
+    color: var(--clay);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+  .aw-activated a:hover { text-decoration: underline; }
 
   /* ---------- Footer ---------- */
   footer.site {
@@ -2185,12 +2248,30 @@
           <p class="form-msg" id="formErr" style="color:var(--clay)" data-i18n="jfErr">Algo falló al enviar tu registro. Intenta de nuevo o escríbenos por Facebook.</p>
 
           <div class="share-box" id="postSignupShare">
-            <div class="founder-badge" id="founderBadge" hidden>
-              <span class="rango-icon" id="founderBadgeIcon" aria-hidden="true"></span>
-              <div class="founder-badge-text">
-                <span class="founder-badge-num"><span data-i18n="founderBadgeLabel">Miembro fundador</span> #<span id="founderBadgeNum">—</span></span>
-                <span class="founder-badge-name" id="founderBadgeName"></span>
+            <div class="awakening" id="founderAwakening" hidden>
+              <div class="aw-terminal" id="awTerminal">
+                <div class="aw-line" id="awLine1"></div>
+                <div class="aw-line" id="awLine2"></div>
+                <div class="aw-line" id="awLine3"></div>
+                <div class="aw-line aw-final" id="awLine4"></div>
               </div>
+              <div class="founder-card" id="founderCard" hidden>
+                <div class="fc-head">
+                  <span class="fc-logo">T49</span>
+                  <span class="fc-range" id="fcRange"></span>
+                </div>
+                <div class="fc-mid">
+                  <span class="fc-icon" id="fcIcon" aria-hidden="true"></span>
+                  <h3 id="fcName"></h3>
+                </div>
+                <div class="fc-foot">
+                  <span class="fc-label" data-i18n="founderBadgeLabel">Miembro fundador</span>
+                  <span class="fc-id">#<span id="fcNum">—</span></span>
+                </div>
+              </div>
+              <p class="aw-activated" id="awActivated" hidden>
+                <a href="#unahora" data-i18n="awActivatedMsg">¡Llegamos a 5,000! Una Hora al Mes ya empezó — es momento de activarte.</a>
+              </p>
             </div>
             <div class="share-copy-text">
               <p class="postsignup-status" id="postSignupStatus" data-i18n="postStatus">Vamos en <span id="postSignupCount">—</span> / 5,000 registrados.</p>
@@ -2481,6 +2562,7 @@
     rangoRange3: `Members #501–5,000`, rangoH3_3: `Foundation`, rangoP3: `The first believers — registered before Una Hora al Mes even launched.`,
     rangosNote: `Your rank is assigned automatically by real registration order — it can't be bought or repeated. After the first 5,000, Una Hora al Mes starts for everyone equally.`,
     founderBadgeLabel: `Founding member`,
+    awActivatedMsg: `We hit 5,000! Una Hora al Mes has started — time to activate.`,
     accion1H3: `Join a brigade`,
     accion1P: `Sign up below and we'll connect you with the brigade closest to your colonia. No experience needed, just a Saturday morning.`,
     accion2H3: `Report a dump site`,
@@ -2595,10 +2677,14 @@
     document.querySelectorAll('[data-lang-opt]').forEach((el) => {
       el.classList.toggle('active', el.dataset.langOpt === lang);
     });
-    const fb = document.getElementById('founderBadge');
-    if (fb && !fb.hidden) {
-      const fbName = document.getElementById('founderBadgeName');
-      fbName.textContent = lang === 'en' ? I18N.en[fb.dataset.tierKey] : fb.dataset.tierEsName;
+    const card = document.getElementById('founderCard');
+    if (card && !card.hidden) {
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem('tl_founder')); } catch (e) {}
+      if (saved && saved.n) {
+        const tier = FOUNDER_TIERS.find(t => saved.n <= t.max);
+        if (tier) renderFounderCard(tier, saved.n);
+      }
     }
     localStorage.setItem('tl_lang', lang);
   }
@@ -2732,6 +2818,12 @@
     if (bar) bar.style.width = Math.min(100, (value / COUNTER_GOAL) * 100) + '%';
     const postCount = document.getElementById('postSignupCount');
     if (postCount) postCount.textContent = fmtNum(value);
+    if (value >= COUNTER_GOAL) {
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem('tl_founder')); } catch (e) {}
+      const activated = document.getElementById('awActivated');
+      if (saved && saved.n && activated) activated.hidden = false;
+    }
   }
   async function fetchCount() {
     try {
@@ -2762,30 +2854,85 @@
   // instead of inventing a second source of truth. Thresholds are scaled to
   // our actual 5,000-person goal, not a hypothetical future user base.
   const FOUNDER_TIERS = [
-    { max: 100, icon: '⬛', cls: 'rango-genesis', key: 'rangoH3_1' },
-    { max: 500, icon: '💠', cls: 'rango-origin', key: 'rangoH3_2' },
-    { max: 5000, icon: '🟥', cls: 'rango-foundation', key: 'rangoH3_3' },
+    { max: 100, icon: '⬛', cls: 'rango-genesis', key: 'rangoH3_1', rangeKey: 'rangoRange1', esName: 'Génesis', rangeEs: 'Miembros #1–100' },
+    { max: 500, icon: '💠', cls: 'rango-origin', key: 'rangoH3_2', rangeKey: 'rangoRange2', esName: 'Origen', rangeEs: 'Miembros #101–500' },
+    { max: 5000, icon: '🟥', cls: 'rango-foundation', key: 'rangoH3_3', rangeKey: 'rangoRange3', esName: 'Fundación', rangeEs: 'Miembros #501–5,000' },
   ];
+  function renderFounderCard(tier, n) {
+    const tierName = currentLang === 'en' ? I18N.en[tier.key] : tier.esName;
+    const card = document.getElementById('founderCard');
+    card.classList.remove('rango-genesis', 'rango-origin', 'rango-foundation');
+    card.classList.add(tier.cls);
+    document.getElementById('fcIcon').textContent = tier.icon;
+    document.getElementById('fcName').textContent = tierName;
+    document.getElementById('fcNum').textContent = fmtNum(n);
+    document.getElementById('fcRange').textContent = currentLang === 'en' ? I18N.en[tier.rangeKey] : tier.rangeEs;
+    return tierName;
+  }
+  // "The Genesis Awakening": a terminal-decrypt sequence that unlocks the
+  // founder card, all client-side and instant — there's no backend/email
+  // system behind this, so it runs the moment the real Abacus hit() confirms
+  // the person's real place in line, rather than promising a follow-up email
+  // we have no way to send.
   function showFounderBadge(n) {
     const tier = FOUNDER_TIERS.find(t => n <= t.max);
     if (!tier) return; // beyond the founding 5,000 — everyone joins as equals from here
-    const badge = document.getElementById('founderBadge');
-    const icon = document.getElementById('founderBadgeIcon');
-    const num = document.getElementById('founderBadgeNum');
-    const name = document.getElementById('founderBadgeName');
-    if (!badge) return;
-    badge.classList.remove('rango-genesis', 'rango-origin', 'rango-foundation');
-    badge.classList.add(tier.cls);
-    badge.dataset.tierKey = tier.key;
-    badge.dataset.tierEsName = tier.esName;
-    icon.textContent = tier.icon;
-    num.textContent = fmtNum(n);
-    name.textContent = currentLang === 'en' ? I18N.en[tier.key] : tier.esName;
-    badge.hidden = false;
+    const wrap = document.getElementById('founderAwakening');
+    const terminal = document.getElementById('awTerminal');
+    const card = document.getElementById('founderCard');
+    if (!wrap) return;
+    const nFmt = fmtNum(n);
+    const tierName = renderFounderCard(tier, n);
+    const lines = currentLang === 'en' ? [
+      'ESTABLISHING SECURE CONNECTION TO TIJUANA 2049...',
+      `VERIFYING REGISTRATION #${nFmt}... CONFIRMED`,
+      `ASSIGNING ${tierName.toUpperCase()} RANK...`,
+      `${tierName.toUpperCase()} RANK PERMANENTLY UNLOCKED.`,
+    ] : [
+      'ESTABLECIENDO CONEXIÓN SEGURA CON TIJUANA 2049...',
+      `VERIFICANDO REGISTRO #${nFmt}... CONFIRMADO`,
+      `ASIGNANDO RANGO ${tierName.toUpperCase()}...`,
+      `RANGO ${tierName.toUpperCase()} DESBLOQUEADO PERMANENTEMENTE.`,
+    ];
+    const lineEls = [1, 2, 3, 4].map(i => document.getElementById('awLine' + i));
+    lineEls.forEach((el, i) => { el.textContent = '> ' + lines[i]; el.classList.remove('aw-show'); });
+    card.classList.remove('fc-show');
+    card.hidden = true;
+    terminal.style.display = '';
+    wrap.hidden = false;
+
+    if (reduceMotion) {
+      lineEls.forEach(el => el.classList.add('aw-show'));
+      terminal.style.display = 'none';
+      card.hidden = false;
+      requestAnimationFrame(() => card.classList.add('fc-show'));
+    } else {
+      lineEls.forEach((el, i) => setTimeout(() => el.classList.add('aw-show'), 300 + i * 850));
+      setTimeout(() => {
+        terminal.style.display = 'none';
+        card.hidden = false;
+        requestAnimationFrame(() => card.classList.add('fc-show'));
+      }, 300 + lineEls.length * 850 + 500);
+    }
+    try { localStorage.setItem('tl_founder', JSON.stringify({ n })); } catch (e) {}
   }
-  FOUNDER_TIERS[0].esName = 'Génesis';
-  FOUNDER_TIERS[1].esName = 'Origen';
-  FOUNDER_TIERS[2].esName = 'Fundación';
+  function restoreFounderCard() {
+    let saved = null;
+    try { saved = JSON.parse(localStorage.getItem('tl_founder')); } catch (e) {}
+    if (!saved || !saved.n) return;
+    const tier = FOUNDER_TIERS.find(t => saved.n <= t.max);
+    if (!tier) return;
+    renderFounderCard(tier, saved.n);
+    const wrap = document.getElementById('founderAwakening');
+    const terminal = document.getElementById('awTerminal');
+    const card = document.getElementById('founderCard');
+    terminal.style.display = 'none';
+    card.hidden = false;
+    card.classList.add('fc-show');
+    wrap.hidden = false;
+    document.getElementById('postSignupShare').classList.add('show');
+  }
+  restoreFounderCard();
 
   // Form: submits to FormSubmit.co via fetch so the page never leaves the site
   document.getElementById('joinForm').addEventListener('submit', async (e) => {
