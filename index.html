@@ -193,7 +193,18 @@
     color: var(--ink);
     text-transform: uppercase;
   }
-  .brand .dot { color: var(--clay); }
+  .brand-2049 {
+    color: #1B2A55;
+    text-shadow:
+      0 0 4px #D4AF37,
+      0 0 11px #D4AF37,
+      0 0 3px #35B8F0,
+      0 0 18px #35B8F0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .brand-2049 { color: #AFC6FF; }
+  }
+  :root[data-theme="dark"] .brand-2049 { color: #AFC6FF; }
   nav.links {
     display: flex;
     gap: clamp(16px, 3vw, 32px);
@@ -389,10 +400,9 @@
 
   .hero-art { position: relative; }
   .hero-art img { width: 100%; height: auto; border-radius: 6px; display: block; }
-  .hero-art .concept-tag {
-    position: absolute;
-    top: 12px;
-    left: 12px;
+  .hero-concept-tag {
+    display: inline-block;
+    margin: 2px 0 18px;
     background: var(--clay);
     color: #FCEEE7;
     font-family: 'Plex Mono', monospace;
@@ -1399,7 +1409,7 @@
 <a href="#top" class="skip-link">Saltar al contenido</a>
 <header class="site">
   <div class="navbar">
-    <a href="#top" class="brand">Tijuana<span class="dot">·</span>Limpia</a>
+    <a href="#top" class="brand brand-2049">Tijuana 2049</a>
     <div class="nav-mid">
       <nav class="links" id="navLinks">
         <a href="#unahora" data-i18n="navUnaHora">Una Hora al Mes</a>
@@ -1451,6 +1461,7 @@
       <div>
         <span class="eyebrow" data-i18n="heroEyebrow">De la colonia al mar</span>
         <h1 data-i18n="heroH1">Tijuana: de un sueño imposible al <em>legado del 2049</em></h1>
+        <span class="hero-concept-tag" data-i18n="galConceptTag">Visión conceptual</span>
         <div class="hero-manifesto">
           <p class="lead" data-i18n="heroLead1">Parece un sueño casi imposible, pero Tijuana tiene todo el potencial para consolidarse como la mejor ciudad de México. Estratégicamente posicionados frente a la economía #1 del mundo y a la 4ta potencia global, somos el motor de la frontera más transitada del planeta. Nuestros ciudadanos no necesitan migrar para triunfar: tenemos el poder de crear nuestras propias oportunidades aquí mismo.</p>
           <p class="lead" data-i18n="heroLead2">Y para demostrar de lo que somos capaces, nos hemos fijado un objetivo inquebrantable: Tijuana va a ser la ciudad más limpia de nuestro país para el año 2049.</p>
@@ -1464,7 +1475,6 @@
         <p class="hero-goal" data-i18n="heroGoal">Meta: <strong>5,000</strong> personas registradas para empezar a donar <strong>una hora al mes</strong>, todos a la vez.</p>
       </div>
       <figure class="hero-art">
-        <span class="concept-tag" data-i18n="galConceptTag">Visión conceptual</span>
         <img src="assets/vision-tijuana-2049.jpg" alt="Imagen conceptual generada por IA: vista aérea de Tijuana imaginada hacia el año 2049, con arquitectura verde, tren ligero y el malecón renovado" loading="lazy">
         <figcaption data-i18n="heroFigcaption">DE LA SIERRA A LA COSTA — EL RECORRIDO DE CADA BRIGADA</figcaption>
       </figure>
